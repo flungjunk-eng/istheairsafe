@@ -1,0 +1,164 @@
+---
+export const prerender = true;
+
+import Base from '../../layouts/Base.astro';
+import cities from '../../data/cities.json';
+
+export function getStaticPaths() {
+  // Get unique countries
+  const countryMap = new Map();
+  for (const city of cities) {
+    if (!countryMap.has(city.countrySlug)) {
+      countryMap.set(city.countrySlug, city.country);
+    }
+  }
+  return [...countryMap.entries()].map(([slug, name]) => ({
+    params: { country: slug },
+    props: { countryName: name, countrySlug: slug },
+  }));
+}
+
+const { country } = Astro.params;
+const { countryName, countrySlug } = Astro.props;
+
+// Get all cities for this country
+const countryCities = cities
+  .filter(c => c.countrySlug === countrySlug)
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+// Group by state if country has states (US, Canada, Australia, India, etc.)
+const hasStates = countryCities.some(c => c.state);
+const byState = new Map();
+if (hasStates) {
+  for (const city of countryCities) {
+    const state = city.state || 'Other';
+    if (!byState.has(state)) byState.set(state, []);
+    byState.get(state).push(city);
+  }
+}
+
+const isUS = countrySlug === 'us';
+
+const pageTitle = `Air Quality in ${countryName} — Real-Time AQI by City`;
+const pageDesc = `Live air quality index for ${countryCities.length} cities in ${countryName}. Real-time AQI, PM2.5, health guidance and pollution data.`;
+
+// AQI level color helper (static — used for display hints only)
+const AQI_LEVELS = [
+  { max: 50,  label: 'Good',                          color: '#1a7a4a', light: '#e8f7ef', border: '#b6e8ce' },
+  { max: 100, label: 'Moderate',                      color: '#7a6000', light: '#fdf8e8', border: '#f0dc99' },
+  { max: 150, label: 'Unhealthy for Sensitive Groups', color: '#bf5000', light: '#fff2e8', border: '#f5c49a' },
+  { max: 200, label: 'Unhealthy',                     color: '#b91c1c', light: '#fef2f2', border: '#fca5a5' },
+  { max: 300, label: 'Very Unhealthy',                color: '#6b21a8', light: '#faf0ff', border: '#d8a8f0' },
+  { max: 999, label: 'Hazardous',                     color: '#7f1d1d', light: '#fff1f1', border: '#f87171' },
+];
+---
+
+<Base
+  title={pageTitle}
+  description={pageDesc}
+  canonical={`/countries/${countrySlug}`}
+>
+  <div style="max-width:960px;margin:0 auto;padding:40px 24px 80px;" class="appear">
+
+    <!-- Breadcrumb -->
+    <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;flex-wrap:wrap;">
+      <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
+      <span style="color:#ddd;font-size:10px;">›</span>
+      <a href="/countries" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">Countries</a>
+      <span style="color:#ddd;font-size:10px;">›</span>
+      <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">{countryName}</span>
+    </nav>
+
+    <!-- Hero -->
+    <div style="margin-bottom:36px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
+        Air Quality in {countryName}
+      </h1>
+      <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
+        Live AQI readings for {countryCities.length} {countryCities.length === 1 ? 'city' : 'cities'} across {countryName}. Updated hourly from government monitoring stations.
+      </p>
+    </div>
+
+    <!-- US States link -->
+    {isUS && (
+      <div style="background:white;border:1px solid #eee;border-radius:14px;padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;margin-bottom:2px;">Browse by State</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:#aaa;">View air quality rankings for individual US states</div>
+        </div>
+        <a href="/states" style="background:#111;color:white;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;flex-shrink:0;">
+          Browse US States →
+        </a>
+      </div>
+    )}
+
+    <!-- Cities — grouped by state if applicable, flat list otherwise -->
+    {hasStates ? (
+      [...byState.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([state, stateCities]) => (
+        <div style="margin-bottom:32px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h2 style="font-size:18px;color:#111;font-weight:400;">{state}</h2>
+            {isUS && (
+              <a href={`/states/${state.toLowerCase().replace(/\s+/g, '-')}`}
+                style="font-family:var(--font-sans);font-size:12px;color:var(--accent);text-decoration:none;">
+                View state page →
+              </a>
+            )}
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;" class="city-grid">
+            {stateCities.map(city => (
+              <a href={city.url}
+                style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;"
+                class="city-card">
+                <div>
+                  <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+                  {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
+                </div>
+                <span style="font-size:10px;color:#ccc;flex-shrink:0;">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    ) : (
+      <div>
+        <h2 style="font-size:18px;color:#111;margin-bottom:16px;font-weight:400;">All Cities</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;" class="city-grid">
+          {countryCities.map(city => (
+            <a href={city.url}
+              style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;"
+              class="city-card">
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+                {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
+              </div>
+              <span style="font-size:10px;color:#ccc;flex-shrink:0;">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- CTA -->
+    <div style="background:#111;border-radius:16px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:48px;">
+      <div>
+        <div style="font-family:var(--font-serif);font-size:20px;color:white;margin-bottom:6px;">Is the air safe today?</div>
+        <div style="font-family:var(--font-sans);font-size:13px;color:#888;">Get a live AQI reading with health guidance for any city.</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="/" style="background:white;color:#111;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:700;">Search a city</a>
+        <a href="/rankings" style="background:transparent;color:white;border:1px solid #444;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;">Global rankings</a>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .appear { animation: fadeUp 0.4s ease forwards; }
+    .city-card:hover { border-color: #111 !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    @media (max-width: 600px) {
+      .city-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</Base>

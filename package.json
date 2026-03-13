@@ -10,7 +10,13 @@
     "discover-cities": "node scripts/discover-cities.js",
     "discover-cities:dry": "node scripts/discover-cities.js --dry-run",
     "discover-cities:new": "node scripts/discover-cities.js --only-new",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "discover-stations": "node scripts/discover-all-stations.js",
+    "discover-stations:dry": "node scripts/discover-all-stations.js --dry-run",
+    "discover-stations:asia": "node scripts/discover-all-stations.js --region=asia",
+    "discover-stations:europe": "node scripts/discover-all-stations.js --region=europe",
+    "discover-stations:americas": "node scripts/discover-all-stations.js --region=americas",
+    "discover-stations:africa": "node scripts/discover-all-stations.js --region=africa"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^10.0.0",

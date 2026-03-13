@@ -148,8 +148,6 @@ const CITIES_TO_DISCOVER = [
   { name: 'Zurich',           state: 'Zurich',           country: 'Switzerland',  countrySlug: 'ch' },
   { name: 'Basel',            state: 'Basel-City',       country: 'Switzerland',  countrySlug: 'ch' },
   { name: 'Bern',             state: 'Bern',             country: 'Switzerland',  countrySlug: 'ch' },
-{ name: 'Tbilisi',    state: 'Tbilisi',    country: 'Georgia',  countrySlug: 'ge' },
-{ name: 'Katowice',   state: 'Silesia',    country: 'Poland',   countrySlug: 'pl' },
 
   // ── Russia & Eastern Europe ──────────────────────────────────────────────
   { name: 'Kazan',            state: 'Tatarstan',        country: 'Russia',       countrySlug: 'ru' },
