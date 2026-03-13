@@ -1,32 +1,15 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from '../layouts/Base.astro';
 import CitySearch from '../components/CitySearch.jsx';
 import cities from '../data/cities.json';
-import { fetchAqi, getAqiLevel } from '../utils/waqi.js';
-
-const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
 
 const featuredSlugs = [
   'new-york-ny', 'los-angeles-ca', 'london', 'tokyo', 'delhi', 'beijing',
   'paris', 'sydney', 'mexico-city', 'sao-paulo', 'dubai', 'seoul',
 ];
-
-const featuredCityDefs = featuredSlugs
-  .map(slug => cities.find(c => c.slug === slug))
-  .filter(Boolean);
-
-// Fetch all AQI values in parallel
-const aqiResults = await Promise.all(
-  featuredCityDefs.map(city => fetchAqi(city.waqiId, token))
-);
-
-const featuredCities = featuredCityDefs.map((city, i) => ({
-  ...city,
-  aqi: aqiResults[i]?.aqi ?? null,
-  level: getAqiLevel(aqiResults[i]?.aqi ?? null),
-}));
+const featuredCities = featuredSlugs.map(slug => cities.find(c => c.slug === slug)).filter(Boolean);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -48,100 +31,48 @@ const jsonLd = {
   canonical="/"
   jsonLd={jsonLd}
 >
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section style="padding: 5rem 0 4rem; text-align: center; position: relative; overflow: hidden;">
-    <!-- Background decoration -->
-    <div style="
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(82,183,136,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    "></div>
-
-    <div class="container" style="position: relative; z-index: 1;">
-      <!-- Eyebrow -->
-      <div style="
-        display: inline-flex; align-items: center; gap: 0.5rem;
-        background: white; border: 1px solid var(--border);
-        border-radius: 100px; padding: 0.35rem 1rem;
-        font-size: 0.8rem; color: var(--text-muted);
-        font-family: var(--font-mono);
-        margin-bottom: 1.5rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      ">
-        <span style="width: 8px; height: 8px; background: #4ade80; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-        Live data from {cities.length} cities worldwide
+    <div style="position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(82,183,136,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:white;border:1px solid var(--border);border-radius:100px;padding:0.35rem 1rem;font-size:0.8rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse 2s infinite;"></span>
+        Live data from 400+ cities worldwide
       </div>
-
-      <h1 style="
-        font-size: clamp(2.5rem, 7vw, 5rem);
-        letter-spacing: -0.04em;
-        line-height: 1.05;
-        margin-bottom: 1.25rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      ">
-        Is the air safe<br />
-        <em style="font-style: italic; color: var(--accent);">where you are?</em>
+      <h1 style="font-size:clamp(2.5rem,7vw,5rem);letter-spacing:-0.04em;line-height:1.05;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto;">
+        Is the air safe<br /><em style="font-style:italic;color:var(--accent);">where you are?</em>
       </h1>
-
-      <p style="
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        color: var(--text-muted);
-        max-width: 520px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.65;
-      ">
+      <p style="font-size:clamp(1rem,2.5vw,1.2rem);color:var(--text-muted);max-width:520px;margin:0 auto 2.5rem;line-height:1.65;">
         Real-time air quality index for 400+ cities. PM2.5, ozone, health guidance — all in one place.
       </p>
-
-      <!-- Search -->
       <CitySearch cities={cities} client:load />
-
-      <p style="font-size: 0.8rem; color: var(--text-subtle); margin-top: 1rem; font-family: var(--font-mono);">
-        or browse cities below ↓
-      </p>
+      <p style="font-size:0.8rem;color:var(--text-subtle);margin-top:1rem;font-family:var(--font-mono);">or browse cities below ↓</p>
     </div>
   </section>
 
-  <!-- Featured Cities Grid -->
-  <section style="padding: 2rem 0 4rem;">
+  <!-- Featured Cities -->
+  <section style="padding:2rem 0 4rem;">
     <div class="container">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
-        <h2 style="font-size: 1.5rem;">Major Cities</h2>
-        <a href="/rankings" style="font-size: 0.875rem; font-family: var(--font-mono); color: var(--accent);">
-          View all rankings →
-        </a>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+        <h2 style="font-size:1.5rem;">Major Cities</h2>
+        <a href="/rankings" style="font-size:0.875rem;font-family:var(--font-mono);color:var(--accent);">View all rankings →</a>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+      <div id="featured-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;">
         {featuredCities.map(city => (
-          <a
-            href={city.url}
-            class="city-card card"
-            style="padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: transform 0.15s, box-shadow 0.15s;"
-          >
-            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem;">
+          <a href={city.url} class="city-card card" data-slug={city.slug}
+            style="padding:1.25rem;text-decoration:none;color:inherit;display:block;transition:transform 0.15s,box-shadow 0.15s;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <div>
-                <div style="font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem;">{city.name}</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">{city.country}</div>
+                <div style="font-weight:600;font-size:1rem;margin-bottom:0.2rem;">{city.name}</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);">{city.country}</div>
               </div>
-              {city.aqi != null ? (
-                <div style="text-align: right; flex-shrink: 0;">
-                  <div style={`font-family: var(--font-mono); font-size: 1.5rem; font-weight: 500; line-height: 1; color: ${city.level?.color || 'var(--text)'};`}>
-                    {city.aqi}
-                  </div>
-                  <div style="font-size: 0.65rem; color: var(--text-subtle); margin-top: 0.1rem;">AQI</div>
-                </div>
-              ) : (
-                <div style="font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-subtle);">—</div>
-              )}
+              <div class="aqi-badge" style="text-align:right;flex-shrink:0;">
+                <div class="shimmer" style="width:44px;height:28px;border-radius:6px;"></div>
+              </div>
             </div>
-            {city.level && (
-              <div style={`margin-top: 0.875rem; display: inline-block; padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; background: ${city.level.bg}; color: ${city.level.text}; border: 1px solid ${city.level.color}40;`}>
-                {city.level.label}
-              </div>
-            )}
+            <div class="aqi-label" style="margin-top:0.875rem;height:22px;">
+              <div class="shimmer" style="width:80px;height:22px;border-radius:100px;"></div>
+            </div>
           </a>
         ))}
       </div>
@@ -149,46 +80,46 @@ const jsonLd = {
   </section>
 
   <!-- How It Works -->
-  <section style="padding: 3rem 0; background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <section style="padding:3rem 0;background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="container">
-      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2.5rem;">How it works</h2>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; max-width: 800px; margin: 0 auto;">
+      <h2 style="text-align:center;font-size:2rem;margin-bottom:2.5rem;">How it works</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;max-width:800px;margin:0 auto;" class="how-grid">
         <div>
-          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔍</div>
-          <h3 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Search your city</h3>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Type any city name. We cover 400+ major cities across 60+ countries.</p>
+          <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔍</div>
+          <h3 style="font-family:var(--font-sans);font-size:1rem;font-weight:600;margin-bottom:0.5rem;">Search your city</h3>
+          <p style="font-size:0.875rem;color:var(--text-muted);">Type any city name. We cover 400+ major cities across 60+ countries.</p>
         </div>
         <div>
-          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📊</div>
-          <h3 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">See live AQI</h3>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Real-time data from the World Air Quality Index network, updated hourly.</p>
+          <div style="font-size:2.5rem;margin-bottom:0.75rem;">📊</div>
+          <h3 style="font-family:var(--font-sans);font-size:1rem;font-weight:600;margin-bottom:0.5rem;">See live AQI</h3>
+          <p style="font-size:0.875rem;color:var(--text-muted);">Real-time data from the World Air Quality Index network, updated hourly.</p>
         </div>
         <div>
-          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">💚</div>
-          <h3 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Get health guidance</h3>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Personalized recommendations for outdoor activity and air safety.</p>
+          <div style="font-size:2.5rem;margin-bottom:0.75rem;">💚</div>
+          <h3 style="font-family:var(--font-sans);font-size:1rem;font-weight:600;margin-bottom:0.5rem;">Get health guidance</h3>
+          <p style="font-size:0.875rem;color:var(--text-muted);">Personalised recommendations for outdoor activity and air safety.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AQI Scale -->
-  <section style="padding: 3rem 0;">
+  <section style="padding:3rem 0;">
     <div class="container">
-      <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Understanding the AQI Scale</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; max-width: 900px; margin: 0 auto;">
+      <h2 style="font-size:1.5rem;margin-bottom:1.5rem;text-align:center;">Understanding the AQI Scale</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.75rem;max-width:900px;margin:0 auto;">
         {[
-          { range: '0–50',    label: 'Good',                          color: '#4ade80', bg: '#f0fdf4', text: '#166534', icon: '😊' },
-          { range: '51–100',  label: 'Moderate',                      color: '#facc15', bg: '#fefce8', text: '#854d0e', icon: '😐' },
-          { range: '101–150', label: 'Unhealthy for Sensitive Groups', color: '#fb923c', bg: '#fff7ed', text: '#9a3412', icon: '😷' },
-          { range: '151–200', label: 'Unhealthy',                     color: '#f87171', bg: '#fef2f2', text: '#991b1b', icon: '🤢' },
-          { range: '201–300', label: 'Very Unhealthy',                color: '#c084fc', bg: '#faf5ff', text: '#6b21a8', icon: '😰' },
-          { range: '301+',    label: 'Hazardous',                     color: '#f43f5e', bg: '#fff1f2', text: '#881337', icon: '☠️' },
+          { range: '0–50',    label: 'Good',                           color: '#4ade80', bg: '#f0fdf4', text: '#166534', icon: '😊' },
+          { range: '51–100',  label: 'Moderate',                       color: '#facc15', bg: '#fefce8', text: '#854d0e', icon: '😐' },
+          { range: '101–150', label: 'Unhealthy for Sensitive Groups',  color: '#fb923c', bg: '#fff7ed', text: '#9a3412', icon: '😷' },
+          { range: '151–200', label: 'Unhealthy',                      color: '#f87171', bg: '#fef2f2', text: '#991b1b', icon: '🤢' },
+          { range: '201–300', label: 'Very Unhealthy',                 color: '#c084fc', bg: '#faf5ff', text: '#6b21a8', icon: '😰' },
+          { range: '301+',    label: 'Hazardous',                      color: '#f43f5e', bg: '#fff1f2', text: '#881337', icon: '☠️' },
         ].map(band => (
-          <div style={`text-align: center; padding: 1.25rem 1rem; background: ${band.bg}; border-radius: 12px; border: 1px solid ${band.color}40;`}>
-            <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">{band.icon}</div>
-            <div style={`font-family: var(--font-mono); font-size: 0.8rem; color: ${band.color}; font-weight: 600; margin-bottom: 0.25rem;`}>{band.range}</div>
-            <div style={`font-size: 0.8rem; font-weight: 600; color: ${band.text};`}>{band.label}</div>
+          <div style={`text-align:center;padding:1.25rem 1rem;background:${band.bg};border-radius:12px;border:1px solid ${band.color}40;`}>
+            <div style="font-size:1.75rem;margin-bottom:0.5rem;">{band.icon}</div>
+            <div style={`font-family:var(--font-mono);font-size:0.8rem;color:${band.color};font-weight:600;margin-bottom:0.25rem;`}>{band.range}</div>
+            <div style={`font-size:0.8rem;font-weight:600;color:${band.text};`}>{band.label}</div>
           </div>
         ))}
       </div>
@@ -196,16 +127,45 @@ const jsonLd = {
   </section>
 
   <style>
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-    .city-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
-    }
-    @media (max-width: 768px) {
-      .how-grid { grid-template-columns: 1fr !important; }
-    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+    @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+    .shimmer { background:linear-gradient(90deg,#f0f0ee 25%,#e8e8e5 50%,#f0f0ee 75%);background-size:400px 100%;animation:shimmer 1.4s infinite; }
+    .city-card:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08) !important; }
+    @media (max-width:768px) { .how-grid { grid-template-columns:1fr !important; } }
   </style>
+
+  <script>
+    const AQI_LEVELS = [
+      { max:50,  label:'Good',          color:'#4ade80', bg:'#f0fdf4', text:'#166534' },
+      { max:100, label:'Moderate',      color:'#facc15', bg:'#fefce8', text:'#854d0e' },
+      { max:150, label:'Sensitive',     color:'#fb923c', bg:'#fff7ed', text:'#9a3412' },
+      { max:200, label:'Unhealthy',     color:'#f87171', bg:'#fef2f2', text:'#991b1b' },
+      { max:300, label:'Very Unhealthy',color:'#c084fc', bg:'#faf5ff', text:'#6b21a8' },
+      { max:999, label:'Hazardous',     color:'#f43f5e', bg:'#fff1f2', text:'#881337' },
+    ];
+    function getLevel(aqi) { return AQI_LEVELS.find(l => aqi <= l.max); }
+
+    async function loadAqi() {
+      const cards = document.querySelectorAll('#featured-grid [data-slug]');
+      const slugs = [...cards].map(c => c.dataset.slug).join(',');
+      try {
+        const res = await fetch(`/api/aqi?slugs=${slugs}`);
+        const data = await res.json();
+        cards.forEach(card => {
+          const aqi = data[card.dataset.slug];
+          const badge = card.querySelector('.aqi-badge');
+          const labelEl = card.querySelector('.aqi-label');
+          if (aqi == null || isNaN(aqi)) {
+            badge.innerHTML = '<div style="font-family:var(--font-mono);font-size:1.2rem;color:#ccc;">—</div>';
+            labelEl.innerHTML = '';
+            return;
+          }
+          const l = getLevel(aqi);
+          badge.innerHTML = `<div style="font-family:var(--font-mono);font-size:1.5rem;font-weight:500;line-height:1;color:${l.color};">${aqi}</div><div style="font-size:0.65rem;color:var(--text-subtle);margin-top:0.1rem;">AQI</div>`;
+          labelEl.innerHTML = `<span style="display:inline-block;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.7rem;font-weight:600;background:${l.bg};color:${l.text};border:1px solid ${l.color}40;">${l.label}</span>`;
+        });
+      } catch(e) { console.error('AQI load failed', e); }
+    }
+    loadAqi();
+  </script>
 </Base>

@@ -1,64 +1,46 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from '../../layouts/Base.astro';
 import cities from '../../data/cities.json';
-import { fetchAqiBatch, getAqiLevel } from '../../utils/waqi.js';
 
-const { country } = Astro.params;
+export function getStaticPaths() {
+  const countryMap = new Map();
+  for (const city of cities) {
+    if (!countryMap.has(city.countrySlug)) countryMap.set(city.countrySlug, city.country);
+  }
+  return [...countryMap.entries()].map(([slug, name]) => ({
+    params: { country: slug },
+    props: { countryName: name, countrySlug: slug },
+  }));
+}
 
-// Find country name
-const countrySlug = country;
-const countryName = cities.find(c => c.countrySlug === countrySlug)?.country;
+const { countrySlug, countryName } = Astro.props;
 
-if (!countryName) return Astro.redirect('/countries');
-
-// Get all cities for this country
 const countryCities = cities
   .filter(c => c.countrySlug === countrySlug)
   .sort((a, b) => a.name.localeCompare(b.name));
 
-// Fetch live AQI in batches to avoid WAQI rate limiting
-const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
-const aqiMap = await fetchAqiBatch(countryCities, token, 10, 300);
-
-// Group by state
 const hasStates = countryCities.some(c => c.state);
 const byState = new Map();
 if (hasStates) {
   for (const city of countryCities) {
-    const state = city.state || 'Other';
-    if (!byState.has(state)) byState.set(state, []);
-    byState.get(state).push(city);
+    const s = city.state || 'Other';
+    if (!byState.has(s)) byState.set(s, []);
+    byState.get(s).push(city);
   }
 }
-
+const statesSorted = [...byState.entries()].sort(([a],[b]) => a.localeCompare(b));
 const isUS = countrySlug === 'us';
-
-// Sort cities by AQI within each group (worst first)
-function sortByAqi(cityList) {
-  return [...cityList].sort((a, b) => {
-    const aqiA = aqiMap.get(a.slug)?.aqi ?? -1;
-    const aqiB = aqiMap.get(b.slug)?.aqi ?? -1;
-    return aqiB - aqiA;
-  });
-}
-
-const pageTitle = `Air Quality in ${countryName} — Real-Time AQI by City`;
-const pageDesc = `Live air quality index for ${countryCities.length} cities in ${countryName}. Real-time AQI, PM2.5, health guidance and pollution data.`;
-
-Astro.response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
-Astro.response.headers.set('CDN-Cache-Control', 'no-store');
 ---
 
 <Base
-  title={pageTitle}
-  description={pageDesc}
+  title={`Air Quality in ${countryName} — Real-Time AQI by City`}
+  description={`Live air quality index for ${countryCities.length} cities in ${countryName}. Real-time AQI, PM2.5, health guidance and pollution data.`}
   canonical={`/countries/${countrySlug}`}
 >
-  <div style="max-width:960px;margin:0 auto;padding:40px 24px 80px;" class="appear">
+  <div style="max-width:960px;margin:0 auto;padding:40px 24px 80px;">
 
-    <!-- Breadcrumb -->
     <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;flex-wrap:wrap;">
       <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
       <span style="color:#ddd;font-size:10px;">›</span>
@@ -67,103 +49,72 @@ Astro.response.headers.set('CDN-Cache-Control', 'no-store');
       <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">{countryName}</span>
     </nav>
 
-    <!-- Hero -->
-    <div style="margin-bottom:36px;">
-      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
+    <div style="margin-bottom:28px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px;">
         Air Quality in {countryName}
       </h1>
-      <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
-        Live AQI readings for {countryCities.length} {countryCities.length === 1 ? 'city' : 'cities'} across {countryName}. Sorted worst to best. Updated hourly.
+      <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:560px;">
+        Live AQI for {countryCities.length} {countryCities.length === 1 ? 'city' : 'cities'}. Sorted worst to best once data loads.
       </p>
     </div>
 
-    <!-- US States link -->
+    <!-- Loading -->
+    <div id="loading-msg" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem;margin-bottom:20px;">
+      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);border-top-color:transparent;animation:spin 0.8s linear infinite;"></span>
+      Fetching live AQI data…
+    </div>
+
     {isUS && (
-      <div style="background:white;border:1px solid #eee;border-radius:14px;padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <div style="background:white;border:1px solid #eee;border-radius:14px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
         <div>
           <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;margin-bottom:2px;">Browse by State</div>
           <div style="font-family:var(--font-sans);font-size:12px;color:#aaa;">View air quality data for individual US states</div>
         </div>
-        <a href="/states" style="background:#111;color:white;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;flex-shrink:0;">
-          Browse US States →
-        </a>
+        <a href="/states" style="background:#111;color:white;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;flex-shrink:0;">Browse US States →</a>
       </div>
     )}
 
-    <!-- Cities with live AQI -->
-    {hasStates ? (
-      [...byState.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([state, stateCities]) => (
-        <div style="margin-bottom:32px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-            <h2 style="font-size:18px;color:#111;font-weight:400;">{state}</h2>
-            {isUS && (
-              <a href={`/states/${state.toLowerCase().replace(/\s+/g, '-')}`}
-                style="font-family:var(--font-sans);font-size:12px;color:var(--accent);text-decoration:none;">
-                View state page →
-              </a>
-            )}
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;" class="city-grid">
-            {sortByAqi(stateCities).map(city => {
-              const data = aqiMap.get(city.slug);
-              const aqi = data?.aqi ?? null;
-              const level = aqi !== null ? getAqiLevel(aqi) : null;
-              return (
-                <a href={city.url}
-                  style={`display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid ${level ? level.border : '#eee'};border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;`}
-                  class="city-card">
-                  <div>
-                    <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+    <!-- Cities container — JS renders into this -->
+    <div id="cities-container">
+      {hasStates ? (
+        statesSorted.map(([state, stateCities]) => (
+          <div style="margin-bottom:28px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <h2 style="font-size:18px;color:#111;font-weight:400;">{state}</h2>
+              {isUS && (
+                <a href={`/states/${state.toLowerCase().replace(/\s+/g, '-')}`}
+                  style="font-family:var(--font-sans);font-size:12px;color:var(--accent);text-decoration:none;">View state page →</a>
+              )}
+            </div>
+            <div class="city-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;">
+              {stateCities.map(city => (
+                <a href={city.url} class="city-card" data-slug={city.slug}
+                  style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;">
+                  <div style="min-width:0;">
+                    <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{city.name}</div>
                     {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
                   </div>
-                  {aqi !== null && level ? (
-                    <div style={`display:flex;flex-direction:column;align-items:center;background:${level.light};border:1px solid ${level.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;`}>
-                      <span style={`font-family:var(--font-serif);font-size:20px;color:${level.color};line-height:1;`}>{aqi}</span>
-                      <span style={`font-family:var(--font-sans);font-size:9px;font-weight:700;color:${level.color};letter-spacing:0.03em;margin-top:2px;`}>{level.label.split(' ')[0].toUpperCase()}</span>
-                    </div>
-                  ) : (
-                    <div style="width:54px;height:44px;background:#f5f5f3;border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                      <span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>
-                    </div>
-                  )}
+                  <div class="aqi-chip shimmer" style="width:54px;height:44px;border-radius:8px;flex-shrink:0;"></div>
                 </a>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
-      ))
-    ) : (
-      <div>
-        <h2 style="font-size:18px;color:#111;margin-bottom:16px;font-weight:400;">All Cities</h2>
+        ))
+      ) : (
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;" class="city-grid">
-          {sortByAqi(countryCities).map(city => {
-            const data = aqiMap.get(city.slug);
-            const aqi = data?.aqi ?? null;
-            const level = aqi !== null ? getAqiLevel(aqi) : null;
-            return (
-              <a href={city.url}
-                style={`display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid ${level ? level.border : '#eee'};border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;`}
-                class="city-card">
-                <div>
-                  <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
-                  {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
-                </div>
-                {aqi !== null && level ? (
-                  <div style={`display:flex;flex-direction:column;align-items:center;background:${level.light};border:1px solid ${level.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;`}>
-                    <span style={`font-family:var(--font-serif);font-size:20px;color:${level.color};line-height:1;`}>{aqi}</span>
-                    <span style={`font-family:var(--font-sans);font-size:9px;font-weight:700;color:${level.color};letter-spacing:0.03em;margin-top:2px;`}>{level.label.split(' ')[0].toUpperCase()}</span>
-                  </div>
-                ) : (
-                  <div style="width:54px;height:44px;background:#f5f5f3;border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                    <span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>
-                  </div>
-                )}
-              </a>
-            );
-          })}
+          {countryCities.map(city => (
+            <a href={city.url} class="city-card" data-slug={city.slug}
+              style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;">
+              <div style="min-width:0;">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+                {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
+              </div>
+              <div class="aqi-chip shimmer" style="width:54px;height:44px;border-radius:8px;flex-shrink:0;"></div>
+            </a>
+          ))}
         </div>
-      </div>
-    )}
+      )}
+    </div>
 
     <!-- CTA -->
     <div style="background:#111;border-radius:16px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:48px;">
@@ -180,11 +131,64 @@ Astro.response.headers.set('CDN-Cache-Control', 'no-store');
   </div>
 
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-    .appear { animation: fadeUp 0.4s ease forwards; }
-    .city-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    @media (max-width: 600px) {
-      .city-grid { grid-template-columns: 1fr 1fr !important; }
-    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .shimmer { background:linear-gradient(90deg,#f0f0ee 25%,#e8e8e5 50%,#f0f0ee 75%);background-size:400px 100%;animation:shimmer 1.4s infinite; }
+    .city-card:hover { transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+    @media (max-width:600px) { .city-grid { grid-template-columns:1fr !important; } }
   </style>
+
+  <script>
+    const AQI_LEVELS = [
+      { max:50,  label:'Good',          color:'#1a7a4a', light:'#e8f7ef', border:'#b6e8ce' },
+      { max:100, label:'Moderate',      color:'#7a6000', light:'#fdf8e8', border:'#f0dc99' },
+      { max:150, label:'Sensitive',     color:'#bf5000', light:'#fff2e8', border:'#f5c49a' },
+      { max:200, label:'Unhealthy',     color:'#b91c1c', light:'#fef2f2', border:'#fca5a5' },
+      { max:300, label:'Very Unhealthy',color:'#6b21a8', light:'#faf0ff', border:'#d8a8f0' },
+      { max:999, label:'Hazardous',     color:'#7f1d1d', light:'#fff1f1', border:'#f87171' },
+    ];
+    function getLevel(aqi) { return AQI_LEVELS.find(l => aqi <= l.max) || AQI_LEVELS.at(-1); }
+
+    async function loadAqi() {
+      const cards = document.querySelectorAll('.city-card[data-slug]');
+      if (!cards.length) return;
+      const slugs = [...cards].map(c => c.dataset.slug).join(',');
+      let data = {};
+      try {
+        const res = await fetch(`/api/aqi?slugs=${slugs}`);
+        data = await res.json();
+      } catch(e) { console.error('AQI load failed', e); }
+
+      document.getElementById('loading-msg').style.display = 'none';
+
+      cards.forEach(card => {
+        const aqi = data[card.dataset.slug];
+        const chip = card.querySelector('.aqi-chip');
+        chip.classList.remove('shimmer');
+        if (aqi == null || isNaN(aqi)) {
+          chip.style.cssText = 'width:54px;height:44px;background:#f5f5f3;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;';
+          chip.innerHTML = '<span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>';
+          return;
+        }
+        const l = getLevel(aqi);
+        card.style.borderColor = l.border;
+        chip.style.cssText = `display:flex;flex-direction:column;align-items:center;background:${l.light};border:1px solid ${l.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;animation:fadeIn 0.3s ease;`;
+        chip.innerHTML = `<span style="font-family:var(--font-serif);font-size:20px;color:${l.color};line-height:1;">${aqi}</span><span style="font-family:var(--font-sans);font-size:9px;font-weight:700;color:${l.color};letter-spacing:0.03em;margin-top:2px;">${l.label.split(' ')[0].toUpperCase()}</span>`;
+      });
+
+      // Sort cards by AQI desc within each grid
+      document.querySelectorAll('.city-grid').forEach(grid => {
+        const items = [...grid.querySelectorAll('.city-card')];
+        items.sort((a, b) => {
+          const aqiA = data[a.dataset.slug] ?? -1;
+          const aqiB = data[b.dataset.slug] ?? -1;
+          return aqiB - aqiA;
+        });
+        items.forEach(el => grid.appendChild(el));
+      });
+    }
+
+    loadAqi();
+  </script>
 </Base>
