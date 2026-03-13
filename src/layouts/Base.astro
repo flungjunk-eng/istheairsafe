@@ -154,20 +154,64 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <!-- Header -->
   <header style="background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px);">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 60px;">
-      <a href="/" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text); text-decoration: none;">
+      <a href="/" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text); text-decoration: none; flex-shrink: 0;">
         <span style="font-size: 1.25rem;">🌿</span>
         <span style="font-family: var(--font-serif); font-size: 1.25rem; letter-spacing: -0.02em;">IsTheAirSafe</span>
         <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); background: var(--border-light); padding: 0.1rem 0.4rem; border-radius: 4px;">.com</span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 1.5rem;">
+
+      <!-- Desktop nav -->
+      <nav class="desktop-nav" style="display: flex; align-items: center; gap: 1.5rem;">
         <a href="/" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Home</a>
         <a href="/rankings" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Rankings</a>
         <a href="/countries" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Countries</a>
         <a href="/health-guide" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Health Guide</a>
         <a href="/aqi-explained" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">AQI Explained</a>
       </nav>
+
+      <!-- Hamburger button (mobile only) -->
+      <button id="menu-btn" aria-label="Open menu" style="display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--text);">
+        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" style="display: none; border-top: 1px solid var(--border); background: var(--white);">
+      <nav style="display: flex; flex-direction: column; padding: 0.5rem 0;">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/rankings" class="mobile-nav-link">Rankings</a>
+        <a href="/countries" class="mobile-nav-link">Countries</a>
+        <a href="/states" class="mobile-nav-link">US States</a>
+        <a href="/health-guide" class="mobile-nav-link">Health Guide</a>
+        <a href="/aqi-explained" class="mobile-nav-link">AQI Explained</a>
+        <a href="/about" class="mobile-nav-link">About</a>
+      </nav>
     </div>
   </header>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    btn?.addEventListener('click', () => {
+      const isOpen = menu.style.display === 'block';
+      menu.style.display = isOpen ? 'none' : 'block';
+      iconOpen.style.display = isOpen ? 'block' : 'none';
+      iconClose.style.display = isOpen ? 'none' : 'block';
+    });
+    // Close menu on link click
+    menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.style.display = 'none';
+      iconOpen.style.display = 'block';
+      iconClose.style.display = 'none';
+    }));
+  </script>
 
   <!-- Page Content -->
   <main>
@@ -205,6 +249,20 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   <style>
     .nav-link:hover { color: var(--text) !important; }
+    .mobile-nav-link {
+      padding: 0.85rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-light);
+      display: block;
+    }
+    .mobile-nav-link:hover { color: var(--text); background: var(--bg); }
+    @media (max-width: 640px) {
+      .desktop-nav { display: none !important; }
+      #menu-btn { display: block !important; }
+    }
   </style>
 </body>
 </html>
