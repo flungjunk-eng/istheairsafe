@@ -3,7 +3,7 @@ export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import cities from '../../data/cities.json';
-import { fetchAqi, getAqiLevel } from '../../utils/waqi.js';
+import { fetchAqiBatch, getAqiLevel } from '../../utils/waqi.js';
 
 const { country } = Astro.params;
 
@@ -18,18 +18,9 @@ const countryCities = cities
   .filter(c => c.countrySlug === countrySlug)
   .sort((a, b) => a.name.localeCompare(b.name));
 
-// Fetch live AQI for all cities in parallel
+// Fetch live AQI in batches to avoid WAQI rate limiting
 const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
-
-const aqiResults = await Promise.all(
-  countryCities.map(city => fetchAqi(city.waqiId, token).catch(() => null))
-);
-
-// Map city slug -> AQI data
-const aqiMap = new Map();
-countryCities.forEach((city, i) => {
-  aqiMap.set(city.slug, aqiResults[i]);
-});
+const aqiMap = await fetchAqiBatch(countryCities, token, 10, 300);
 
 // Group by state
 const hasStates = countryCities.some(c => c.state);

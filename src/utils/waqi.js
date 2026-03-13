@@ -138,6 +138,29 @@ export function getWeatherDescription(code) {
 }
 
 /**
+ * Fetch AQI for many cities in batches to avoid WAQI rate limits.
+ * @param {Array<{waqiId: string, slug: string}>} cities
+ * @param {string} token
+ * @param {number} batchSize - requests per batch (default 10)
+ * @param {number} delayMs   - ms between batches (default 300)
+ * @returns {Map<string, object|null>} slug → aqi data
+ */
+export async function fetchAqiBatch(cities, token, batchSize = 10, delayMs = 300) {
+  const results = new Map();
+  for (let i = 0; i < cities.length; i += batchSize) {
+    const batch = cities.slice(i, i + batchSize);
+    const batchResults = await Promise.all(
+      batch.map(city => fetchAqi(city.waqiId, token).catch(() => null))
+    );
+    batch.forEach((city, j) => results.set(city.slug, batchResults[j]));
+    if (i + batchSize < cities.length) {
+      await new Promise(r => setTimeout(r, delayMs));
+    }
+  }
+  return results;
+}
+
+/**
  * Fetch both AQI and weather in parallel
  */
 export async function fetchCityData(cityId, token) {
