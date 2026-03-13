@@ -1,0 +1,196 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+
+const LEVELS = [
+  { range: '0–50',    label: 'Good',                          color: '#1a7a4a', light: '#e8f7ef', border: '#b6e8ce', verdict: 'The air is clean and healthy.',             answer: 'YES' },
+  { range: '51–100',  label: 'Moderate',                      color: '#7a6000', light: '#fdf8e8', border: '#f0dc99', verdict: 'Air quality is acceptable.',                answer: 'MOSTLY' },
+  { range: '101–150', label: 'Unhealthy for Sensitive Groups',color: '#bf5000', light: '#fff2e8', border: '#f5c49a', verdict: 'Sensitive groups are at risk.',              answer: 'CAUTION' },
+  { range: '151–200', label: 'Unhealthy',                     color: '#b91c1c', light: '#fef2f2', border: '#fca5a5', verdict: 'Air quality is unhealthy today.',            answer: 'NO' },
+  { range: '201–300', label: 'Very Unhealthy',                color: '#6b21a8', light: '#faf0ff', border: '#d8a8f0', verdict: 'Health alert in effect.',                   answer: 'NO' },
+  { range: '301+',    label: 'Hazardous',                     color: '#7f1d1d', light: '#fff1f1', border: '#f87171', verdict: 'Hazardous — emergency conditions.',          answer: 'NO' },
+];
+
+const steps = [
+  { step: '1', title: 'Measure',      desc: 'Government sensors measure concentrations of 6 pollutants every hour at monitoring stations.' },
+  { step: '2', title: 'Convert',      desc: 'Each pollutant\'s concentration is converted to a 0–500 sub-index using EPA breakpoint tables.' },
+  { step: '3', title: 'Take the max', desc: 'The highest single-pollutant sub-index becomes the AQI. The worst pollutant sets the score.' },
+  { step: '4', title: 'Report',       desc: 'The AQI and the \'dominant pollutant\' responsible for the score are published hourly.' },
+];
+
+const pollutants = [
+  { key: 'PM2.5', icon: '🔴', full: 'Fine Particulate Matter',   unit: 'μg/m³', safe: '12 μg/m³ annual average',
+    sources: 'Vehicle exhaust, wildfires, industrial emissions, cooking',
+    why: 'Particles smaller than 2.5 microns bypass the nose and throat and embed deep in lung tissue. Linked to heart attacks, lung cancer, and premature death.' },
+  { key: 'PM10',  icon: '🟠', full: 'Coarse Particulate Matter',  unit: 'μg/m³', safe: '54 μg/m³ (24-hr)',
+    sources: 'Dust, pollen, mold spores, construction sites',
+    why: 'Larger than PM2.5 but still inhalable. Irritates the nose, throat, and airways. Particularly problematic for people with allergies or asthma.' },
+  { key: 'O₃',   icon: '🟡', full: 'Ground-Level Ozone',         unit: 'ppb',   safe: '70 ppb (8-hr avg)',
+    sources: 'Forms when sunlight reacts with car and industrial emissions. Worse on hot, sunny days.',
+    why: 'Irritates the respiratory system. Reduces lung function during exercise. Different from the protective ozone layer high in the atmosphere.' },
+  { key: 'NO₂',  icon: '🟤', full: 'Nitrogen Dioxide',           unit: 'ppb',   safe: '53 ppb annual avg',
+    sources: 'Burning fuel — cars, trucks, power plants, gas stoves',
+    why: 'Inflames airways and increases susceptibility to respiratory infections. Also contributes to the formation of ground-level ozone and PM2.5.' },
+  { key: 'SO₂',  icon: '⚫', full: 'Sulfur Dioxide',             unit: 'ppb',   safe: '75 ppb (1-hr avg)',
+    sources: 'Coal-burning power plants, oil refineries, volcanic activity',
+    why: 'Irritates the eyes, nose, and throat. At high levels causes severe respiratory distress. Also forms particulate matter when it reacts in the air.' },
+  { key: 'CO',   icon: '🔵', full: 'Carbon Monoxide',            unit: 'ppm',   safe: '9 ppm (8-hr avg)',
+    sources: 'Vehicle exhaust, gas appliances, generators — especially in enclosed spaces',
+    why: "Colorless and odorless. Reduces blood's ability to carry oxygen. At high levels causes confusion, loss of consciousness, and death." },
+];
+
+const faqs = [
+  { q: 'Why does the AQI change throughout the day?',
+    a: "Air quality follows predictable daily patterns. It's typically best in early morning (5–9 AM) when overnight cooling and reduced traffic keep pollution low. It worsens during morning and evening rush hours as vehicle emissions peak. Ozone specifically peaks in the afternoon because it requires sunlight to form. Weather also plays a huge role — wind disperses pollutants while temperature inversions trap them near the ground." },
+  { q: 'Is indoor air quality better than outdoor?',
+    a: 'In most cases, yes — indoor air is typically 2–5x cleaner than outdoor air during pollution events. However, indoor sources like cooking, candles, cleaning products, and building materials can make indoor air worse than outdoor air on clean days. Running a HEPA air purifier and avoiding indoor combustion (candles, gas stoves without ventilation) keeps indoor air quality high.' },
+  { q: "What's the difference between US AQI and other AQI scales?",
+    a: 'Different countries use different AQI scales. The US EPA AQI runs from 0–500 and is the most widely used internationally. China has its own AQI with different breakpoints. The EU uses an Air Quality Index that runs 1–100. This site uses the US EPA standard, which is the global benchmark for most air quality reporting services.' },
+  { q: 'How is the AQI number actually calculated?',
+    a: 'The EPA measures concentrations of six pollutants (PM2.5, PM10, ozone, NO₂, SO₂, and CO) at monitoring stations. Each pollutant\'s concentration is converted to a sub-index using EPA breakpoint tables. The highest single-pollutant sub-index becomes the overall AQI. So an AQI of 120 might mean ozone is at 120 while PM2.5 is only at 45 — the worst pollutant sets the score.' },
+  { q: 'Should I trust the AQI if there\'s no monitoring station near me?',
+    a: 'AQI values are interpolated between monitoring stations and can miss highly localised events like a nearby wildfire or industrial incident. For your immediate neighbourhood, services like PurpleAir (which use low-cost sensors) can supplement official monitoring. Official government stations are the most accurate but are spaced miles apart in most regions.' },
+];
+
+const dataSources = [
+  { name: 'EPA AirNow',           url: 'airnow.gov',       desc: 'Official US government air quality monitoring network. Gold standard for US city data. Updated hourly.' },
+  { name: 'World Air Quality Index', url: 'aqicn.org',     desc: 'Aggregates data from 11,000+ stations in 1,000+ cities worldwide. Backed by UNEP. Updated hourly.' },
+  { name: 'Open-Meteo',           url: 'open-meteo.com',   desc: 'Open-source weather data from national meteorological services. Provides wind, humidity, and temperature context.' },
+];
+
+function answerLabel(answer: string) {
+  if (answer === 'YES')     return '✓ Safe';
+  if (answer === 'MOSTLY')  return '~ Mostly safe';
+  if (answer === 'CAUTION') return '⚠ Use caution';
+  return '✕ Not safe';
+}
+---
+
+<Base
+  title="What Is AQI & How Is It Calculated? | IsTheAirSafe.com"
+  description="The complete guide to the Air Quality Index — how it's calculated, what PM2.5, PM10, ozone and other pollutants do to your body, and what each AQI number really means."
+  canonical="/aqi-explained"
+>
+  <div style="max-width:860px;margin:0 auto;padding:40px 24px 80px;" class="appear">
+
+    <!-- Breadcrumb -->
+    <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;">
+      <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
+      <span style="color:#ddd;font-size:10px;">›</span>
+      <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">AQI Explained</span>
+    </nav>
+
+    <!-- Hero -->
+    <div style="margin-bottom:36px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
+        What Is AQI &amp; How<br/>Is It Calculated?
+      </h1>
+      <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
+        The Air Quality Index (AQI) is the universal standard for communicating how clean or polluted the air is. Here's everything you need to understand it — from how the number is calculated to what each pollutant actually does to your body.
+      </p>
+    </div>
+
+    <!-- How it works -->
+    <div style="background:white;border:1px solid #eee;border-radius:16px;padding:28px;margin-bottom:24px;">
+      <h2 style="font-size:22px;color:#111;margin-bottom:16px;">How the AQI Number Is Calculated</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;" class="steps-grid">
+        {steps.map(s => (
+          <div style="background:#fafaf8;border:1px solid #eee;border-radius:12px;padding:16px 14px;">
+            <div style="font-family:var(--font-serif);font-size:32px;color:#e0e0de;margin-bottom:6px;font-weight:400;">{s.step}</div>
+            <div style="font-family:var(--font-sans);font-weight:700;font-size:14px;color:#111;margin-bottom:6px;">{s.title}</div>
+            <div style="font-family:var(--font-sans);font-size:12px;color:#777;line-height:1.6;">{s.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- AQI scale visual -->
+      <h3 style="font-family:var(--font-serif);font-size:18px;color:#111;margin-bottom:12px;font-weight:400;">The AQI Scale</h3>
+      <div style="display:grid;gap:8px;">
+        {LEVELS.map(l => (
+          <div style={`display:grid;grid-template-columns:90px 1fr 180px;gap:16px;align-items:center;background:${l.light};border:1px solid ${l.border};border-radius:10px;padding:12px 16px;`} class="scale-row">
+            <div style={`font-family:var(--font-mono);font-weight:700;font-size:16px;color:${l.color};`}>{l.range}</div>
+            <div>
+              <div style={`font-family:var(--font-sans);font-weight:700;font-size:13px;color:${l.color};margin-bottom:2px;`}>{l.label}</div>
+              <div style="font-family:var(--font-sans);font-size:12px;color:#888;">{l.verdict}</div>
+            </div>
+            <div style={`font-family:var(--font-sans);font-size:11px;color:${l.color};font-weight:600;background:white;padding:5px 10px;border-radius:8px;border:1px solid ${l.border};text-align:center;`}>
+              {answerLabel(l.answer)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- The 6 pollutants -->
+    <h2 style="font-size:24px;color:#111;margin-bottom:6px;letter-spacing:-0.01em;">The 6 Pollutants That Make Up AQI</h2>
+    <p style="font-family:var(--font-sans);font-size:14px;color:#aaa;margin-bottom:20px;">Each pollutant has different sources, health effects, and safe thresholds.</p>
+    <div style="display:grid;gap:12px;margin-bottom:32px;">
+      {pollutants.map(p => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;" class="pollutant-row">
+          <div style="text-align:center;min-width:60px;">
+            <div style="font-size:28px;margin-bottom:4px;">{p.icon}</div>
+            <div style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:#111;">{p.key}</div>
+            <div style="font-family:var(--font-sans);font-size:10px;color:#bbb;margin-top:2px;">{p.unit}</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-serif);font-size:17px;color:#111;margin-bottom:6px;font-weight:400;">{p.full}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;" class="pollutant-meta">
+              <div style="background:#fafaf8;border-radius:8px;padding:10px 12px;">
+                <div style="font-family:var(--font-sans);font-size:10px;color:#bbb;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;">Sources</div>
+                <div style="font-family:var(--font-sans);font-size:12px;color:#555;line-height:1.55;">{p.sources}</div>
+              </div>
+              <div style="background:#fafaf8;border-radius:8px;padding:10px 12px;">
+                <div style="font-family:var(--font-sans);font-size:10px;color:#bbb;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;">EPA Safe Level</div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:#1a7a4a;font-weight:700;">{p.safe}</div>
+              </div>
+            </div>
+            <div style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.65;">{p.why}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- FAQ -->
+    <h2 style="font-size:24px;color:#111;margin-bottom:20px;letter-spacing:-0.01em;">Frequently Asked Questions</h2>
+    <div style="display:grid;gap:12px;margin-bottom:36px;">
+      {faqs.map(f => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 22px;">
+          <div style="font-family:var(--font-serif);font-size:17px;color:#111;margin-bottom:10px;font-weight:400;">{f.q}</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.75;">{f.a}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Data sources -->
+    <div style="background:#fafaf8;border:1px solid #eee;border-radius:14px;padding:22px 24px;">
+      <h3 style="font-family:var(--font-serif);font-size:18px;color:#111;margin-bottom:12px;font-weight:400;">Our Data Sources</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" class="sources-grid">
+        {dataSources.map(s => (
+          <div style="background:white;border:1px solid #eee;border-radius:10px;padding:14px 16px;">
+            <div style="font-family:var(--font-sans);font-weight:700;font-size:13px;color:#111;margin-bottom:4px;">{s.name}</div>
+            <div style="font-family:var(--font-sans);font-size:12px;color:#888;line-height:1.6;margin-bottom:6px;">{s.desc}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;color:#bbb;">{s.url}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .appear { animation: fadeUp 0.4s ease forwards; }
+    @media (max-width: 700px) {
+      .steps-grid { grid-template-columns: 1fr 1fr !important; }
+      .sources-grid { grid-template-columns: 1fr !important; }
+      .scale-row { grid-template-columns: 70px 1fr !important; }
+      .scale-row > :last-child { display: none; }
+    }
+    @media (max-width: 520px) {
+      .pollutant-row { grid-template-columns: 1fr !important; }
+      .pollutant-meta { grid-template-columns: 1fr !important; }
+      .steps-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</Base>

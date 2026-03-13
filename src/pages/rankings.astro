@@ -1,0 +1,170 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import cities from '../data/cities.json';
+import { fetchAqi, getAqiLevel } from '../utils/waqi.js';
+
+const token = import.meta.env.WAQI_TOKEN || 'demo';
+
+// Sample 30 major world cities for ranking
+const rankingCityIds = [
+  'beijing', 'delhi', 'lahore', 'mumbai', 'dhaka', 'kolkata',
+  'chengdu', 'karachi', 'ulaanbaatar', 'hanoi', 'wuhan',
+  'cairo', 'tehran', 'jakarta', 'bangkok', 'ho-chi-minh-city',
+  'mexico-city', 'istanbul', 'seoul', 'tokyo', 'london',
+  'new-york-ny', 'paris', 'los-angeles-ca', 'sydney',
+  'singapore', 'dubai', 'zurich', 'stockholm', 'kuala-lumpur',
+  'sao-paulo', 'bogota', 'johannesburg',
+];
+
+const rankingCities = rankingCityIds
+  .map(slug => cities.find(c => c.slug === slug))
+  .filter(Boolean);
+
+// Fetch all in parallel (batch of 30)
+const results = await Promise.all(
+  rankingCities.map(async (city) => {
+    const data = await fetchAqi(city.waqiId, token);
+    return {
+      city,
+      aqi: data?.aqi ?? null,
+      time: data?.time ?? null,
+    };
+  })
+);
+
+// Sort by AQI descending (worst first), nulls last
+const sorted = results.sort((a, b) => {
+  if (a.aqi === null && b.aqi === null) return 0;
+  if (a.aqi === null) return 1;
+  if (b.aqi === null) return -1;
+  return b.aqi - a.aqi;
+});
+
+const withData = sorted.filter(r => r.aqi !== null);
+const withoutData = sorted.filter(r => r.aqi === null);
+const final = [...withData, ...withoutData];
+---
+
+<Base
+  title="World Air Quality Rankings — Most & Least Polluted Cities | IsTheAirSafe.com"
+  description="Live air quality rankings for 30 major world cities. See which cities have the worst and best air quality right now, ranked by real-time AQI."
+  canonical="/rankings"
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+    <div style="max-width: 760px;">
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;">Live Rankings</p>
+      <h1 style="font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 1rem;">
+        World Air Quality Rankings
+      </h1>
+      <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+        Real-time AQI for 30 major cities, ranked worst to best. Updated on every page load.
+      </p>
+      <p style="font-size: 0.8rem; color: var(--text-subtle); font-family: var(--font-mono);">
+        Last fetched: {new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
+      </p>
+    </div>
+
+    <!-- Rankings Table -->
+    <div class="card" style="margin-top: 2.5rem; overflow: hidden;">
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border); background: var(--bg);">
+              <th style="text-align: left; padding: 0.875rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600; white-space: nowrap;">#</th>
+              <th style="text-align: left; padding: 0.875rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">City</th>
+              <th style="text-align: left; padding: 0.875rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Country</th>
+              <th style="text-align: center; padding: 0.875rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">AQI</th>
+              <th style="text-align: left; padding: 0.875rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Status</th>
+              <th style="text-align: right; padding: 0.875rem 1.25rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {final.map((item, i) => {
+              const level = item.aqi != null ? getAqiLevel(item.aqi) : null;
+              const isEven = i % 2 === 0;
+              return (
+                <tr
+                  style={`border-bottom: 1px solid var(--border-light); background: ${isEven ? 'white' : 'var(--bg)'};`}
+                  class="ranking-row"
+                >
+                  <td style="padding: 1rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); width: 3rem;">
+                    {item.aqi != null ? i + 1 : '—'}
+                  </td>
+                  <td style="padding: 1rem;">
+                    <a href={item.city.url} style="font-weight: 600; color: var(--text); text-decoration: none; font-size: 0.95rem;">
+                      {item.city.name}
+                    </a>
+                    {item.city.state && (
+                      <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">{item.city.state}</span>
+                    )}
+                  </td>
+                  <td style="padding: 1rem; color: var(--text-muted); font-size: 0.875rem; white-space: nowrap;">
+                    {item.city.country}
+                  </td>
+                  <td style="padding: 1rem; text-align: center;">
+                    {item.aqi != null ? (
+                      <span style={`font-family: var(--font-mono); font-size: 1.1rem; font-weight: 500; color: ${level?.color || 'var(--text)'};`}>
+                        {item.aqi}
+                      </span>
+                    ) : (
+                      <span style="color: var(--text-subtle); font-family: var(--font-mono);">—</span>
+                    )}
+                  </td>
+                  <td style="padding: 1rem;">
+                    {level ? (
+                      <span style={`display: inline-block; padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600; background: ${level.bg}; color: ${level.text}; border: 1px solid ${level.color}40; white-space: nowrap;`}>
+                        {level.label}
+                      </span>
+                    ) : (
+                      <span style="font-size: 0.75rem; color: var(--text-subtle);">No data</span>
+                    )}
+                  </td>
+                  <td style="padding: 1rem 1.25rem; text-align: right;">
+                    <a
+                      href={item.city.url}
+                      style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent); white-space: nowrap;"
+                    >
+                      Details →
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AQI Legend -->
+    <div style="margin-top: 2rem;">
+      <p style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 0.75rem;">AQI Scale:</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        {[
+          { range: '0–50',    label: 'Good',     color: '#4ade80', bg: '#f0fdf4', text: '#166534' },
+          { range: '51–100',  label: 'Moderate', color: '#facc15', bg: '#fefce8', text: '#854d0e' },
+          { range: '101–150', label: 'Sensitive', color: '#fb923c', bg: '#fff7ed', text: '#9a3412' },
+          { range: '151–200', label: 'Unhealthy', color: '#f87171', bg: '#fef2f2', text: '#991b1b' },
+          { range: '201–300', label: 'Very Unhealthy', color: '#c084fc', bg: '#faf5ff', text: '#6b21a8' },
+          { range: '301+',    label: 'Hazardous', color: '#f43f5e', bg: '#fff1f2', text: '#881337' },
+        ].map(b => (
+          <span style={`display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.7rem; background: ${b.bg}; color: ${b.text}; border: 1px solid ${b.color}40; border-radius: 100px; font-size: 0.75rem; font-weight: 600;`}>
+            <span style={`width: 8px; height: 8px; background: ${b.color}; border-radius: 50%; display: inline-block; flex-shrink: 0;`}></span>
+            {b.range} {b.label}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Note -->
+    <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-subtle); font-family: var(--font-mono);">
+      Data sourced from the World Air Quality Index (WAQI) project. Rankings refresh on each page load.
+      <a href="/">← Search all 250+ cities</a>
+    </p>
+  </div>
+
+  <style>
+    .ranking-row:hover { background: rgba(45,106,79,0.04) !important; }
+  </style>
+</Base>

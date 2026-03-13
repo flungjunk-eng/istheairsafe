@@ -1,0 +1,184 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+
+const LEVELS = [
+  { range: '0–50',   label: 'Good',                          color: '#1a7a4a', light: '#e8f7ef', border: '#b6e8ce' },
+  { range: '51–100', label: 'Moderate',                      color: '#7a6000', light: '#fdf8e8', border: '#f0dc99' },
+  { range: '101–150',label: 'Unhealthy for Sensitive Groups',color: '#bf5000', light: '#fff2e8', border: '#f5c49a' },
+  { range: '151–200',label: 'Unhealthy',                     color: '#b91c1c', light: '#fef2f2', border: '#fca5a5' },
+  { range: '201–300',label: 'Very Unhealthy',                color: '#6b21a8', light: '#faf0ff', border: '#d8a8f0' },
+  { range: '301+',   label: 'Hazardous',                     color: '#7f1d1d', light: '#fff1f1', border: '#f87171' },
+];
+
+const conditions = [
+  { icon: '🫁', title: 'Asthma', aqi_safe: 50, aqi_caution: 100, tips: [
+    'Check AQI before any outdoor activity',
+    'Keep rescue inhaler accessible at all times',
+    'On moderate days, take breaks and avoid strenuous exercise',
+    'Close windows and run HEPA purifier when AQI exceeds 100',
+    'Avoid outdoor exercise during rush hours (7–9 AM, 4–7 PM)',
+  ]},
+  { icon: '❤️', title: 'Heart Disease', aqi_safe: 50, aqi_caution: 100, tips: [
+    'PM2.5 is the most dangerous pollutant for cardiovascular health',
+    'Even moderate AQI can trigger symptoms in severe cases',
+    'Avoid outdoor exercise when AQI is above 100',
+    'Report any unusual chest tightness or shortness of breath immediately',
+    'Consider an air purifier in the bedroom',
+  ]},
+  { icon: '🤰', title: 'Pregnancy', aqi_safe: 50, aqi_caution: 100, tips: [
+    'Air pollution is linked to low birth weight and preterm birth',
+    'Limit time outdoors when AQI exceeds 100',
+    'Avoid high-traffic areas and exercise near busy roads',
+    'Indoor air quality matters — avoid candles, incense, and strong cleaners',
+    'Discuss personal thresholds with your OB-GYN',
+  ]},
+  { icon: '👶', title: 'Children', aqi_safe: 100, aqi_caution: 150, tips: [
+    'Children breathe more air per body weight than adults — effects are amplified',
+    'Limit recess and outdoor sports when AQI exceeds 100',
+    'Younger children (under 5) are most vulnerable',
+    'Watch for unusual coughing, wheezing, or fatigue after outdoor time',
+    "Schools should follow EPA's Air Quality Flag Program",
+  ]},
+  { icon: '👴', title: 'Elderly (65+)', aqi_safe: 50, aqi_caution: 100, tips: [
+    'Older adults are more vulnerable due to reduced lung capacity',
+    'Both PM2.5 and ozone pose significant risk',
+    'Avoid outdoor walks when AQI exceeds 100',
+    'Stay well hydrated — it helps your body process pollutants',
+    'Indoor exercise (yoga, walking indoors) is a good alternative on bad air days',
+  ]},
+  { icon: '🫀', title: 'COPD', aqi_safe: 50, aqi_caution: 50, tips: [
+    'COPD patients are among the most sensitive to air pollution',
+    "Even 'Good' AQI days can trigger symptoms in severe COPD",
+    'Keep bronchodilators on hand at all times',
+    'Have an action plan with your doctor for high-AQI days',
+    'Air purifiers with HEPA + activated carbon filters are highly recommended',
+  ]},
+];
+
+const protectTips = [
+  { icon: '😷', title: 'Wear an N95 mask', desc: "Standard surgical masks don't filter PM2.5. Only N95 or KN95 masks provide meaningful protection outdoors on unhealthy air days." },
+  { icon: '🏠', title: 'Stay indoors', desc: 'Indoor air is typically 2–5x cleaner than outdoor air. Close windows and doors when AQI is above 150.' },
+  { icon: '🌀', title: 'Run a HEPA air purifier', desc: 'A HEPA purifier can reduce indoor PM2.5 by up to 85%. Size it for your room — look for a CADR rating that\'s at least 2/3 your room\'s square footage.' },
+  { icon: '🚗', title: 'Use car air recirculation', desc: 'Recirculate cabin air in your car rather than pulling in outside air on high-pollution days. This reduces in-car PM2.5 by ~75%.' },
+  { icon: '🏃', title: 'Time your exercise', desc: 'If you exercise outdoors, go early morning (5–9 AM) when ozone is lowest. Avoid afternoons and evening rush hours.' },
+  { icon: '🪟', title: 'Know your indoor sources', desc: 'Cooking, candles, and cleaning products all generate indoor pollutants. Ventilate when cooking and choose low-VOC products.' },
+];
+
+const quickCities = [
+  { name: 'New York', url: '/air-quality/us/new-york-ny' },
+  { name: 'Los Angeles', url: '/air-quality/us/los-angeles-ca' },
+  { name: 'Chicago', url: '/air-quality/us/chicago-il' },
+  { name: 'London', url: '/air-quality/uk/london' },
+  { name: 'Delhi', url: '/air-quality/in/delhi' },
+];
+---
+
+<Base
+  title="Air Quality & Your Health — Health Guide | IsTheAirSafe.com"
+  description="How air pollution affects different people — guidance for asthma, heart disease, pregnancy, children, elderly, and COPD. Plus practical tips to protect yourself on high-AQI days."
+  canonical="/health-guide"
+>
+  <div style="max-width:860px;margin:0 auto;padding:40px 24px 80px;" class="appear">
+
+    <!-- Breadcrumb -->
+    <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;">
+      <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
+      <span style="color:#ddd;font-size:10px;">›</span>
+      <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">Health Guide</span>
+    </nav>
+
+    <!-- Hero -->
+    <div style="margin-bottom:36px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
+        Air Quality &amp; Your Health
+      </h1>
+      <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
+        Air pollution affects different people in different ways. Understanding your personal risk helps you make smarter decisions about when to go outside, exercise, and how to protect yourself and your family.
+      </p>
+    </div>
+
+    <!-- AQI Quick reference bar -->
+    <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px 22px;margin-bottom:28px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;">
+      {LEVELS.map(l => (
+        <div style={`background:${l.light};border:1px solid ${l.border};border-radius:10px;padding:10px 8px;text-align:center;`}>
+          <div style={`font-family:var(--font-mono);font-weight:700;font-size:13px;color:${l.color};margin-bottom:2px;`}>{l.range}</div>
+          <div style={`font-family:var(--font-sans);font-size:10px;font-weight:700;color:${l.color};line-height:1.3;`}>{l.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Sensitive groups -->
+    <h2 style="font-size:24px;color:#111;margin-bottom:6px;letter-spacing:-0.01em;">Guidance by Health Condition</h2>
+    <p style="font-family:var(--font-sans);font-size:14px;color:#aaa;margin-bottom:20px;">Personalised risk thresholds and daily tips for each health group.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px;" class="conditions-grid">
+      {conditions.map(c => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <span style="font-size:24px;">{c.icon}</span>
+            <h3 style="font-family:var(--font-serif);font-size:18px;color:#111;font-weight:400;">{c.title}</h3>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:14px;">
+            <div style="flex:1;background:#e8f7ef;border:1px solid #b6e8ce;border-radius:8px;padding:8px 10px;text-align:center;">
+              <div style="font-family:var(--font-sans);font-size:10px;color:#1a7a4a;font-weight:700;margin-bottom:2px;">SAFE BELOW</div>
+              <div style="font-family:var(--font-serif);font-size:22px;color:#1a7a4a;">AQI {c.aqi_safe}</div>
+            </div>
+            <div style="flex:1;background:#fff2e8;border:1px solid #f5c49a;border-radius:8px;padding:8px 10px;text-align:center;">
+              <div style="font-family:var(--font-sans);font-size:10px;color:#bf5000;font-weight:700;margin-bottom:2px;">CAUTION ABOVE</div>
+              <div style="font-family:var(--font-serif);font-size:22px;color:#bf5000;">AQI {c.aqi_caution}</div>
+            </div>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;">
+            {c.tips.map(tip => (
+              <li style="display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;">
+                <span style="color:#1a7a4a;font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px;">✓</span>
+                <span style="font-family:var(--font-sans);font-size:13px;color:#555;line-height:1.55;">{tip}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Protection tips -->
+    <h2 style="font-size:24px;color:#111;margin-bottom:6px;letter-spacing:-0.01em;">How to Protect Yourself</h2>
+    <p style="font-family:var(--font-sans);font-size:14px;color:#aaa;margin-bottom:20px;">Practical steps that make a real difference on high-pollution days.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px;" class="protect-grid">
+      {protectTips.map(t => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px;">
+          <div style="font-size:24px;margin-bottom:10px;">{t.icon}</div>
+          <div style="font-family:var(--font-serif);font-size:16px;color:#111;margin-bottom:6px;font-weight:400;">{t.title}</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.65;">{t.desc}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div style="background:#111;border-radius:16px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:var(--font-serif);font-size:22px;color:white;margin-bottom:6px;font-weight:400;">Check the air in your city</div>
+        <div style="font-family:var(--font-sans);font-size:14px;color:#888;">Get a real-time AQI reading and personalised health advice for your location.</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        {quickCities.map(c => (
+          <a href={c.url} style="background:white;color:#111;border:none;border-radius:8px;padding:9px 16px;font-family:var(--font-sans);font-size:12px;font-weight:700;text-decoration:none;display:inline-block;">{c.name}</a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .appear { animation: fadeUp 0.4s ease forwards; }
+    @media (max-width: 700px) {
+      .conditions-grid { grid-template-columns: 1fr !important; }
+      .protect-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 480px) {
+      .protect-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</Base>

@@ -1,0 +1,205 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = 'https://istheairsafe.com/og-default.png',
+  jsonLd,
+  noIndex = false,
+} = Astro.props;
+
+const siteUrl = 'https://istheairsafe.com';
+const fullTitle = title.includes('IsTheAirSafe') ? title : `${title} | IsTheAirSafe.com`;
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
+
+const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta -->
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  {noIndex && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="IsTheAirSafe.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Fonts: DM Serif Display + DM Sans + DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- JSON-LD Structured Data -->
+  {jsonLdArray.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <!-- Global Styles -->
+  <style is:global>
+    :root {
+      --bg: #f7f7f5;
+      --white: #ffffff;
+      --text: #1a1a18;
+      --text-muted: #6b6b67;
+      --text-subtle: #9b9b97;
+      --border: #e5e5e2;
+      --border-light: #f0f0ee;
+      --accent: #2d6a4f;
+      --accent-light: #52b788;
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    code, .mono {
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header style="background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px);">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 60px;">
+      <a href="/" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text); text-decoration: none;">
+        <span style="font-size: 1.25rem;">🌿</span>
+        <span style="font-family: var(--font-serif); font-size: 1.25rem; letter-spacing: -0.02em;">IsTheAirSafe</span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); background: var(--border-light); padding: 0.1rem 0.4rem; border-radius: 4px;">.com</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 1.5rem;">
+        <a href="/" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Home</a>
+        <a href="/rankings" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Rankings</a>
+        <a href="/health-guide" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">Health Guide</a>
+        <a href="/aqi-explained" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500;" class="nav-link">AQI Explained</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border); margin-top: 5rem; padding: 2.5rem 0;">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div>
+          <span style="font-family: var(--font-serif); font-size: 1rem;">IsTheAirSafe.com</span>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Real-time air quality data powered by <a href="https://waqi.info" target="_blank" rel="noopener">WAQI</a> &amp; <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>
+          </p>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-subtle);">
+          <a href="/rankings" style="color: var(--text-muted);">Rankings</a>
+          &nbsp;·&nbsp;
+          <a href="/health-guide" style="color: var(--text-muted);">Health Guide</a>
+          &nbsp;·&nbsp;
+          <a href="/aqi-explained" style="color: var(--text-muted);">AQI Explained</a>
+          &nbsp;·&nbsp;
+          <a href="/about" style="color: var(--text-muted);">About</a>
+          &nbsp;·&nbsp;
+          <a href="/sitemap.xml" style="color: var(--text-muted);">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nav-link:hover { color: var(--text) !important; }
+  </style>
+</body>
+</html>

@@ -1,0 +1,144 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+
+const stats = [
+  { value: '11,000+', label: 'Monitoring stations' },
+  { value: '1,000+',  label: 'Cities covered' },
+  { value: '195',     label: 'Countries' },
+  { value: 'Hourly',  label: 'Data refresh rate' },
+];
+
+const principles = [
+  { icon: '⚡', title: 'Fast answers first',       desc: 'Most air quality sites bury the most important information — is it safe or not — under charts and data tables. We put the answer in the first line. Everything else is context.' },
+  { icon: '🔓', title: 'Always free',              desc: 'Air quality data is a public health resource. We will never put essential AQI information behind a paywall, registration, or login. The data is free, and so is this site.' },
+  { icon: '📡', title: 'Authoritative data only',  desc: "We source exclusively from government-certified monitoring stations via the World Air Quality Index project and EPA AirNow. We don't use low-cost sensors as primary data sources." },
+  { icon: '🏥', title: 'Health-first framing',     desc: 'Raw numbers mean little without context. Every AQI reading on this site is accompanied by specific, actionable health guidance — not vague disclaimers.' },
+];
+
+const sources = [
+  { name: 'World Air Quality Index (WAQI)', url: 'aqicn.org',      detail: 'Real-time AQI data aggregated from 11,000+ government monitoring stations in 1,000+ cities worldwide. Backed by the United Nations Environment Programme (UNEP). Updated hourly.' },
+  { name: 'EPA AirNow',                     url: 'airnow.gov',     detail: 'The official US government air quality monitoring network operated by the EPA. Gold standard for US city data. All readings follow US EPA AQI calculation methodology.' },
+  { name: 'Open-Meteo',                     url: 'open-meteo.com', detail: 'Open-source meteorological data sourced from national weather services including NOAA, DWD, and ECMWF. Provides wind speed, humidity, temperature, and weather conditions.' },
+];
+---
+
+<Base
+  title="About IsTheAirSafe.com — Mission, Data Sources & Methodology"
+  description="IsTheAirSafe.com is a free, independent air quality reference built to give anyone a clear, fast, honest answer about whether it's safe to breathe outside. Learn about our data sources and methodology."
+  canonical="/about"
+>
+  <div style="max-width:820px;margin:0 auto;padding:40px 24px 80px;" class="appear">
+
+    <!-- Breadcrumb -->
+    <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;">
+      <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
+      <span style="color:#ddd;font-size:10px;">›</span>
+      <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">About</span>
+    </nav>
+
+    <!-- Hero -->
+    <div style="margin-bottom:40px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;">
+        About IsTheAirSafe.com
+      </h1>
+      <p style="font-family:var(--font-sans);font-size:16px;color:#555;line-height:1.8;max-width:600px;">
+        IsTheAirSafe.com is a free, independent air quality reference built for people who want a clear, fast, honest answer to one question: <em>is it safe to breathe outside right now?</em>
+      </p>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px;" class="stats-grid">
+      {stats.map(s => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 16px;text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:32px;color:#111;letter-spacing:-0.02em;margin-bottom:4px;font-weight:400;">{s.value}</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:#aaa;font-weight:500;">{s.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mission -->
+    <div style="background:white;border:1px solid #eee;border-radius:16px;padding:28px 32px;margin-bottom:24px;">
+      <h2 style="font-size:22px;color:#111;margin-bottom:14px;">Why We Built This</h2>
+      <p style="font-family:var(--font-sans);font-size:14px;color:#555;line-height:1.85;margin-bottom:14px;">
+        Air quality data has been publicly available for decades — but most existing sites present it in ways that are hard to act on. Large charts, technical jargon, and cluttered interfaces make it difficult for a parent, an asthma patient, or a runner to quickly understand what the air means for them personally.
+      </p>
+      <p style="font-family:var(--font-sans);font-size:14px;color:#555;line-height:1.85;margin-bottom:14px;">
+        IsTheAirSafe.com was built on a simple premise: the most important piece of information is the answer to the question in our name. Everything else — the AQI number, pollutant breakdown, health guidance — exists to support that answer, not replace it.
+      </p>
+      <p style="font-family:var(--font-sans);font-size:14px;color:#555;line-height:1.85;">
+        We cover 1,000+ cities worldwide using real-time data from government-certified monitoring networks. Data is refreshed hourly. All health guidance follows US EPA and WHO published standards.
+      </p>
+    </div>
+
+    <!-- Principles -->
+    <h2 style="font-size:22px;color:#111;margin-bottom:16px;">Our Principles</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px;" class="principles-grid">
+      {principles.map(p => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 22px;">
+          <div style="font-size:22px;margin-bottom:10px;">{p.icon}</div>
+          <div style="font-family:var(--font-serif);font-size:17px;color:#111;margin-bottom:8px;font-weight:400;">{p.title}</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.7;">{p.desc}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Data sources -->
+    <h2 style="font-size:22px;color:#111;margin-bottom:6px;">Data Sources &amp; Methodology</h2>
+    <p style="font-family:var(--font-sans);font-size:14px;color:#aaa;margin-bottom:16px;">
+      All data is sourced from official government monitoring networks. We do not manufacture, estimate, or interpolate AQI values.
+    </p>
+    <div style="display:grid;gap:10px;margin-bottom:36px;">
+      {sources.map(s => (
+        <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px 22px;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:start;" class="source-row">
+          <div>
+            <div style="font-family:var(--font-sans);font-weight:700;font-size:13px;color:#111;margin-bottom:4px;">{s.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;color:#bbb;">{s.url}</div>
+          </div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.7;">{s.detail}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- AQI methodology note -->
+    <div style="background:#fafaf8;border:1px solid #eee;border-radius:14px;padding:20px 24px;margin-bottom:36px;">
+      <h3 style="font-family:var(--font-serif);font-size:17px;color:#111;margin-bottom:10px;font-weight:400;">AQI Calculation Standard</h3>
+      <p style="font-family:var(--font-sans);font-size:13px;color:#666;line-height:1.75;">
+        All AQI values on this site follow the <strong>US EPA AQI standard</strong> — the most widely used international benchmark. The AQI is calculated from concentrations of six pollutants: PM2.5, PM10, ground-level ozone, nitrogen dioxide, sulfur dioxide, and carbon monoxide. The highest individual pollutant sub-index becomes the reported AQI. Health guidance thresholds follow EPA published guidelines and WHO air quality standards.
+      </p>
+    </div>
+
+    <!-- Disclaimer -->
+    <div style="background:white;border:1px solid #eee;border-radius:14px;padding:20px 24px;margin-bottom:36px;">
+      <h3 style="font-family:var(--font-serif);font-size:17px;color:#111;margin-bottom:10px;font-weight:400;">Disclaimer</h3>
+      <p style="font-family:var(--font-sans);font-size:13px;color:#888;line-height:1.75;">
+        IsTheAirSafe.com provides air quality information for general informational purposes only. It is not a substitute for professional medical advice. People with serious health conditions should consult their physician for personalised guidance on air quality thresholds. While we strive to maintain accurate, up-to-date data, we cannot guarantee the accuracy of third-party data sources and accept no liability for decisions made based on information presented on this site.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div style="background:#111;border-radius:16px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:var(--font-serif);font-size:20px;color:white;margin-bottom:6px;font-weight:400;">Get in touch</div>
+        <div style="font-family:var(--font-sans);font-size:13px;color:#888;line-height:1.6;">
+          Data corrections, partnership enquiries, or press requests.
+        </div>
+      </div>
+      <a href="mailto:hello@istheairsafe.com" style="display:inline-block;background:white;color:#111;text-decoration:none;border-radius:9px;padding:10px 22px;font-family:var(--font-sans);font-size:13px;font-weight:700;flex-shrink:0;">
+        hello@istheairsafe.com
+      </a>
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .appear { animation: fadeUp 0.4s ease forwards; }
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+      .principles-grid { grid-template-columns: 1fr !important; }
+      .source-row { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</Base>
