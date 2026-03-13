@@ -25,7 +25,6 @@ if (!city) {
 }
 
 const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
-console.log('[city page] token source:', Astro.locals?.runtime?.env?.WAQI_TOKEN ? 'runtime' : import.meta.env.WAQI_TOKEN ? 'import.meta' : 'demo');
 const { aqi: aqiData, weather } = await fetchCityData(city.waqiId, token);
 
 // Prevent Cloudflare edge caching so every request gets fresh data
