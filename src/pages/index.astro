@@ -6,7 +6,7 @@ import CitySearch from '../components/CitySearch.jsx';
 import cities from '../data/cities.json';
 import { fetchAqi, getAqiLevel } from '../utils/waqi.js';
 
-const token = import.meta.env.WAQI_TOKEN || 'demo';
+const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
 
 const featuredSlugs = [
   'new-york-ny', 'los-angeles-ca', 'london', 'tokyo', 'delhi', 'beijing',
