@@ -4,47 +4,35 @@ export const prerender = true;
 import Base from '../../layouts/Base.astro';
 import cities from '../../data/cities.json';
 
-// Build country list from cities data
 const countryMap = new Map();
 for (const city of cities) {
   if (!countryMap.has(city.countrySlug)) {
-    countryMap.set(city.countrySlug, {
-      name: city.country,
-      slug: city.countrySlug,
-      count: 0,
-    });
+    countryMap.set(city.countrySlug, { name: city.country, slug: city.countrySlug, count: 0 });
   }
   countryMap.get(city.countrySlug).count++;
 }
+const countries = [...countryMap.values()].sort((a, b) => b.count - a.count);
 
-const countries = [...countryMap.values()]
-  .sort((a, b) => b.count - a.count);
-
-// Region groupings for display
-const regions = {
-  'Asia Pacific': ['cn', 'jp', 'kr', 'in', 'id', 'ph', 'th', 'vn', 'my', 'sg', 'au', 'nz', 'bd', 'pk', 'lk', 'np', 'mm', 'kh', 'la', 'tw', 'hk', 'mo', 'mn'],
-  'Europe': ['uk', 'de', 'fr', 'it', 'es', 'nl', 'be', 'ch', 'at', 'pl', 'se', 'no', 'dk', 'fi', 'pt', 'gr', 'cz', 'hu', 'ro', 'bg', 'hr', 'sk', 'si', 'rs', 'ua', 'by', 'ee', 'lv', 'lt', 'ie', 'lu', 'mk', 'ba', 'al', 'me', 'md', 'ru'],
-  'Americas': ['us', 'ca', 'mx', 'br', 'ar', 'co', 'cl', 'pe', 've', 'ec', 'bo', 'uy', 'py', 'cr', 'gt', 'hn', 'sv', 'ni', 'pa', 'cu', 'do', 'ht', 'jm'],
-  'Middle East & Central Asia': ['ae', 'sa', 'il', 'ir', 'iq', 'lb', 'jo', 'kw', 'qa', 'om', 'bh', 'tr', 'ge', 'am', 'az', 'kz', 'uz'],
-  'Africa': ['eg', 'za', 'ng', 'ke', 'gh', 'et', 'ma', 'tn', 'dz', 'sn', 'ug', 'tz', 'sd', 'ao', 'cd', 'zw', 'zm', 'mz'],
+const regionDefs = [
+  { label: 'Americas',              slugs: ['us','ca','mx','br','ar','co','cl','pe','ve','ec','bo','uy','py','cr','gt','hn','sv','ni','pa','cu','do','ht','jm'] },
+  { label: 'Europe',                slugs: ['uk','de','fr','it','es','nl','be','ch','at','pl','se','no','dk','fi','pt','gr','cz','hu','ro','bg','hr','sk','si','rs','ua','by','ee','lv','lt','ie','lu','mk','ba','al','me','md','ru'] },
+  { label: 'Asia Pacific',          slugs: ['cn','jp','kr','in','id','ph','th','vn','my','sg','au','nz','bd','pk','lk','np','mm','kh','la','tw','hk','mo','mn'] },
+  { label: 'Middle East and Central Asia', slugs: ['ae','sa','il','ir','iq','lb','jo','kw','qa','om','bh','tr','ge','am','az','kz','uz'] },
+  { label: 'Africa',                slugs: ['eg','za','ng','ke','gh','et','ma','tn','dz','sn','ug','tz','sd','ao','cd','zw','zm','mz'] },
+  { label: 'Other',                 slugs: [] },
 ];
 
-function getRegion(slug) {
-  for (const [region, slugs] of Object.entries(regions)) {
-    if (slugs.includes(slug)) return region;
-  }
-  return 'Other';
+function getRegionLabel(slug) {
+  const found = regionDefs.find(r => r.slugs.includes(slug));
+  return found ? found.label : 'Other';
 }
 
-// Group countries by region
-const byRegion = {};
+const byRegion = new Map();
+for (const rd of regionDefs) byRegion.set(rd.label, []);
 for (const country of countries) {
-  const region = getRegion(country.slug);
-  if (!byRegion[region]) byRegion[region] = [];
-  byRegion[region].push(country);
+  const label = getRegionLabel(country.slug);
+  byRegion.get(label).push(country);
 }
-
-const regionOrder = ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Central Asia', 'Africa', 'Other'];
 ---
 
 <Base
@@ -54,14 +42,12 @@ const regionOrder = ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Centra
 >
   <div style="max-width:1000px;margin:0 auto;padding:40px 24px 80px;" class="appear">
 
-    <!-- Breadcrumb -->
     <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;">
       <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
       <span style="color:#ddd;font-size:10px;">›</span>
       <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">Countries</span>
     </nav>
 
-    <!-- Hero -->
     <div style="margin-bottom:40px;">
       <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
         Air Quality by Country
@@ -71,12 +57,11 @@ const regionOrder = ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Centra
       </p>
     </div>
 
-    <!-- Stats bar -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px;" class="stats-grid">
       {[
-        { value: countries.length, label: 'Countries covered' },
-        { value: cities.length,    label: 'Cities monitored' },
-        { value: 'Hourly',         label: 'Data refresh rate' },
+        { value: String(countries.length), label: 'Countries covered' },
+        { value: String(cities.length),    label: 'Cities monitored'  },
+        { value: 'Hourly',                 label: 'Data refresh rate' },
       ].map(s => (
         <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px;text-align:center;">
           <div style="font-family:var(--font-serif);font-size:28px;color:#111;margin-bottom:4px;">{s.value}</div>
@@ -85,24 +70,25 @@ const regionOrder = ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Centra
       ))}
     </div>
 
-    <!-- Countries by region -->
-    {regionOrder.filter(r => byRegion[r]?.length).map(region => (
-      <div style="margin-bottom:36px;">
-        <h2 style="font-size:20px;color:#111;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #eee;">
-          {region}
-        </h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;" class="country-grid">
-          {byRegion[region].map(country => (
-            <a href={`/countries/${country.slug}`}
-              style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;transition:all 0.15s;"
-              class="country-card">
-              <span style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{country.name}</span>
-              <span style="font-family:var(--font-mono);font-size:11px;color:#bbb;background:#f5f5f3;padding:2px 7px;border-radius:5px;">{country.count}</span>
-            </a>
-          ))}
+    {regionDefs.map(({ label }) => {
+      const regionCountries = byRegion.get(label) || [];
+      if (!regionCountries.length) return null;
+      return (
+        <div style="margin-bottom:36px;">
+          <h2 style="font-size:20px;color:#111;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #eee;">{label}</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;" class="country-grid">
+            {regionCountries.map(country => (
+              <a href={`/countries/${country.slug}`}
+                style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;transition:all 0.15s;"
+                class="country-card">
+                <span style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{country.name}</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:#bbb;background:#f5f5f3;padding:2px 7px;border-radius:5px;">{country.count}</span>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
 
   </div>
 
