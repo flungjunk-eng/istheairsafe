@@ -1,260 +1,4259 @@
 [
-  { "name": "New York", "slug": "new-york-ny", "state": "New York", "country": "United States", "countrySlug": "us", "waqiId": "new york", "url": "/air-quality/us/new-york-ny" },
-  { "name": "Los Angeles", "slug": "los-angeles-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "los angeles", "url": "/air-quality/us/los-angeles-ca" },
-  { "name": "Chicago", "slug": "chicago-il", "state": "Illinois", "country": "United States", "countrySlug": "us", "waqiId": "chicago", "url": "/air-quality/us/chicago-il" },
-  { "name": "Houston", "slug": "houston-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "houston", "url": "/air-quality/us/houston-tx" },
-  { "name": "Phoenix", "slug": "phoenix-az", "state": "Arizona", "country": "United States", "countrySlug": "us", "waqiId": "phoenix", "url": "/air-quality/us/phoenix-az" },
-  { "name": "Philadelphia", "slug": "philadelphia-pa", "state": "Pennsylvania", "country": "United States", "countrySlug": "us", "waqiId": "philadelphia", "url": "/air-quality/us/philadelphia-pa" },
-  { "name": "San Antonio", "slug": "san-antonio-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "san antonio", "url": "/air-quality/us/san-antonio-tx" },
-  { "name": "San Diego", "slug": "san-diego-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "san diego", "url": "/air-quality/us/san-diego-ca" },
-  { "name": "Dallas", "slug": "dallas-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "dallas", "url": "/air-quality/us/dallas-tx" },
-  { "name": "San Jose", "slug": "san-jose-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "san jose", "url": "/air-quality/us/san-jose-ca" },
-  { "name": "Austin", "slug": "austin-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "austin", "url": "/air-quality/us/austin-tx" },
-  { "name": "Jacksonville", "slug": "jacksonville-fl", "state": "Florida", "country": "United States", "countrySlug": "us", "waqiId": "jacksonville", "url": "/air-quality/us/jacksonville-fl" },
-  { "name": "Fort Worth", "slug": "fort-worth-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "fort worth", "url": "/air-quality/us/fort-worth-tx" },
-  { "name": "Columbus", "slug": "columbus-oh", "state": "Ohio", "country": "United States", "countrySlug": "us", "waqiId": "columbus", "url": "/air-quality/us/columbus-oh" },
-  { "name": "Indianapolis", "slug": "indianapolis-in", "state": "Indiana", "country": "United States", "countrySlug": "us", "waqiId": "indianapolis", "url": "/air-quality/us/indianapolis-in" },
-  { "name": "Charlotte", "slug": "charlotte-nc", "state": "North Carolina", "country": "United States", "countrySlug": "us", "waqiId": "charlotte", "url": "/air-quality/us/charlotte-nc" },
-  { "name": "San Francisco", "slug": "san-francisco-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "san francisco", "url": "/air-quality/us/san-francisco-ca" },
-  { "name": "Seattle", "slug": "seattle-wa", "state": "Washington", "country": "United States", "countrySlug": "us", "waqiId": "seattle", "url": "/air-quality/us/seattle-wa" },
-  { "name": "Denver", "slug": "denver-co", "state": "Colorado", "country": "United States", "countrySlug": "us", "waqiId": "denver", "url": "/air-quality/us/denver-co" },
-  { "name": "Nashville", "slug": "nashville-tn", "state": "Tennessee", "country": "United States", "countrySlug": "us", "waqiId": "nashville", "url": "/air-quality/us/nashville-tn" },
-  { "name": "Oklahoma City", "slug": "oklahoma-city-ok", "state": "Oklahoma", "country": "United States", "countrySlug": "us", "waqiId": "oklahoma city", "url": "/air-quality/us/oklahoma-city-ok" },
-  { "name": "El Paso", "slug": "el-paso-tx", "state": "Texas", "country": "United States", "countrySlug": "us", "waqiId": "el paso", "url": "/air-quality/us/el-paso-tx" },
-  { "name": "Washington DC", "slug": "washington-dc", "state": "District of Columbia", "country": "United States", "countrySlug": "us", "waqiId": "washington dc", "url": "/air-quality/us/washington-dc" },
-  { "name": "Las Vegas", "slug": "las-vegas-nv", "state": "Nevada", "country": "United States", "countrySlug": "us", "waqiId": "las vegas", "url": "/air-quality/us/las-vegas-nv" },
-  { "name": "Louisville", "slug": "louisville-ky", "state": "Kentucky", "country": "United States", "countrySlug": "us", "waqiId": "louisville", "url": "/air-quality/us/louisville-ky" },
-  { "name": "Memphis", "slug": "memphis-tn", "state": "Tennessee", "country": "United States", "countrySlug": "us", "waqiId": "memphis", "url": "/air-quality/us/memphis-tn" },
-  { "name": "Portland", "slug": "portland-or", "state": "Oregon", "country": "United States", "countrySlug": "us", "waqiId": "portland", "url": "/air-quality/us/portland-or" },
-  { "name": "Baltimore", "slug": "baltimore-md", "state": "Maryland", "country": "United States", "countrySlug": "us", "waqiId": "baltimore", "url": "/air-quality/us/baltimore-md" },
-  { "name": "Milwaukee", "slug": "milwaukee-wi", "state": "Wisconsin", "country": "United States", "countrySlug": "us", "waqiId": "milwaukee", "url": "/air-quality/us/milwaukee-wi" },
-  { "name": "Albuquerque", "slug": "albuquerque-nm", "state": "New Mexico", "country": "United States", "countrySlug": "us", "waqiId": "albuquerque", "url": "/air-quality/us/albuquerque-nm" },
-  { "name": "Tucson", "slug": "tucson-az", "state": "Arizona", "country": "United States", "countrySlug": "us", "waqiId": "tucson", "url": "/air-quality/us/tucson-az" },
-  { "name": "Fresno", "slug": "fresno-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "fresno", "url": "/air-quality/us/fresno-ca" },
-  { "name": "Sacramento", "slug": "sacramento-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "sacramento", "url": "/air-quality/us/sacramento-ca" },
-  { "name": "Mesa", "slug": "mesa-az", "state": "Arizona", "country": "United States", "countrySlug": "us", "waqiId": "mesa", "url": "/air-quality/us/mesa-az" },
-  { "name": "Atlanta", "slug": "atlanta-ga", "state": "Georgia", "country": "United States", "countrySlug": "us", "waqiId": "atlanta", "url": "/air-quality/us/atlanta-ga" },
-  { "name": "Omaha", "slug": "omaha-ne", "state": "Nebraska", "country": "United States", "countrySlug": "us", "waqiId": "omaha", "url": "/air-quality/us/omaha-ne" },
-  { "name": "Colorado Springs", "slug": "colorado-springs-co", "state": "Colorado", "country": "United States", "countrySlug": "us", "waqiId": "colorado springs", "url": "/air-quality/us/colorado-springs-co" },
-  { "name": "Raleigh", "slug": "raleigh-nc", "state": "North Carolina", "country": "United States", "countrySlug": "us", "waqiId": "raleigh", "url": "/air-quality/us/raleigh-nc" },
-  { "name": "Miami", "slug": "miami-fl", "state": "Florida", "country": "United States", "countrySlug": "us", "waqiId": "miami", "url": "/air-quality/us/miami-fl" },
-  { "name": "Minneapolis", "slug": "minneapolis-mn", "state": "Minnesota", "country": "United States", "countrySlug": "us", "waqiId": "minneapolis", "url": "/air-quality/us/minneapolis-mn" },
-  { "name": "Detroit", "slug": "detroit-mi", "state": "Michigan", "country": "United States", "countrySlug": "us", "waqiId": "detroit", "url": "/air-quality/us/detroit-mi" },
-  { "name": "Boston", "slug": "boston-ma", "state": "Massachusetts", "country": "United States", "countrySlug": "us", "waqiId": "boston", "url": "/air-quality/us/boston-ma" },
-  { "name": "Pittsburgh", "slug": "pittsburgh-pa", "state": "Pennsylvania", "country": "United States", "countrySlug": "us", "waqiId": "pittsburgh", "url": "/air-quality/us/pittsburgh-pa" },
-  { "name": "Salt Lake City", "slug": "salt-lake-city-ut", "state": "Utah", "country": "United States", "countrySlug": "us", "waqiId": "salt lake city", "url": "/air-quality/us/salt-lake-city-ut" },
-  { "name": "New Orleans", "slug": "new-orleans-la", "state": "Louisiana", "country": "United States", "countrySlug": "us", "waqiId": "new orleans", "url": "/air-quality/us/new-orleans-la" },
-  { "name": "Tampa", "slug": "tampa-fl", "state": "Florida", "country": "United States", "countrySlug": "us", "waqiId": "tampa", "url": "/air-quality/us/tampa-fl" },
-  { "name": "Cleveland", "slug": "cleveland-oh", "state": "Ohio", "country": "United States", "countrySlug": "us", "waqiId": "cleveland", "url": "/air-quality/us/cleveland-oh" },
-  { "name": "Kansas City", "slug": "kansas-city-mo", "state": "Missouri", "country": "United States", "countrySlug": "us", "waqiId": "kansas city", "url": "/air-quality/us/kansas-city-mo" },
-  { "name": "Bakersfield", "slug": "bakersfield-ca", "state": "California", "country": "United States", "countrySlug": "us", "waqiId": "bakersfield", "url": "/air-quality/us/bakersfield-ca" },
-  { "name": "Honolulu", "slug": "honolulu-hi", "state": "Hawaii", "country": "United States", "countrySlug": "us", "waqiId": "honolulu", "url": "/air-quality/us/honolulu-hi" },
-  { "name": "London", "slug": "london", "state": "England", "country": "United Kingdom", "countrySlug": "uk", "waqiId": "london", "url": "/air-quality/uk/london" },
-  { "name": "Manchester", "slug": "manchester", "state": "England", "country": "United Kingdom", "countrySlug": "uk", "waqiId": "manchester", "url": "/air-quality/uk/manchester" },
-  { "name": "Birmingham", "slug": "birmingham-uk", "state": "England", "country": "United Kingdom", "countrySlug": "uk", "waqiId": "birmingham", "url": "/air-quality/uk/birmingham-uk" },
-  { "name": "Glasgow", "slug": "glasgow", "state": "Scotland", "country": "United Kingdom", "countrySlug": "uk", "waqiId": "glasgow", "url": "/air-quality/uk/glasgow" },
-  { "name": "Edinburgh", "slug": "edinburgh", "state": "Scotland", "country": "United Kingdom", "countrySlug": "uk", "waqiId": "edinburgh", "url": "/air-quality/uk/edinburgh" },
-  { "name": "Paris", "slug": "paris", "state": "Île-de-France", "country": "France", "countrySlug": "fr", "waqiId": "paris", "url": "/air-quality/fr/paris" },
-  { "name": "Lyon", "slug": "lyon", "state": "Auvergne-Rhône-Alpes", "country": "France", "countrySlug": "fr", "waqiId": "lyon", "url": "/air-quality/fr/lyon" },
-  { "name": "Marseille", "slug": "marseille", "state": "Provence-Alpes-Côte d'Azur", "country": "France", "countrySlug": "fr", "waqiId": "marseille", "url": "/air-quality/fr/marseille" },
-  { "name": "Berlin", "slug": "berlin", "state": "Berlin", "country": "Germany", "countrySlug": "de", "waqiId": "berlin", "url": "/air-quality/de/berlin" },
-  { "name": "Hamburg", "slug": "hamburg", "state": "Hamburg", "country": "Germany", "countrySlug": "de", "waqiId": "hamburg", "url": "/air-quality/de/hamburg" },
-  { "name": "Munich", "slug": "munich", "state": "Bavaria", "country": "Germany", "countrySlug": "de", "waqiId": "munich", "url": "/air-quality/de/munich" },
-  { "name": "Frankfurt", "slug": "frankfurt", "state": "Hesse", "country": "Germany", "countrySlug": "de", "waqiId": "frankfurt", "url": "/air-quality/de/frankfurt" },
-  { "name": "Madrid", "slug": "madrid", "state": "Community of Madrid", "country": "Spain", "countrySlug": "es", "waqiId": "madrid", "url": "/air-quality/es/madrid" },
-  { "name": "Barcelona", "slug": "barcelona", "state": "Catalonia", "country": "Spain", "countrySlug": "es", "waqiId": "barcelona", "url": "/air-quality/es/barcelona" },
-  { "name": "Seville", "slug": "seville", "state": "Andalusia", "country": "Spain", "countrySlug": "es", "waqiId": "seville", "url": "/air-quality/es/seville" },
-  { "name": "Rome", "slug": "rome", "state": "Lazio", "country": "Italy", "countrySlug": "it", "waqiId": "rome", "url": "/air-quality/it/rome" },
-  { "name": "Milan", "slug": "milan", "state": "Lombardy", "country": "Italy", "countrySlug": "it", "waqiId": "milan", "url": "/air-quality/it/milan" },
-  { "name": "Naples", "slug": "naples", "state": "Campania", "country": "Italy", "countrySlug": "it", "waqiId": "naples", "url": "/air-quality/it/naples" },
-  { "name": "Amsterdam", "slug": "amsterdam", "state": "North Holland", "country": "Netherlands", "countrySlug": "nl", "waqiId": "amsterdam", "url": "/air-quality/nl/amsterdam" },
-  { "name": "Rotterdam", "slug": "rotterdam", "state": "South Holland", "country": "Netherlands", "countrySlug": "nl", "waqiId": "rotterdam", "url": "/air-quality/nl/rotterdam" },
-  { "name": "Brussels", "slug": "brussels", "state": "Brussels Capital", "country": "Belgium", "countrySlug": "be", "waqiId": "brussels", "url": "/air-quality/be/brussels" },
-  { "name": "Vienna", "slug": "vienna", "state": "Vienna", "country": "Austria", "countrySlug": "at", "waqiId": "vienna", "url": "/air-quality/at/vienna" },
-  { "name": "Zurich", "slug": "zurich", "state": "Zurich", "country": "Switzerland", "countrySlug": "ch", "waqiId": "zurich", "url": "/air-quality/ch/zurich" },
-  { "name": "Geneva", "slug": "geneva", "state": "Geneva", "country": "Switzerland", "countrySlug": "ch", "waqiId": "geneva", "url": "/air-quality/ch/geneva" },
-  { "name": "Stockholm", "slug": "stockholm", "state": "Stockholm County", "country": "Sweden", "countrySlug": "se", "waqiId": "stockholm", "url": "/air-quality/se/stockholm" },
-  { "name": "Oslo", "slug": "oslo", "state": "Oslo", "country": "Norway", "countrySlug": "no", "waqiId": "oslo", "url": "/air-quality/no/oslo" },
-  { "name": "Copenhagen", "slug": "copenhagen", "state": "Capital Region", "country": "Denmark", "countrySlug": "dk", "waqiId": "copenhagen", "url": "/air-quality/dk/copenhagen" },
-  { "name": "Helsinki", "slug": "helsinki", "state": "Uusimaa", "country": "Finland", "countrySlug": "fi", "waqiId": "helsinki", "url": "/air-quality/fi/helsinki" },
-  { "name": "Warsaw", "slug": "warsaw", "state": "Masovian", "country": "Poland", "countrySlug": "pl", "waqiId": "warsaw", "url": "/air-quality/pl/warsaw" },
-  { "name": "Krakow", "slug": "krakow", "state": "Lesser Poland", "country": "Poland", "countrySlug": "pl", "waqiId": "krakow", "url": "/air-quality/pl/krakow" },
-  { "name": "Prague", "slug": "prague", "state": "Prague", "country": "Czech Republic", "countrySlug": "cz", "waqiId": "prague", "url": "/air-quality/cz/prague" },
-  { "name": "Budapest", "slug": "budapest", "state": "Budapest", "country": "Hungary", "countrySlug": "hu", "waqiId": "budapest", "url": "/air-quality/hu/budapest" },
-  { "name": "Bucharest", "slug": "bucharest", "state": "Bucharest", "country": "Romania", "countrySlug": "ro", "waqiId": "bucharest", "url": "/air-quality/ro/bucharest" },
-  { "name": "Athens", "slug": "athens", "state": "Attica", "country": "Greece", "countrySlug": "gr", "waqiId": "athens", "url": "/air-quality/gr/athens" },
-  { "name": "Lisbon", "slug": "lisbon", "state": "Lisbon", "country": "Portugal", "countrySlug": "pt", "waqiId": "lisbon", "url": "/air-quality/pt/lisbon" },
-  { "name": "Dublin", "slug": "dublin", "state": "Leinster", "country": "Ireland", "countrySlug": "ie", "waqiId": "dublin", "url": "/air-quality/ie/dublin" },
-  { "name": "Beijing", "slug": "beijing", "state": "Beijing", "country": "China", "countrySlug": "cn", "waqiId": "beijing", "url": "/air-quality/cn/beijing" },
-  { "name": "Shanghai", "slug": "shanghai", "state": "Shanghai", "country": "China", "countrySlug": "cn", "waqiId": "shanghai", "url": "/air-quality/cn/shanghai" },
-  { "name": "Guangzhou", "slug": "guangzhou", "state": "Guangdong", "country": "China", "countrySlug": "cn", "waqiId": "guangzhou", "url": "/air-quality/cn/guangzhou" },
-  { "name": "Shenzhen", "slug": "shenzhen", "state": "Guangdong", "country": "China", "countrySlug": "cn", "waqiId": "shenzhen", "url": "/air-quality/cn/shenzhen" },
-  { "name": "Chengdu", "slug": "chengdu", "state": "Sichuan", "country": "China", "countrySlug": "cn", "waqiId": "chengdu", "url": "/air-quality/cn/chengdu" },
-  { "name": "Wuhan", "slug": "wuhan", "state": "Hubei", "country": "China", "countrySlug": "cn", "waqiId": "wuhan", "url": "/air-quality/cn/wuhan" },
-  { "name": "Xi'an", "slug": "xian", "state": "Shaanxi", "country": "China", "countrySlug": "cn", "waqiId": "xian", "url": "/air-quality/cn/xian" },
-  { "name": "Tokyo", "slug": "tokyo", "state": "Tokyo", "country": "Japan", "countrySlug": "jp", "waqiId": "tokyo", "url": "/air-quality/jp/tokyo" },
-  { "name": "Osaka", "slug": "osaka", "state": "Osaka", "country": "Japan", "countrySlug": "jp", "waqiId": "osaka", "url": "/air-quality/jp/osaka" },
-  { "name": "Kyoto", "slug": "kyoto", "state": "Kyoto", "country": "Japan", "countrySlug": "jp", "waqiId": "kyoto", "url": "/air-quality/jp/kyoto" },
-  { "name": "Nagoya", "slug": "nagoya", "state": "Aichi", "country": "Japan", "countrySlug": "jp", "waqiId": "nagoya", "url": "/air-quality/jp/nagoya" },
-  { "name": "Fukuoka", "slug": "fukuoka", "state": "Fukuoka", "country": "Japan", "countrySlug": "jp", "waqiId": "fukuoka", "url": "/air-quality/jp/fukuoka" },
-  { "name": "Seoul", "slug": "seoul", "state": "Seoul", "country": "South Korea", "countrySlug": "kr", "waqiId": "seoul", "url": "/air-quality/kr/seoul" },
-  { "name": "Busan", "slug": "busan", "state": "Busan", "country": "South Korea", "countrySlug": "kr", "waqiId": "busan", "url": "/air-quality/kr/busan" },
-  { "name": "Incheon", "slug": "incheon", "state": "Incheon", "country": "South Korea", "countrySlug": "kr", "waqiId": "incheon", "url": "/air-quality/kr/incheon" },
-  { "name": "Mumbai", "slug": "mumbai", "state": "Maharashtra", "country": "India", "countrySlug": "in", "waqiId": "mumbai", "url": "/air-quality/in/mumbai" },
-  { "name": "Delhi", "slug": "delhi", "state": "Delhi", "country": "India", "countrySlug": "in", "waqiId": "delhi", "url": "/air-quality/in/delhi" },
-  { "name": "Bangalore", "slug": "bangalore", "state": "Karnataka", "country": "India", "countrySlug": "in", "waqiId": "bangalore", "url": "/air-quality/in/bangalore" },
-  { "name": "Kolkata", "slug": "kolkata", "state": "West Bengal", "country": "India", "countrySlug": "in", "waqiId": "kolkata", "url": "/air-quality/in/kolkata" },
-  { "name": "Chennai", "slug": "chennai", "state": "Tamil Nadu", "country": "India", "countrySlug": "in", "waqiId": "chennai", "url": "/air-quality/in/chennai" },
-  { "name": "Hyderabad", "slug": "hyderabad", "state": "Telangana", "country": "India", "countrySlug": "in", "waqiId": "hyderabad", "url": "/air-quality/in/hyderabad" },
-  { "name": "Pune", "slug": "pune", "state": "Maharashtra", "country": "India", "countrySlug": "in", "waqiId": "pune", "url": "/air-quality/in/pune" },
-  { "name": "Ahmedabad", "slug": "ahmedabad", "state": "Gujarat", "country": "India", "countrySlug": "in", "waqiId": "ahmedabad", "url": "/air-quality/in/ahmedabad" },
-  { "name": "Jakarta", "slug": "jakarta", "state": "Jakarta", "country": "Indonesia", "countrySlug": "id", "waqiId": "jakarta", "url": "/air-quality/id/jakarta" },
-  { "name": "Surabaya", "slug": "surabaya", "state": "East Java", "country": "Indonesia", "countrySlug": "id", "waqiId": "surabaya", "url": "/air-quality/id/surabaya" },
-  { "name": "Bangkok", "slug": "bangkok", "state": "Bangkok", "country": "Thailand", "countrySlug": "th", "waqiId": "bangkok", "url": "/air-quality/th/bangkok" },
-  { "name": "Chiang Mai", "slug": "chiang-mai", "state": "Chiang Mai", "country": "Thailand", "countrySlug": "th", "waqiId": "chiang mai", "url": "/air-quality/th/chiang-mai" },
-  { "name": "Manila", "slug": "manila", "state": "Metro Manila", "country": "Philippines", "countrySlug": "ph", "waqiId": "manila", "url": "/air-quality/ph/manila" },
-  { "name": "Ho Chi Minh City", "slug": "ho-chi-minh-city", "state": "Ho Chi Minh", "country": "Vietnam", "countrySlug": "vn", "waqiId": "@11346", "url": "/air-quality/vn/ho-chi-minh-city" },
-  { "name": "Hanoi", "slug": "hanoi", "state": "Hanoi", "country": "Vietnam", "countrySlug": "vn", "waqiId": "hanoi", "url": "/air-quality/vn/hanoi" },
-  { "name": "Kuala Lumpur", "slug": "kuala-lumpur", "state": "Kuala Lumpur", "country": "Malaysia", "countrySlug": "my", "waqiId": "kuala lumpur", "url": "/air-quality/my/kuala-lumpur" },
-  { "name": "Singapore", "slug": "singapore", "state": "Singapore", "country": "Singapore", "countrySlug": "sg", "waqiId": "singapore", "url": "/air-quality/sg/singapore" },
-  { "name": "Dhaka", "slug": "dhaka", "state": "Dhaka", "country": "Bangladesh", "countrySlug": "bd", "waqiId": "dhaka", "url": "/air-quality/bd/dhaka" },
-  { "name": "Karachi", "slug": "karachi", "state": "Sindh", "country": "Pakistan", "countrySlug": "pk", "waqiId": "karachi", "url": "/air-quality/pk/karachi" },
-  { "name": "Lahore", "slug": "lahore", "state": "Punjab", "country": "Pakistan", "countrySlug": "pk", "waqiId": "lahore", "url": "/air-quality/pk/lahore" },
-  { "name": "Islamabad", "slug": "islamabad", "state": "Islamabad Capital Territory", "country": "Pakistan", "countrySlug": "pk", "waqiId": "islamabad", "url": "/air-quality/pk/islamabad" },
-  { "name": "Kathmandu", "slug": "kathmandu", "state": "Bagmati", "country": "Nepal", "countrySlug": "np", "waqiId": "kathmandu", "url": "/air-quality/np/kathmandu" },
-  { "name": "Colombo", "slug": "colombo", "state": "Western", "country": "Sri Lanka", "countrySlug": "lk", "waqiId": "colombo", "url": "/air-quality/lk/colombo" },
-  { "name": "Cairo", "slug": "cairo", "state": "Cairo", "country": "Egypt", "countrySlug": "eg", "waqiId": "cairo", "url": "/air-quality/eg/cairo" },
-  { "name": "Alexandria", "slug": "alexandria-eg", "state": "Alexandria", "country": "Egypt", "countrySlug": "eg", "waqiId": "alexandria", "url": "/air-quality/eg/alexandria-eg" },
-  { "name": "Lagos", "slug": "lagos", "state": "Lagos", "country": "Nigeria", "countrySlug": "ng", "waqiId": "lagos", "url": "/air-quality/ng/lagos" },
-  { "name": "Abuja", "slug": "abuja", "state": "FCT", "country": "Nigeria", "countrySlug": "ng", "waqiId": "abuja", "url": "/air-quality/ng/abuja" },
-  { "name": "Nairobi", "slug": "nairobi", "state": "Nairobi", "country": "Kenya", "countrySlug": "ke", "waqiId": "nairobi", "url": "/air-quality/ke/nairobi" },
-  { "name": "Johannesburg", "slug": "johannesburg", "state": "Gauteng", "country": "South Africa", "countrySlug": "za", "waqiId": "johannesburg", "url": "/air-quality/za/johannesburg" },
-  { "name": "Cape Town", "slug": "cape-town", "state": "Western Cape", "country": "South Africa", "countrySlug": "za", "waqiId": "cape town", "url": "/air-quality/za/cape-town" },
-  { "name": "Accra", "slug": "accra", "state": "Greater Accra", "country": "Ghana", "countrySlug": "gh", "waqiId": "accra", "url": "/air-quality/gh/accra" },
-  { "name": "Addis Ababa", "slug": "addis-ababa", "state": "Addis Ababa", "country": "Ethiopia", "countrySlug": "et", "waqiId": "addis ababa", "url": "/air-quality/et/addis-ababa" },
-  { "name": "Casablanca", "slug": "casablanca", "state": "Casablanca-Settat", "country": "Morocco", "countrySlug": "ma", "waqiId": "casablanca", "url": "/air-quality/ma/casablanca" },
-  { "name": "Tunis", "slug": "tunis", "state": "Tunis", "country": "Tunisia", "countrySlug": "tn", "waqiId": "tunis", "url": "/air-quality/tn/tunis" },
-  { "name": "Algiers", "slug": "algiers", "state": "Algiers", "country": "Algeria", "countrySlug": "dz", "waqiId": "algiers", "url": "/air-quality/dz/algiers" },
-  { "name": "Dubai", "slug": "dubai", "state": "Dubai", "country": "United Arab Emirates", "countrySlug": "ae", "waqiId": "dubai", "url": "/air-quality/ae/dubai" },
-  { "name": "Abu Dhabi", "slug": "abu-dhabi", "state": "Abu Dhabi", "country": "United Arab Emirates", "countrySlug": "ae", "waqiId": "abu dhabi", "url": "/air-quality/ae/abu-dhabi" },
-  { "name": "Riyadh", "slug": "riyadh", "state": "Riyadh", "country": "Saudi Arabia", "countrySlug": "sa", "waqiId": "riyadh", "url": "/air-quality/sa/riyadh" },
-  { "name": "Jeddah", "slug": "jeddah", "state": "Mecca", "country": "Saudi Arabia", "countrySlug": "sa", "waqiId": "jeddah", "url": "/air-quality/sa/jeddah" },
-  { "name": "Kuwait City", "slug": "kuwait-city", "state": "Al Asimah", "country": "Kuwait", "countrySlug": "kw", "waqiId": "kuwait city", "url": "/air-quality/kw/kuwait-city" },
-  { "name": "Doha", "slug": "doha", "state": "Ad Dawhah", "country": "Qatar", "countrySlug": "qa", "waqiId": "doha", "url": "/air-quality/qa/doha" },
-  { "name": "Tel Aviv", "slug": "tel-aviv", "state": "Tel Aviv", "country": "Israel", "countrySlug": "il", "waqiId": "tel aviv", "url": "/air-quality/il/tel-aviv" },
-  { "name": "Istanbul", "slug": "istanbul", "state": "Istanbul", "country": "Turkey", "countrySlug": "tr", "waqiId": "istanbul", "url": "/air-quality/tr/istanbul" },
-  { "name": "Ankara", "slug": "ankara", "state": "Ankara", "country": "Turkey", "countrySlug": "tr", "waqiId": "ankara", "url": "/air-quality/tr/ankara" },
-  { "name": "Moscow", "slug": "moscow", "state": "Moscow", "country": "Russia", "countrySlug": "ru", "waqiId": "moscow", "url": "/air-quality/ru/moscow" },
-  { "name": "Saint Petersburg", "slug": "saint-petersburg", "state": "Saint Petersburg", "country": "Russia", "countrySlug": "ru", "waqiId": "saint petersburg", "url": "/air-quality/ru/saint-petersburg" },
-  { "name": "Kyiv", "slug": "kyiv", "state": "Kyiv", "country": "Ukraine", "countrySlug": "ua", "waqiId": "kyiv", "url": "/air-quality/ua/kyiv" },
-  { "name": "São Paulo", "slug": "sao-paulo", "state": "São Paulo", "country": "Brazil", "countrySlug": "br", "waqiId": "sao paulo", "url": "/air-quality/br/sao-paulo" },
-  { "name": "Rio de Janeiro", "slug": "rio-de-janeiro", "state": "Rio de Janeiro", "country": "Brazil", "countrySlug": "br", "waqiId": "rio de janeiro", "url": "/air-quality/br/rio-de-janeiro" },
-  { "name": "Brasília", "slug": "brasilia", "state": "Federal District", "country": "Brazil", "countrySlug": "br", "waqiId": "brasilia", "url": "/air-quality/br/brasilia" },
-  { "name": "Salvador", "slug": "salvador-ba", "state": "Bahia", "country": "Brazil", "countrySlug": "br", "waqiId": "salvador", "url": "/air-quality/br/salvador-ba" },
-  { "name": "Fortaleza", "slug": "fortaleza", "state": "Ceará", "country": "Brazil", "countrySlug": "br", "waqiId": "fortaleza", "url": "/air-quality/br/fortaleza" },
-  { "name": "Manaus", "slug": "manaus", "state": "Amazonas", "country": "Brazil", "countrySlug": "br", "waqiId": "manaus", "url": "/air-quality/br/manaus" },
-  { "name": "Buenos Aires", "slug": "buenos-aires", "state": "Buenos Aires", "country": "Argentina", "countrySlug": "ar", "waqiId": "@10051", "url": "/air-quality/ar/buenos-aires" },
-  { "name": "Córdoba", "slug": "cordoba-ar", "state": "Córdoba", "country": "Argentina", "countrySlug": "ar", "waqiId": "cordoba", "url": "/air-quality/ar/cordoba-ar" },
-  { "name": "Santiago", "slug": "santiago", "state": "Santiago", "country": "Chile", "countrySlug": "cl", "waqiId": "santiago", "url": "/air-quality/cl/santiago" },
-  { "name": "Lima", "slug": "lima", "state": "Lima", "country": "Peru", "countrySlug": "pe", "waqiId": "lima", "url": "/air-quality/pe/lima" },
-  { "name": "Bogotá", "slug": "bogota", "state": "Cundinamarca", "country": "Colombia", "countrySlug": "co", "waqiId": "bogota", "url": "/air-quality/co/bogota" },
-  { "name": "Medellín", "slug": "medellin", "state": "Antioquia", "country": "Colombia", "countrySlug": "co", "waqiId": "medellin", "url": "/air-quality/co/medellin" },
-  { "name": "Caracas", "slug": "caracas", "state": "Capital District", "country": "Venezuela", "countrySlug": "ve", "waqiId": "caracas", "url": "/air-quality/ve/caracas" },
-  { "name": "Quito", "slug": "quito", "state": "Pichincha", "country": "Ecuador", "countrySlug": "ec", "waqiId": "quito", "url": "/air-quality/ec/quito" },
-  { "name": "Mexico City", "slug": "mexico-city", "state": "Mexico City", "country": "Mexico", "countrySlug": "mx", "waqiId": "mexico city", "url": "/air-quality/mx/mexico-city" },
-  { "name": "Guadalajara", "slug": "guadalajara", "state": "Jalisco", "country": "Mexico", "countrySlug": "mx", "waqiId": "guadalajara", "url": "/air-quality/mx/guadalajara" },
-  { "name": "Monterrey", "slug": "monterrey", "state": "Nuevo León", "country": "Mexico", "countrySlug": "mx", "waqiId": "monterrey", "url": "/air-quality/mx/monterrey" },
-  { "name": "Sydney", "slug": "sydney", "state": "New South Wales", "country": "Australia", "countrySlug": "au", "waqiId": "sydney", "url": "/air-quality/au/sydney" },
-  { "name": "Melbourne", "slug": "melbourne", "state": "Victoria", "country": "Australia", "countrySlug": "au", "waqiId": "melbourne", "url": "/air-quality/au/melbourne" },
-  { "name": "Brisbane", "slug": "brisbane", "state": "Queensland", "country": "Australia", "countrySlug": "au", "waqiId": "brisbane", "url": "/air-quality/au/brisbane" },
-  { "name": "Perth", "slug": "perth", "state": "Western Australia", "country": "Australia", "countrySlug": "au", "waqiId": "perth", "url": "/air-quality/au/perth" },
-  { "name": "Adelaide", "slug": "adelaide", "state": "South Australia", "country": "Australia", "countrySlug": "au", "waqiId": "adelaide", "url": "/air-quality/au/adelaide" },
-  { "name": "Auckland", "slug": "auckland", "state": "Auckland", "country": "New Zealand", "countrySlug": "nz", "waqiId": "auckland", "url": "/air-quality/nz/auckland" },
-  { "name": "Wellington", "slug": "wellington", "state": "Wellington", "country": "New Zealand", "countrySlug": "nz", "waqiId": "wellington", "url": "/air-quality/nz/wellington" },
-  { "name": "Toronto", "slug": "toronto", "state": "Ontario", "country": "Canada", "countrySlug": "ca", "waqiId": "toronto", "url": "/air-quality/ca/toronto" },
-  { "name": "Vancouver", "slug": "vancouver", "state": "British Columbia", "country": "Canada", "countrySlug": "ca", "waqiId": "vancouver", "url": "/air-quality/ca/vancouver" },
-  { "name": "Montreal", "slug": "montreal", "state": "Quebec", "country": "Canada", "countrySlug": "ca", "waqiId": "montreal", "url": "/air-quality/ca/montreal" },
-  { "name": "Calgary", "slug": "calgary", "state": "Alberta", "country": "Canada", "countrySlug": "ca", "waqiId": "calgary", "url": "/air-quality/ca/calgary" },
-  { "name": "Ottawa", "slug": "ottawa", "state": "Ontario", "country": "Canada", "countrySlug": "ca", "waqiId": "ottawa", "url": "/air-quality/ca/ottawa" },
-  { "name": "Edmonton", "slug": "edmonton", "state": "Alberta", "country": "Canada", "countrySlug": "ca", "waqiId": "edmonton", "url": "/air-quality/ca/edmonton" },
-  { "name": "Taipei", "slug": "taipei", "state": "Taipei", "country": "Taiwan", "countrySlug": "tw", "waqiId": "taipei", "url": "/air-quality/tw/taipei" },
-  { "name": "Kaohsiung", "slug": "kaohsiung", "state": "Kaohsiung", "country": "Taiwan", "countrySlug": "tw", "waqiId": "kaohsiung", "url": "/air-quality/tw/kaohsiung" },
-  { "name": "Hong Kong", "slug": "hong-kong", "state": "Hong Kong", "country": "Hong Kong", "countrySlug": "hk", "waqiId": "hong kong", "url": "/air-quality/hk/hong-kong" },
-  { "name": "Macau", "slug": "macau", "state": "Macau", "country": "Macau", "countrySlug": "mo", "waqiId": "macau", "url": "/air-quality/mo/macau" },
-  { "name": "Ulaanbaatar", "slug": "ulaanbaatar", "state": "Ulaanbaatar", "country": "Mongolia", "countrySlug": "mn", "waqiId": "ulaanbaatar", "url": "/air-quality/mn/ulaanbaatar" },
-  { "name": "Tashkent", "slug": "tashkent", "state": "Tashkent", "country": "Uzbekistan", "countrySlug": "uz", "waqiId": "tashkent", "url": "/air-quality/uz/tashkent" },
-  { "name": "Almaty", "slug": "almaty", "state": "Almaty", "country": "Kazakhstan", "countrySlug": "kz", "waqiId": "almaty", "url": "/air-quality/kz/almaty" },
-  { "name": "Tehran", "slug": "tehran", "state": "Tehran", "country": "Iran", "countrySlug": "ir", "waqiId": "tehran", "url": "/air-quality/ir/tehran" },
-  { "name": "Baghdad", "slug": "baghdad", "state": "Baghdad", "country": "Iraq", "countrySlug": "iq", "waqiId": "baghdad", "url": "/air-quality/iq/baghdad" },
-  { "name": "Beirut", "slug": "beirut", "state": "Beirut", "country": "Lebanon", "countrySlug": "lb", "waqiId": "beirut", "url": "/air-quality/lb/beirut" },
-  { "name": "Amman", "slug": "amman", "state": "Amman", "country": "Jordan", "countrySlug": "jo", "waqiId": "amman", "url": "/air-quality/jo/amman" },
-  { "name": "Muscat", "slug": "muscat", "state": "Muscat", "country": "Oman", "countrySlug": "om", "waqiId": "muscat", "url": "/air-quality/om/muscat" },
-  { "name": "Baku", "slug": "baku", "state": "Baku", "country": "Azerbaijan", "countrySlug": "az", "waqiId": "baku", "url": "/air-quality/az/baku" },
-  { "name": "Tbilisi", "slug": "tbilisi", "state": "Tbilisi", "country": "Georgia", "countrySlug": "ge", "waqiId": "tbilisi", "url": "/air-quality/ge/tbilisi" },
-  { "name": "Yerevan", "slug": "yerevan", "state": "Yerevan", "country": "Armenia", "countrySlug": "am", "waqiId": "yerevan", "url": "/air-quality/am/yerevan" },
-  { "name": "Minsk", "slug": "minsk", "state": "Minsk", "country": "Belarus", "countrySlug": "by", "waqiId": "minsk", "url": "/air-quality/by/minsk" },
-  { "name": "Sofia", "slug": "sofia", "state": "Sofia City", "country": "Bulgaria", "countrySlug": "bg", "waqiId": "sofia", "url": "/air-quality/bg/sofia" },
-  { "name": "Belgrade", "slug": "belgrade", "state": "Belgrade", "country": "Serbia", "countrySlug": "rs", "waqiId": "belgrade", "url": "/air-quality/rs/belgrade" },
-  { "name": "Zagreb", "slug": "zagreb", "state": "Zagreb County", "country": "Croatia", "countrySlug": "hr", "waqiId": "zagreb", "url": "/air-quality/hr/zagreb" },
-  { "name": "Skopje", "slug": "skopje", "state": "Skopje", "country": "North Macedonia", "countrySlug": "mk", "waqiId": "skopje", "url": "/air-quality/mk/skopje" },
-  { "name": "Sarajevo", "slug": "sarajevo", "state": "Sarajevo Canton", "country": "Bosnia and Herzegovina", "countrySlug": "ba", "waqiId": "sarajevo", "url": "/air-quality/ba/sarajevo" },
-  { "name": "Tirana", "slug": "tirana", "state": "Tirana County", "country": "Albania", "countrySlug": "al", "waqiId": "tirana", "url": "/air-quality/al/tirana" },
-  { "name": "Riga", "slug": "riga", "state": "Riga", "country": "Latvia", "countrySlug": "lv", "waqiId": "riga", "url": "/air-quality/lv/riga" },
-  { "name": "Tallinn", "slug": "tallinn", "state": "Harju County", "country": "Estonia", "countrySlug": "ee", "waqiId": "tallinn", "url": "/air-quality/ee/tallinn" },
-  { "name": "Vilnius", "slug": "vilnius", "state": "Vilnius County", "country": "Lithuania", "countrySlug": "lt", "waqiId": "vilnius", "url": "/air-quality/lt/vilnius" },
-  { "name": "Bratislava", "slug": "bratislava", "state": "Bratislava Region", "country": "Slovakia", "countrySlug": "sk", "waqiId": "bratislava", "url": "/air-quality/sk/bratislava" },
-  { "name": "Ljubljana", "slug": "ljubljana", "state": "Ljubljana Urban Municipality", "country": "Slovenia", "countrySlug": "si", "waqiId": "ljubljana", "url": "/air-quality/si/ljubljana" },
-  { "name": "Podgorica", "slug": "podgorica", "state": "Podgorica Municipality", "country": "Montenegro", "countrySlug": "me", "waqiId": "podgorica", "url": "/air-quality/me/podgorica" },
-  { "name": "Chisinau", "slug": "chisinau", "state": "Chisinau", "country": "Moldova", "countrySlug": "md", "waqiId": "chisinau", "url": "/air-quality/md/chisinau" },
-  { "name": "Yekaterinburg", "slug": "yekaterinburg", "state": "Sverdlovsk Oblast", "country": "Russia", "countrySlug": "ru", "waqiId": "yekaterinburg", "url": "/air-quality/ru/yekaterinburg" },
-  { "name": "Novosibirsk", "slug": "novosibirsk", "state": "Novosibirsk Oblast", "country": "Russia", "countrySlug": "ru", "waqiId": "novosibirsk", "url": "/air-quality/ru/novosibirsk" },
-  { "name": "Phnom Penh", "slug": "phnom-penh", "state": "Phnom Penh", "country": "Cambodia", "countrySlug": "kh", "waqiId": "phnom penh", "url": "/air-quality/kh/phnom-penh" },
-  { "name": "Yangon", "slug": "yangon", "state": "Yangon", "country": "Myanmar", "countrySlug": "mm", "waqiId": "yangon", "url": "/air-quality/mm/yangon" },
-  { "name": "Vientiane", "slug": "vientiane", "state": "Vientiane Prefecture", "country": "Laos", "countrySlug": "la", "waqiId": "vientiane", "url": "/air-quality/la/vientiane" },
-  { "name": "Udon Thani", "slug": "udon-thani", "state": "Udon Thani", "country": "Thailand", "countrySlug": "th", "waqiId": "udon thani", "url": "/air-quality/th/udon-thani" },
-  { "name": "Nanjing", "slug": "nanjing", "state": "Jiangsu", "country": "China", "countrySlug": "cn", "waqiId": "nanjing", "url": "/air-quality/cn/nanjing" },
-  { "name": "Tianjin", "slug": "tianjin", "state": "Tianjin", "country": "China", "countrySlug": "cn", "waqiId": "tianjin", "url": "/air-quality/cn/tianjin" },
-  { "name": "Harbin", "slug": "harbin", "state": "Heilongjiang", "country": "China", "countrySlug": "cn", "waqiId": "harbin", "url": "/air-quality/cn/harbin" },
-  { "name": "Zhengzhou", "slug": "zhengzhou", "state": "Henan", "country": "China", "countrySlug": "cn", "waqiId": "zhengzhou", "url": "/air-quality/cn/zhengzhou" },
-  { "name": "Shenyang", "slug": "shenyang", "state": "Liaoning", "country": "China", "countrySlug": "cn", "waqiId": "shenyang", "url": "/air-quality/cn/shenyang" },
-  { "name": "Hangzhou", "slug": "hangzhou", "state": "Zhejiang", "country": "China", "countrySlug": "cn", "waqiId": "hangzhou", "url": "/air-quality/cn/hangzhou" },
-  { "name": "Kunming", "slug": "kunming", "state": "Yunnan", "country": "China", "countrySlug": "cn", "waqiId": "kunming", "url": "/air-quality/cn/kunming" },
-  { "name": "Dakar", "slug": "dakar", "state": "Dakar", "country": "Senegal", "countrySlug": "sn", "waqiId": "dakar", "url": "/air-quality/sn/dakar" },
-  { "name": "Kampala", "slug": "kampala", "state": "Central Region", "country": "Uganda", "countrySlug": "ug", "waqiId": "kampala", "url": "/air-quality/ug/kampala" },
-  { "name": "Dar es Salaam", "slug": "dar-es-salaam", "state": "Dar es Salaam", "country": "Tanzania", "countrySlug": "tz", "waqiId": "dar es salaam", "url": "/air-quality/tz/dar-es-salaam" },
-  { "name": "Khartoum", "slug": "khartoum", "state": "Khartoum", "country": "Sudan", "countrySlug": "sd", "waqiId": "khartoum", "url": "/air-quality/sd/khartoum" },
-  { "name": "Luanda", "slug": "luanda", "state": "Luanda", "country": "Angola", "countrySlug": "ao", "waqiId": "luanda", "url": "/air-quality/ao/luanda" },
-  { "name": "Kinshasa", "slug": "kinshasa", "state": "Kinshasa", "country": "DR Congo", "countrySlug": "cd", "waqiId": "kinshasa", "url": "/air-quality/cd/kinshasa" },
-  { "name": "Harare", "slug": "harare", "state": "Harare", "country": "Zimbabwe", "countrySlug": "zw", "waqiId": "harare", "url": "/air-quality/zw/harare" },
-  { "name": "Lusaka", "slug": "lusaka", "state": "Lusaka", "country": "Zambia", "countrySlug": "zm", "waqiId": "lusaka", "url": "/air-quality/zm/lusaka" },
-  { "name": "Maputo", "slug": "maputo", "state": "Maputo", "country": "Mozambique", "countrySlug": "mz", "waqiId": "maputo", "url": "/air-quality/mz/maputo" },
-  { "name": "Durban", "slug": "durban", "state": "KwaZulu-Natal", "country": "South Africa", "countrySlug": "za", "waqiId": "durban", "url": "/air-quality/za/durban" },
-  { "name": "Pretoria", "slug": "pretoria", "state": "Gauteng", "country": "South Africa", "countrySlug": "za", "waqiId": "pretoria", "url": "/air-quality/za/pretoria" },
-  { "name": "Port Elizabeth", "slug": "port-elizabeth", "state": "Eastern Cape", "country": "South Africa", "countrySlug": "za", "waqiId": "port elizabeth", "url": "/air-quality/za/port-elizabeth" },
-  { "name": "Suzhou", "slug": "suzhou", "state": "Jiangsu", "country": "China", "countrySlug": "cn", "waqiId": "suzhou", "url": "/air-quality/cn/suzhou" },
-  { "name": "Qingdao", "slug": "qingdao", "state": "Shandong", "country": "China", "countrySlug": "cn", "waqiId": "qingdao", "url": "/air-quality/cn/qingdao" },
-  { "name": "Dalian", "slug": "dalian", "state": "Liaoning", "country": "China", "countrySlug": "cn", "waqiId": "dalian", "url": "/air-quality/cn/dalian" },
-  { "name": "Changsha", "slug": "changsha", "state": "Hunan", "country": "China", "countrySlug": "cn", "waqiId": "changsha", "url": "/air-quality/cn/changsha" },
-  { "name": "Xiamen", "slug": "xiamen", "state": "Fujian", "country": "China", "countrySlug": "cn", "waqiId": "xiamen", "url": "/air-quality/cn/xiamen" },
-  { "name": "Fuzhou", "slug": "fuzhou", "state": "Fujian", "country": "China", "countrySlug": "cn", "waqiId": "fuzhou", "url": "/air-quality/cn/fuzhou" },
-  { "name": "Sapporo", "slug": "sapporo", "state": "Hokkaido", "country": "Japan", "countrySlug": "jp", "waqiId": "sapporo", "url": "/air-quality/jp/sapporo" },
-  { "name": "Hiroshima", "slug": "hiroshima", "state": "Hiroshima", "country": "Japan", "countrySlug": "jp", "waqiId": "hiroshima", "url": "/air-quality/jp/hiroshima" },
-  { "name": "Kobe", "slug": "kobe", "state": "Hyogo", "country": "Japan", "countrySlug": "jp", "waqiId": "kobe", "url": "/air-quality/jp/kobe" },
-  { "name": "Daegu", "slug": "daegu", "state": "Daegu", "country": "South Korea", "countrySlug": "kr", "waqiId": "daegu", "url": "/air-quality/kr/daegu" },
-  { "name": "Daejeon", "slug": "daejeon", "state": "Daejeon", "country": "South Korea", "countrySlug": "kr", "waqiId": "daejeon", "url": "/air-quality/kr/daejeon" },
-  { "name": "Gwangju", "slug": "gwangju", "state": "Gwangju", "country": "South Korea", "countrySlug": "kr", "waqiId": "gwangju", "url": "/air-quality/kr/gwangju" },
-  { "name": "Bandung", "slug": "bandung", "state": "West Java", "country": "Indonesia", "countrySlug": "id", "waqiId": "bandung", "url": "/air-quality/id/bandung" },
-  { "name": "Medan", "slug": "medan", "state": "North Sumatra", "country": "Indonesia", "countrySlug": "id", "waqiId": "medan", "url": "/air-quality/id/medan" },
-  { "name": "Makassar", "slug": "makassar", "state": "South Sulawesi", "country": "Indonesia", "countrySlug": "id", "waqiId": "makassar", "url": "/air-quality/id/makassar" },
-  { "name": "Cebu City", "slug": "cebu-city", "state": "Central Visayas", "country": "Philippines", "countrySlug": "ph", "waqiId": "cebu", "url": "/air-quality/ph/cebu-city" },
-  { "name": "Davao", "slug": "davao", "state": "Davao del Sur", "country": "Philippines", "countrySlug": "ph", "waqiId": "davao", "url": "/air-quality/ph/davao" },
-  { "name": "Da Nang", "slug": "da-nang", "state": "Da Nang", "country": "Vietnam", "countrySlug": "vn", "waqiId": "da nang", "url": "/air-quality/vn/da-nang" },
-  { "name": "Penang", "slug": "penang", "state": "Penang", "country": "Malaysia", "countrySlug": "my", "waqiId": "penang", "url": "/air-quality/my/penang" },
-  { "name": "Johor Bahru", "slug": "johor-bahru", "state": "Johor", "country": "Malaysia", "countrySlug": "my", "waqiId": "johor bahru", "url": "/air-quality/my/johor-bahru" },
-  { "name": "Colombo", "slug": "colombo-lk", "state": "Western", "country": "Sri Lanka", "countrySlug": "lk", "waqiId": "colombo", "url": "/air-quality/lk/colombo-lk" },
-  { "name": "Kabul", "slug": "kabul", "state": "Kabul", "country": "Afghanistan", "countrySlug": "af", "waqiId": "kabul", "url": "/air-quality/af/kabul" },
-  { "name": "Dhaka", "slug": "dhaka-bd", "state": "Dhaka", "country": "Bangladesh", "countrySlug": "bd", "waqiId": "dhaka", "url": "/air-quality/bd/dhaka-bd" },
-  { "name": "Chittagong", "slug": "chittagong", "state": "Chattogram", "country": "Bangladesh", "countrySlug": "bd", "waqiId": "chittagong", "url": "/air-quality/bd/chittagong" },
-  { "name": "Peshawar", "slug": "peshawar", "state": "Khyber Pakhtunkhwa", "country": "Pakistan", "countrySlug": "pk", "waqiId": "peshawar", "url": "/air-quality/pk/peshawar" },
-  { "name": "Faisalabad", "slug": "faisalabad", "state": "Punjab", "country": "Pakistan", "countrySlug": "pk", "waqiId": "faisalabad", "url": "/air-quality/pk/faisalabad" }
+  {
+    "name": "New York",
+    "slug": "new-york-ny",
+    "state": "New York",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "new york",
+    "url": "/air-quality/us/new-york-ny"
+  },
+  {
+    "name": "Los Angeles",
+    "slug": "los-angeles-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "los angeles",
+    "url": "/air-quality/us/los-angeles-ca"
+  },
+  {
+    "name": "Chicago",
+    "slug": "chicago-il",
+    "state": "Illinois",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "chicago",
+    "url": "/air-quality/us/chicago-il"
+  },
+  {
+    "name": "Houston",
+    "slug": "houston-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "houston",
+    "url": "/air-quality/us/houston-tx"
+  },
+  {
+    "name": "Phoenix",
+    "slug": "phoenix-az",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "phoenix",
+    "url": "/air-quality/us/phoenix-az"
+  },
+  {
+    "name": "Philadelphia",
+    "slug": "philadelphia-pa",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "philadelphia",
+    "url": "/air-quality/us/philadelphia-pa"
+  },
+  {
+    "name": "San Antonio",
+    "slug": "san-antonio-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "san antonio",
+    "url": "/air-quality/us/san-antonio-tx"
+  },
+  {
+    "name": "San Diego",
+    "slug": "san-diego-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "san diego",
+    "url": "/air-quality/us/san-diego-ca"
+  },
+  {
+    "name": "Dallas",
+    "slug": "dallas-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "dallas",
+    "url": "/air-quality/us/dallas-tx"
+  },
+  {
+    "name": "San Jose",
+    "slug": "san-jose-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "san jose",
+    "url": "/air-quality/us/san-jose-ca"
+  },
+  {
+    "name": "Austin",
+    "slug": "austin-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "austin",
+    "url": "/air-quality/us/austin-tx"
+  },
+  {
+    "name": "Jacksonville",
+    "slug": "jacksonville-fl",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "jacksonville",
+    "url": "/air-quality/us/jacksonville-fl"
+  },
+  {
+    "name": "Fort Worth",
+    "slug": "fort-worth-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "fort worth",
+    "url": "/air-quality/us/fort-worth-tx"
+  },
+  {
+    "name": "Columbus",
+    "slug": "columbus-oh",
+    "state": "Ohio",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "columbus",
+    "url": "/air-quality/us/columbus-oh"
+  },
+  {
+    "name": "Indianapolis",
+    "slug": "indianapolis-in",
+    "state": "Indiana",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "indianapolis",
+    "url": "/air-quality/us/indianapolis-in"
+  },
+  {
+    "name": "Charlotte",
+    "slug": "charlotte-nc",
+    "state": "North Carolina",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "charlotte",
+    "url": "/air-quality/us/charlotte-nc"
+  },
+  {
+    "name": "San Francisco",
+    "slug": "san-francisco-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "san francisco",
+    "url": "/air-quality/us/san-francisco-ca"
+  },
+  {
+    "name": "Seattle",
+    "slug": "seattle-wa",
+    "state": "Washington",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "seattle",
+    "url": "/air-quality/us/seattle-wa"
+  },
+  {
+    "name": "Denver",
+    "slug": "denver-co",
+    "state": "Colorado",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "denver",
+    "url": "/air-quality/us/denver-co"
+  },
+  {
+    "name": "Nashville",
+    "slug": "nashville-tn",
+    "state": "Tennessee",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "nashville",
+    "url": "/air-quality/us/nashville-tn"
+  },
+  {
+    "name": "Oklahoma City",
+    "slug": "oklahoma-city-ok",
+    "state": "Oklahoma",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "oklahoma city",
+    "url": "/air-quality/us/oklahoma-city-ok"
+  },
+  {
+    "name": "El Paso",
+    "slug": "el-paso-tx",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "el paso",
+    "url": "/air-quality/us/el-paso-tx"
+  },
+  {
+    "name": "Washington DC",
+    "slug": "washington-dc",
+    "state": "District of Columbia",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "washington dc",
+    "url": "/air-quality/us/washington-dc"
+  },
+  {
+    "name": "Las Vegas",
+    "slug": "las-vegas-nv",
+    "state": "Nevada",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "las vegas",
+    "url": "/air-quality/us/las-vegas-nv"
+  },
+  {
+    "name": "Louisville",
+    "slug": "louisville-ky",
+    "state": "Kentucky",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "louisville",
+    "url": "/air-quality/us/louisville-ky"
+  },
+  {
+    "name": "Memphis",
+    "slug": "memphis-tn",
+    "state": "Tennessee",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "memphis",
+    "url": "/air-quality/us/memphis-tn"
+  },
+  {
+    "name": "Portland",
+    "slug": "portland-or",
+    "state": "Oregon",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "portland",
+    "url": "/air-quality/us/portland-or"
+  },
+  {
+    "name": "Baltimore",
+    "slug": "baltimore-md",
+    "state": "Maryland",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "baltimore",
+    "url": "/air-quality/us/baltimore-md"
+  },
+  {
+    "name": "Milwaukee",
+    "slug": "milwaukee-wi",
+    "state": "Wisconsin",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "milwaukee",
+    "url": "/air-quality/us/milwaukee-wi"
+  },
+  {
+    "name": "Albuquerque",
+    "slug": "albuquerque-nm",
+    "state": "New Mexico",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "albuquerque",
+    "url": "/air-quality/us/albuquerque-nm"
+  },
+  {
+    "name": "Tucson",
+    "slug": "tucson-az",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "tucson",
+    "url": "/air-quality/us/tucson-az"
+  },
+  {
+    "name": "Fresno",
+    "slug": "fresno-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "fresno",
+    "url": "/air-quality/us/fresno-ca"
+  },
+  {
+    "name": "Sacramento",
+    "slug": "sacramento-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "sacramento",
+    "url": "/air-quality/us/sacramento-ca"
+  },
+  {
+    "name": "Mesa",
+    "slug": "mesa-az",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "mesa",
+    "url": "/air-quality/us/mesa-az"
+  },
+  {
+    "name": "Atlanta",
+    "slug": "atlanta-ga",
+    "state": "Georgia",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "atlanta",
+    "url": "/air-quality/us/atlanta-ga"
+  },
+  {
+    "name": "Omaha",
+    "slug": "omaha-ne",
+    "state": "Nebraska",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "omaha",
+    "url": "/air-quality/us/omaha-ne"
+  },
+  {
+    "name": "Colorado Springs",
+    "slug": "colorado-springs-co",
+    "state": "Colorado",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "colorado springs",
+    "url": "/air-quality/us/colorado-springs-co"
+  },
+  {
+    "name": "Raleigh",
+    "slug": "raleigh-nc",
+    "state": "North Carolina",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "raleigh",
+    "url": "/air-quality/us/raleigh-nc"
+  },
+  {
+    "name": "Miami",
+    "slug": "miami-fl",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "miami",
+    "url": "/air-quality/us/miami-fl"
+  },
+  {
+    "name": "Minneapolis",
+    "slug": "minneapolis-mn",
+    "state": "Minnesota",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "minneapolis",
+    "url": "/air-quality/us/minneapolis-mn"
+  },
+  {
+    "name": "Detroit",
+    "slug": "detroit-mi",
+    "state": "Michigan",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "detroit",
+    "url": "/air-quality/us/detroit-mi"
+  },
+  {
+    "name": "Boston",
+    "slug": "boston-ma",
+    "state": "Massachusetts",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "boston",
+    "url": "/air-quality/us/boston-ma"
+  },
+  {
+    "name": "Pittsburgh",
+    "slug": "pittsburgh-pa",
+    "state": "Pennsylvania",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "pittsburgh",
+    "url": "/air-quality/us/pittsburgh-pa"
+  },
+  {
+    "name": "Salt Lake City",
+    "slug": "salt-lake-city-ut",
+    "state": "Utah",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "salt lake city",
+    "url": "/air-quality/us/salt-lake-city-ut"
+  },
+  {
+    "name": "New Orleans",
+    "slug": "new-orleans-la",
+    "state": "Louisiana",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "new orleans",
+    "url": "/air-quality/us/new-orleans-la"
+  },
+  {
+    "name": "Tampa",
+    "slug": "tampa-fl",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "tampa",
+    "url": "/air-quality/us/tampa-fl"
+  },
+  {
+    "name": "Cleveland",
+    "slug": "cleveland-oh",
+    "state": "Ohio",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "cleveland",
+    "url": "/air-quality/us/cleveland-oh"
+  },
+  {
+    "name": "Kansas City",
+    "slug": "kansas-city-mo",
+    "state": "Missouri",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "kansas city",
+    "url": "/air-quality/us/kansas-city-mo"
+  },
+  {
+    "name": "Bakersfield",
+    "slug": "bakersfield-ca",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "bakersfield",
+    "url": "/air-quality/us/bakersfield-ca"
+  },
+  {
+    "name": "Honolulu",
+    "slug": "honolulu-hi",
+    "state": "Hawaii",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "honolulu",
+    "url": "/air-quality/us/honolulu-hi"
+  },
+  {
+    "name": "London",
+    "slug": "london",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "london",
+    "url": "/air-quality/uk/london"
+  },
+  {
+    "name": "Manchester",
+    "slug": "manchester",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "manchester",
+    "url": "/air-quality/uk/manchester"
+  },
+  {
+    "name": "Birmingham",
+    "slug": "birmingham-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "birmingham",
+    "url": "/air-quality/uk/birmingham-uk"
+  },
+  {
+    "name": "Glasgow",
+    "slug": "glasgow",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "glasgow",
+    "url": "/air-quality/uk/glasgow"
+  },
+  {
+    "name": "Edinburgh",
+    "slug": "edinburgh",
+    "state": "Scotland",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "edinburgh",
+    "url": "/air-quality/uk/edinburgh"
+  },
+  {
+    "name": "Paris",
+    "slug": "paris",
+    "state": "Île-de-France",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "paris",
+    "url": "/air-quality/fr/paris"
+  },
+  {
+    "name": "Lyon",
+    "slug": "lyon",
+    "state": "Auvergne-Rhône-Alpes",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "lyon",
+    "url": "/air-quality/fr/lyon"
+  },
+  {
+    "name": "Marseille",
+    "slug": "marseille",
+    "state": "Provence-Alpes-Côte d'Azur",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "marseille",
+    "url": "/air-quality/fr/marseille"
+  },
+  {
+    "name": "Berlin",
+    "slug": "berlin",
+    "state": "Berlin",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "berlin",
+    "url": "/air-quality/de/berlin"
+  },
+  {
+    "name": "Hamburg",
+    "slug": "hamburg",
+    "state": "Hamburg",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "hamburg",
+    "url": "/air-quality/de/hamburg"
+  },
+  {
+    "name": "Munich",
+    "slug": "munich",
+    "state": "Bavaria",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "munich",
+    "url": "/air-quality/de/munich"
+  },
+  {
+    "name": "Frankfurt",
+    "slug": "frankfurt",
+    "state": "Hesse",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "frankfurt",
+    "url": "/air-quality/de/frankfurt"
+  },
+  {
+    "name": "Madrid",
+    "slug": "madrid",
+    "state": "Community of Madrid",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "madrid",
+    "url": "/air-quality/es/madrid"
+  },
+  {
+    "name": "Barcelona",
+    "slug": "barcelona",
+    "state": "Catalonia",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "barcelona",
+    "url": "/air-quality/es/barcelona"
+  },
+  {
+    "name": "Seville",
+    "slug": "seville",
+    "state": "Andalusia",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "seville",
+    "url": "/air-quality/es/seville"
+  },
+  {
+    "name": "Rome",
+    "slug": "rome",
+    "state": "Lazio",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "rome",
+    "url": "/air-quality/it/rome"
+  },
+  {
+    "name": "Milan",
+    "slug": "milan",
+    "state": "Lombardy",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "milan",
+    "url": "/air-quality/it/milan"
+  },
+  {
+    "name": "Naples",
+    "slug": "naples",
+    "state": "Campania",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "naples",
+    "url": "/air-quality/it/naples"
+  },
+  {
+    "name": "Amsterdam",
+    "slug": "amsterdam",
+    "state": "North Holland",
+    "country": "Netherlands",
+    "countrySlug": "nl",
+    "waqiId": "amsterdam",
+    "url": "/air-quality/nl/amsterdam"
+  },
+  {
+    "name": "Rotterdam",
+    "slug": "rotterdam",
+    "state": "South Holland",
+    "country": "Netherlands",
+    "countrySlug": "nl",
+    "waqiId": "rotterdam",
+    "url": "/air-quality/nl/rotterdam"
+  },
+  {
+    "name": "Brussels",
+    "slug": "brussels",
+    "state": "Brussels Capital",
+    "country": "Belgium",
+    "countrySlug": "be",
+    "waqiId": "brussels",
+    "url": "/air-quality/be/brussels"
+  },
+  {
+    "name": "Vienna",
+    "slug": "vienna",
+    "state": "Vienna",
+    "country": "Austria",
+    "countrySlug": "at",
+    "waqiId": "vienna",
+    "url": "/air-quality/at/vienna"
+  },
+  {
+    "name": "Zurich",
+    "slug": "zurich",
+    "state": "Zurich",
+    "country": "Switzerland",
+    "countrySlug": "ch",
+    "waqiId": "zurich",
+    "url": "/air-quality/ch/zurich"
+  },
+  {
+    "name": "Geneva",
+    "slug": "geneva",
+    "state": "Geneva",
+    "country": "Switzerland",
+    "countrySlug": "ch",
+    "waqiId": "geneva",
+    "url": "/air-quality/ch/geneva"
+  },
+  {
+    "name": "Stockholm",
+    "slug": "stockholm",
+    "state": "Stockholm County",
+    "country": "Sweden",
+    "countrySlug": "se",
+    "waqiId": "stockholm",
+    "url": "/air-quality/se/stockholm"
+  },
+  {
+    "name": "Oslo",
+    "slug": "oslo",
+    "state": "Oslo",
+    "country": "Norway",
+    "countrySlug": "no",
+    "waqiId": "oslo",
+    "url": "/air-quality/no/oslo"
+  },
+  {
+    "name": "Copenhagen",
+    "slug": "copenhagen",
+    "state": "Capital Region",
+    "country": "Denmark",
+    "countrySlug": "dk",
+    "waqiId": "copenhagen",
+    "url": "/air-quality/dk/copenhagen"
+  },
+  {
+    "name": "Helsinki",
+    "slug": "helsinki",
+    "state": "Uusimaa",
+    "country": "Finland",
+    "countrySlug": "fi",
+    "waqiId": "helsinki",
+    "url": "/air-quality/fi/helsinki"
+  },
+  {
+    "name": "Warsaw",
+    "slug": "warsaw",
+    "state": "Masovian",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "warsaw",
+    "url": "/air-quality/pl/warsaw"
+  },
+  {
+    "name": "Krakow",
+    "slug": "krakow",
+    "state": "Lesser Poland",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "krakow",
+    "url": "/air-quality/pl/krakow"
+  },
+  {
+    "name": "Prague",
+    "slug": "prague",
+    "state": "Prague",
+    "country": "Czech Republic",
+    "countrySlug": "cz",
+    "waqiId": "prague",
+    "url": "/air-quality/cz/prague"
+  },
+  {
+    "name": "Budapest",
+    "slug": "budapest",
+    "state": "Budapest",
+    "country": "Hungary",
+    "countrySlug": "hu",
+    "waqiId": "budapest",
+    "url": "/air-quality/hu/budapest"
+  },
+  {
+    "name": "Bucharest",
+    "slug": "bucharest",
+    "state": "Bucharest",
+    "country": "Romania",
+    "countrySlug": "ro",
+    "waqiId": "bucharest",
+    "url": "/air-quality/ro/bucharest"
+  },
+  {
+    "name": "Athens",
+    "slug": "athens",
+    "state": "Attica",
+    "country": "Greece",
+    "countrySlug": "gr",
+    "waqiId": "athens",
+    "url": "/air-quality/gr/athens"
+  },
+  {
+    "name": "Lisbon",
+    "slug": "lisbon",
+    "state": "Lisbon",
+    "country": "Portugal",
+    "countrySlug": "pt",
+    "waqiId": "lisbon",
+    "url": "/air-quality/pt/lisbon"
+  },
+  {
+    "name": "Dublin",
+    "slug": "dublin",
+    "state": "Leinster",
+    "country": "Ireland",
+    "countrySlug": "ie",
+    "waqiId": "dublin",
+    "url": "/air-quality/ie/dublin"
+  },
+  {
+    "name": "Beijing",
+    "slug": "beijing",
+    "state": "Beijing",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "beijing",
+    "url": "/air-quality/cn/beijing"
+  },
+  {
+    "name": "Shanghai",
+    "slug": "shanghai",
+    "state": "Shanghai",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "shanghai",
+    "url": "/air-quality/cn/shanghai"
+  },
+  {
+    "name": "Guangzhou",
+    "slug": "guangzhou",
+    "state": "Guangdong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "guangzhou",
+    "url": "/air-quality/cn/guangzhou"
+  },
+  {
+    "name": "Shenzhen",
+    "slug": "shenzhen",
+    "state": "Guangdong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "shenzhen",
+    "url": "/air-quality/cn/shenzhen"
+  },
+  {
+    "name": "Chengdu",
+    "slug": "chengdu",
+    "state": "Sichuan",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "chengdu",
+    "url": "/air-quality/cn/chengdu"
+  },
+  {
+    "name": "Wuhan",
+    "slug": "wuhan",
+    "state": "Hubei",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "wuhan",
+    "url": "/air-quality/cn/wuhan"
+  },
+  {
+    "name": "Xi'an",
+    "slug": "xian",
+    "state": "Shaanxi",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "xian",
+    "url": "/air-quality/cn/xian"
+  },
+  {
+    "name": "Tokyo",
+    "slug": "tokyo",
+    "state": "Tokyo",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "tokyo",
+    "url": "/air-quality/jp/tokyo"
+  },
+  {
+    "name": "Osaka",
+    "slug": "osaka",
+    "state": "Osaka",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "osaka",
+    "url": "/air-quality/jp/osaka"
+  },
+  {
+    "name": "Kyoto",
+    "slug": "kyoto",
+    "state": "Kyoto",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "kyoto",
+    "url": "/air-quality/jp/kyoto"
+  },
+  {
+    "name": "Nagoya",
+    "slug": "nagoya",
+    "state": "Aichi",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "nagoya",
+    "url": "/air-quality/jp/nagoya"
+  },
+  {
+    "name": "Fukuoka",
+    "slug": "fukuoka",
+    "state": "Fukuoka",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "fukuoka",
+    "url": "/air-quality/jp/fukuoka"
+  },
+  {
+    "name": "Seoul",
+    "slug": "seoul",
+    "state": "Seoul",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "seoul",
+    "url": "/air-quality/kr/seoul"
+  },
+  {
+    "name": "Busan",
+    "slug": "busan",
+    "state": "Busan",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "busan",
+    "url": "/air-quality/kr/busan"
+  },
+  {
+    "name": "Incheon",
+    "slug": "incheon",
+    "state": "Incheon",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "incheon",
+    "url": "/air-quality/kr/incheon"
+  },
+  {
+    "name": "Mumbai",
+    "slug": "mumbai",
+    "state": "Maharashtra",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "mumbai",
+    "url": "/air-quality/in/mumbai"
+  },
+  {
+    "name": "Delhi",
+    "slug": "delhi",
+    "state": "Delhi",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "delhi",
+    "url": "/air-quality/in/delhi"
+  },
+  {
+    "name": "Bangalore",
+    "slug": "bangalore",
+    "state": "Karnataka",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "bangalore",
+    "url": "/air-quality/in/bangalore"
+  },
+  {
+    "name": "Kolkata",
+    "slug": "kolkata",
+    "state": "West Bengal",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "kolkata",
+    "url": "/air-quality/in/kolkata"
+  },
+  {
+    "name": "Chennai",
+    "slug": "chennai",
+    "state": "Tamil Nadu",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "chennai",
+    "url": "/air-quality/in/chennai"
+  },
+  {
+    "name": "Hyderabad",
+    "slug": "hyderabad",
+    "state": "Telangana",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "hyderabad",
+    "url": "/air-quality/in/hyderabad"
+  },
+  {
+    "name": "Pune",
+    "slug": "pune",
+    "state": "Maharashtra",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "pune",
+    "url": "/air-quality/in/pune"
+  },
+  {
+    "name": "Ahmedabad",
+    "slug": "ahmedabad",
+    "state": "Gujarat",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "ahmedabad",
+    "url": "/air-quality/in/ahmedabad"
+  },
+  {
+    "name": "Jakarta",
+    "slug": "jakarta",
+    "state": "Jakarta",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "jakarta",
+    "url": "/air-quality/id/jakarta"
+  },
+  {
+    "name": "Surabaya",
+    "slug": "surabaya",
+    "state": "East Java",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "surabaya",
+    "url": "/air-quality/id/surabaya"
+  },
+  {
+    "name": "Bangkok",
+    "slug": "bangkok",
+    "state": "Bangkok",
+    "country": "Thailand",
+    "countrySlug": "th",
+    "waqiId": "bangkok",
+    "url": "/air-quality/th/bangkok"
+  },
+  {
+    "name": "Chiang Mai",
+    "slug": "chiang-mai",
+    "state": "Chiang Mai",
+    "country": "Thailand",
+    "countrySlug": "th",
+    "waqiId": "chiang mai",
+    "url": "/air-quality/th/chiang-mai"
+  },
+  {
+    "name": "Manila",
+    "slug": "manila",
+    "state": "Metro Manila",
+    "country": "Philippines",
+    "countrySlug": "ph",
+    "waqiId": "manila",
+    "url": "/air-quality/ph/manila"
+  },
+  {
+    "name": "Ho Chi Minh City",
+    "slug": "ho-chi-minh-city",
+    "state": "Ho Chi Minh",
+    "country": "Vietnam",
+    "countrySlug": "vn",
+    "waqiId": "@11346",
+    "url": "/air-quality/vn/ho-chi-minh-city"
+  },
+  {
+    "name": "Hanoi",
+    "slug": "hanoi",
+    "state": "Hanoi",
+    "country": "Vietnam",
+    "countrySlug": "vn",
+    "waqiId": "hanoi",
+    "url": "/air-quality/vn/hanoi"
+  },
+  {
+    "name": "Kuala Lumpur",
+    "slug": "kuala-lumpur",
+    "state": "Kuala Lumpur",
+    "country": "Malaysia",
+    "countrySlug": "my",
+    "waqiId": "kuala lumpur",
+    "url": "/air-quality/my/kuala-lumpur"
+  },
+  {
+    "name": "Singapore",
+    "slug": "singapore",
+    "state": "Singapore",
+    "country": "Singapore",
+    "countrySlug": "sg",
+    "waqiId": "singapore",
+    "url": "/air-quality/sg/singapore"
+  },
+  {
+    "name": "Dhaka",
+    "slug": "dhaka",
+    "state": "Dhaka",
+    "country": "Bangladesh",
+    "countrySlug": "bd",
+    "waqiId": "dhaka",
+    "url": "/air-quality/bd/dhaka"
+  },
+  {
+    "name": "Karachi",
+    "slug": "karachi",
+    "state": "Sindh",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "karachi",
+    "url": "/air-quality/pk/karachi"
+  },
+  {
+    "name": "Lahore",
+    "slug": "lahore",
+    "state": "Punjab",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "lahore",
+    "url": "/air-quality/pk/lahore"
+  },
+  {
+    "name": "Islamabad",
+    "slug": "islamabad",
+    "state": "Islamabad Capital Territory",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "islamabad",
+    "url": "/air-quality/pk/islamabad"
+  },
+  {
+    "name": "Kathmandu",
+    "slug": "kathmandu",
+    "state": "Bagmati",
+    "country": "Nepal",
+    "countrySlug": "np",
+    "waqiId": "kathmandu",
+    "url": "/air-quality/np/kathmandu"
+  },
+  {
+    "name": "Colombo",
+    "slug": "colombo",
+    "state": "Western",
+    "country": "Sri Lanka",
+    "countrySlug": "lk",
+    "waqiId": "colombo",
+    "url": "/air-quality/lk/colombo"
+  },
+  {
+    "name": "Cairo",
+    "slug": "cairo",
+    "state": "Cairo",
+    "country": "Egypt",
+    "countrySlug": "eg",
+    "waqiId": "cairo",
+    "url": "/air-quality/eg/cairo"
+  },
+  {
+    "name": "Alexandria",
+    "slug": "alexandria-eg",
+    "state": "Alexandria",
+    "country": "Egypt",
+    "countrySlug": "eg",
+    "waqiId": "alexandria",
+    "url": "/air-quality/eg/alexandria-eg"
+  },
+  {
+    "name": "Lagos",
+    "slug": "lagos",
+    "state": "Lagos",
+    "country": "Nigeria",
+    "countrySlug": "ng",
+    "waqiId": "lagos",
+    "url": "/air-quality/ng/lagos"
+  },
+  {
+    "name": "Abuja",
+    "slug": "abuja",
+    "state": "FCT",
+    "country": "Nigeria",
+    "countrySlug": "ng",
+    "waqiId": "abuja",
+    "url": "/air-quality/ng/abuja"
+  },
+  {
+    "name": "Nairobi",
+    "slug": "nairobi",
+    "state": "Nairobi",
+    "country": "Kenya",
+    "countrySlug": "ke",
+    "waqiId": "nairobi",
+    "url": "/air-quality/ke/nairobi"
+  },
+  {
+    "name": "Johannesburg",
+    "slug": "johannesburg",
+    "state": "Gauteng",
+    "country": "South Africa",
+    "countrySlug": "za",
+    "waqiId": "johannesburg",
+    "url": "/air-quality/za/johannesburg"
+  },
+  {
+    "name": "Cape Town",
+    "slug": "cape-town",
+    "state": "Western Cape",
+    "country": "South Africa",
+    "countrySlug": "za",
+    "waqiId": "cape town",
+    "url": "/air-quality/za/cape-town"
+  },
+  {
+    "name": "Accra",
+    "slug": "accra",
+    "state": "Greater Accra",
+    "country": "Ghana",
+    "countrySlug": "gh",
+    "waqiId": "accra",
+    "url": "/air-quality/gh/accra"
+  },
+  {
+    "name": "Addis Ababa",
+    "slug": "addis-ababa",
+    "state": "Addis Ababa",
+    "country": "Ethiopia",
+    "countrySlug": "et",
+    "waqiId": "addis ababa",
+    "url": "/air-quality/et/addis-ababa"
+  },
+  {
+    "name": "Casablanca",
+    "slug": "casablanca",
+    "state": "Casablanca-Settat",
+    "country": "Morocco",
+    "countrySlug": "ma",
+    "waqiId": "casablanca",
+    "url": "/air-quality/ma/casablanca"
+  },
+  {
+    "name": "Tunis",
+    "slug": "tunis",
+    "state": "Tunis",
+    "country": "Tunisia",
+    "countrySlug": "tn",
+    "waqiId": "tunis",
+    "url": "/air-quality/tn/tunis"
+  },
+  {
+    "name": "Algiers",
+    "slug": "algiers",
+    "state": "Algiers",
+    "country": "Algeria",
+    "countrySlug": "dz",
+    "waqiId": "algiers",
+    "url": "/air-quality/dz/algiers"
+  },
+  {
+    "name": "Dubai",
+    "slug": "dubai",
+    "state": "Dubai",
+    "country": "United Arab Emirates",
+    "countrySlug": "ae",
+    "waqiId": "dubai",
+    "url": "/air-quality/ae/dubai"
+  },
+  {
+    "name": "Abu Dhabi",
+    "slug": "abu-dhabi",
+    "state": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "countrySlug": "ae",
+    "waqiId": "abu dhabi",
+    "url": "/air-quality/ae/abu-dhabi"
+  },
+  {
+    "name": "Riyadh",
+    "slug": "riyadh",
+    "state": "Riyadh",
+    "country": "Saudi Arabia",
+    "countrySlug": "sa",
+    "waqiId": "riyadh",
+    "url": "/air-quality/sa/riyadh"
+  },
+  {
+    "name": "Jeddah",
+    "slug": "jeddah",
+    "state": "Mecca",
+    "country": "Saudi Arabia",
+    "countrySlug": "sa",
+    "waqiId": "jeddah",
+    "url": "/air-quality/sa/jeddah"
+  },
+  {
+    "name": "Kuwait City",
+    "slug": "kuwait-city",
+    "state": "Al Asimah",
+    "country": "Kuwait",
+    "countrySlug": "kw",
+    "waqiId": "kuwait city",
+    "url": "/air-quality/kw/kuwait-city"
+  },
+  {
+    "name": "Doha",
+    "slug": "doha",
+    "state": "Ad Dawhah",
+    "country": "Qatar",
+    "countrySlug": "qa",
+    "waqiId": "doha",
+    "url": "/air-quality/qa/doha"
+  },
+  {
+    "name": "Tel Aviv",
+    "slug": "tel-aviv",
+    "state": "Tel Aviv",
+    "country": "Israel",
+    "countrySlug": "il",
+    "waqiId": "tel aviv",
+    "url": "/air-quality/il/tel-aviv"
+  },
+  {
+    "name": "Istanbul",
+    "slug": "istanbul",
+    "state": "Istanbul",
+    "country": "Turkey",
+    "countrySlug": "tr",
+    "waqiId": "istanbul",
+    "url": "/air-quality/tr/istanbul"
+  },
+  {
+    "name": "Ankara",
+    "slug": "ankara",
+    "state": "Ankara",
+    "country": "Turkey",
+    "countrySlug": "tr",
+    "waqiId": "ankara",
+    "url": "/air-quality/tr/ankara"
+  },
+  {
+    "name": "Moscow",
+    "slug": "moscow",
+    "state": "Moscow",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "moscow",
+    "url": "/air-quality/ru/moscow"
+  },
+  {
+    "name": "Saint Petersburg",
+    "slug": "saint-petersburg",
+    "state": "Saint Petersburg",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "saint petersburg",
+    "url": "/air-quality/ru/saint-petersburg"
+  },
+  {
+    "name": "Kyiv",
+    "slug": "kyiv",
+    "state": "Kyiv",
+    "country": "Ukraine",
+    "countrySlug": "ua",
+    "waqiId": "kyiv",
+    "url": "/air-quality/ua/kyiv"
+  },
+  {
+    "name": "São Paulo",
+    "slug": "sao-paulo",
+    "state": "São Paulo",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "sao paulo",
+    "url": "/air-quality/br/sao-paulo"
+  },
+  {
+    "name": "Rio de Janeiro",
+    "slug": "rio-de-janeiro",
+    "state": "Rio de Janeiro",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "rio de janeiro",
+    "url": "/air-quality/br/rio-de-janeiro"
+  },
+  {
+    "name": "Brasília",
+    "slug": "brasilia",
+    "state": "Federal District",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "brasilia",
+    "url": "/air-quality/br/brasilia"
+  },
+  {
+    "name": "Salvador",
+    "slug": "salvador-ba",
+    "state": "Bahia",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "salvador",
+    "url": "/air-quality/br/salvador-ba"
+  },
+  {
+    "name": "Fortaleza",
+    "slug": "fortaleza",
+    "state": "Ceará",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "fortaleza",
+    "url": "/air-quality/br/fortaleza"
+  },
+  {
+    "name": "Manaus",
+    "slug": "manaus",
+    "state": "Amazonas",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "manaus",
+    "url": "/air-quality/br/manaus"
+  },
+  {
+    "name": "Buenos Aires",
+    "slug": "buenos-aires",
+    "state": "Buenos Aires",
+    "country": "Argentina",
+    "countrySlug": "ar",
+    "waqiId": "@10051",
+    "url": "/air-quality/ar/buenos-aires"
+  },
+  {
+    "name": "Córdoba",
+    "slug": "cordoba-ar",
+    "state": "Córdoba",
+    "country": "Argentina",
+    "countrySlug": "ar",
+    "waqiId": "cordoba",
+    "url": "/air-quality/ar/cordoba-ar"
+  },
+  {
+    "name": "Santiago",
+    "slug": "santiago",
+    "state": "Santiago",
+    "country": "Chile",
+    "countrySlug": "cl",
+    "waqiId": "santiago",
+    "url": "/air-quality/cl/santiago"
+  },
+  {
+    "name": "Lima",
+    "slug": "lima",
+    "state": "Lima",
+    "country": "Peru",
+    "countrySlug": "pe",
+    "waqiId": "lima",
+    "url": "/air-quality/pe/lima"
+  },
+  {
+    "name": "Bogotá",
+    "slug": "bogota",
+    "state": "Cundinamarca",
+    "country": "Colombia",
+    "countrySlug": "co",
+    "waqiId": "bogota",
+    "url": "/air-quality/co/bogota"
+  },
+  {
+    "name": "Medellín",
+    "slug": "medellin",
+    "state": "Antioquia",
+    "country": "Colombia",
+    "countrySlug": "co",
+    "waqiId": "medellin",
+    "url": "/air-quality/co/medellin"
+  },
+  {
+    "name": "Caracas",
+    "slug": "caracas",
+    "state": "Capital District",
+    "country": "Venezuela",
+    "countrySlug": "ve",
+    "waqiId": "caracas",
+    "url": "/air-quality/ve/caracas"
+  },
+  {
+    "name": "Quito",
+    "slug": "quito",
+    "state": "Pichincha",
+    "country": "Ecuador",
+    "countrySlug": "ec",
+    "waqiId": "quito",
+    "url": "/air-quality/ec/quito"
+  },
+  {
+    "name": "Mexico City",
+    "slug": "mexico-city",
+    "state": "Mexico City",
+    "country": "Mexico",
+    "countrySlug": "mx",
+    "waqiId": "mexico city",
+    "url": "/air-quality/mx/mexico-city"
+  },
+  {
+    "name": "Guadalajara",
+    "slug": "guadalajara",
+    "state": "Jalisco",
+    "country": "Mexico",
+    "countrySlug": "mx",
+    "waqiId": "guadalajara",
+    "url": "/air-quality/mx/guadalajara"
+  },
+  {
+    "name": "Monterrey",
+    "slug": "monterrey",
+    "state": "Nuevo León",
+    "country": "Mexico",
+    "countrySlug": "mx",
+    "waqiId": "monterrey",
+    "url": "/air-quality/mx/monterrey"
+  },
+  {
+    "name": "Sydney",
+    "slug": "sydney",
+    "state": "New South Wales",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "sydney",
+    "url": "/air-quality/au/sydney"
+  },
+  {
+    "name": "Melbourne",
+    "slug": "melbourne",
+    "state": "Victoria",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "melbourne",
+    "url": "/air-quality/au/melbourne"
+  },
+  {
+    "name": "Brisbane",
+    "slug": "brisbane",
+    "state": "Queensland",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "brisbane",
+    "url": "/air-quality/au/brisbane"
+  },
+  {
+    "name": "Perth",
+    "slug": "perth",
+    "state": "Western Australia",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "perth",
+    "url": "/air-quality/au/perth"
+  },
+  {
+    "name": "Adelaide",
+    "slug": "adelaide",
+    "state": "South Australia",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "adelaide",
+    "url": "/air-quality/au/adelaide"
+  },
+  {
+    "name": "Auckland",
+    "slug": "auckland",
+    "state": "Auckland",
+    "country": "New Zealand",
+    "countrySlug": "nz",
+    "waqiId": "auckland",
+    "url": "/air-quality/nz/auckland"
+  },
+  {
+    "name": "Wellington",
+    "slug": "wellington",
+    "state": "Wellington",
+    "country": "New Zealand",
+    "countrySlug": "nz",
+    "waqiId": "wellington",
+    "url": "/air-quality/nz/wellington"
+  },
+  {
+    "name": "Toronto",
+    "slug": "toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "toronto",
+    "url": "/air-quality/ca/toronto"
+  },
+  {
+    "name": "Vancouver",
+    "slug": "vancouver",
+    "state": "British Columbia",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "vancouver",
+    "url": "/air-quality/ca/vancouver"
+  },
+  {
+    "name": "Montreal",
+    "slug": "montreal",
+    "state": "Quebec",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "montreal",
+    "url": "/air-quality/ca/montreal"
+  },
+  {
+    "name": "Calgary",
+    "slug": "calgary",
+    "state": "Alberta",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "calgary",
+    "url": "/air-quality/ca/calgary"
+  },
+  {
+    "name": "Ottawa",
+    "slug": "ottawa",
+    "state": "Ontario",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "ottawa",
+    "url": "/air-quality/ca/ottawa"
+  },
+  {
+    "name": "Edmonton",
+    "slug": "edmonton",
+    "state": "Alberta",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "edmonton",
+    "url": "/air-quality/ca/edmonton"
+  },
+  {
+    "name": "Taipei",
+    "slug": "taipei",
+    "state": "Taipei",
+    "country": "Taiwan",
+    "countrySlug": "tw",
+    "waqiId": "taipei",
+    "url": "/air-quality/tw/taipei"
+  },
+  {
+    "name": "Kaohsiung",
+    "slug": "kaohsiung",
+    "state": "Kaohsiung",
+    "country": "Taiwan",
+    "countrySlug": "tw",
+    "waqiId": "kaohsiung",
+    "url": "/air-quality/tw/kaohsiung"
+  },
+  {
+    "name": "Hong Kong",
+    "slug": "hong-kong",
+    "state": "Hong Kong",
+    "country": "Hong Kong",
+    "countrySlug": "hk",
+    "waqiId": "hong kong",
+    "url": "/air-quality/hk/hong-kong"
+  },
+  {
+    "name": "Macau",
+    "slug": "macau",
+    "state": "Macau",
+    "country": "Macau",
+    "countrySlug": "mo",
+    "waqiId": "macau",
+    "url": "/air-quality/mo/macau"
+  },
+  {
+    "name": "Ulaanbaatar",
+    "slug": "ulaanbaatar",
+    "state": "Ulaanbaatar",
+    "country": "Mongolia",
+    "countrySlug": "mn",
+    "waqiId": "ulaanbaatar",
+    "url": "/air-quality/mn/ulaanbaatar"
+  },
+  {
+    "name": "Tashkent",
+    "slug": "tashkent",
+    "state": "Tashkent",
+    "country": "Uzbekistan",
+    "countrySlug": "uz",
+    "waqiId": "tashkent",
+    "url": "/air-quality/uz/tashkent"
+  },
+  {
+    "name": "Almaty",
+    "slug": "almaty",
+    "state": "Almaty",
+    "country": "Kazakhstan",
+    "countrySlug": "kz",
+    "waqiId": "almaty",
+    "url": "/air-quality/kz/almaty"
+  },
+  {
+    "name": "Tehran",
+    "slug": "tehran",
+    "state": "Tehran",
+    "country": "Iran",
+    "countrySlug": "ir",
+    "waqiId": "tehran",
+    "url": "/air-quality/ir/tehran"
+  },
+  {
+    "name": "Baghdad",
+    "slug": "baghdad",
+    "state": "Baghdad",
+    "country": "Iraq",
+    "countrySlug": "iq",
+    "waqiId": "baghdad",
+    "url": "/air-quality/iq/baghdad"
+  },
+  {
+    "name": "Beirut",
+    "slug": "beirut",
+    "state": "Beirut",
+    "country": "Lebanon",
+    "countrySlug": "lb",
+    "waqiId": "beirut",
+    "url": "/air-quality/lb/beirut"
+  },
+  {
+    "name": "Amman",
+    "slug": "amman",
+    "state": "Amman",
+    "country": "Jordan",
+    "countrySlug": "jo",
+    "waqiId": "amman",
+    "url": "/air-quality/jo/amman"
+  },
+  {
+    "name": "Muscat",
+    "slug": "muscat",
+    "state": "Muscat",
+    "country": "Oman",
+    "countrySlug": "om",
+    "waqiId": "muscat",
+    "url": "/air-quality/om/muscat"
+  },
+  {
+    "name": "Baku",
+    "slug": "baku",
+    "state": "Baku",
+    "country": "Azerbaijan",
+    "countrySlug": "az",
+    "waqiId": "baku",
+    "url": "/air-quality/az/baku"
+  },
+  {
+    "name": "Tbilisi",
+    "slug": "tbilisi",
+    "state": "Tbilisi",
+    "country": "Georgia",
+    "countrySlug": "ge",
+    "waqiId": "tbilisi",
+    "url": "/air-quality/ge/tbilisi"
+  },
+  {
+    "name": "Yerevan",
+    "slug": "yerevan",
+    "state": "Yerevan",
+    "country": "Armenia",
+    "countrySlug": "am",
+    "waqiId": "yerevan",
+    "url": "/air-quality/am/yerevan"
+  },
+  {
+    "name": "Minsk",
+    "slug": "minsk",
+    "state": "Minsk",
+    "country": "Belarus",
+    "countrySlug": "by",
+    "waqiId": "minsk",
+    "url": "/air-quality/by/minsk"
+  },
+  {
+    "name": "Sofia",
+    "slug": "sofia",
+    "state": "Sofia City",
+    "country": "Bulgaria",
+    "countrySlug": "bg",
+    "waqiId": "sofia",
+    "url": "/air-quality/bg/sofia"
+  },
+  {
+    "name": "Belgrade",
+    "slug": "belgrade",
+    "state": "Belgrade",
+    "country": "Serbia",
+    "countrySlug": "rs",
+    "waqiId": "belgrade",
+    "url": "/air-quality/rs/belgrade"
+  },
+  {
+    "name": "Zagreb",
+    "slug": "zagreb",
+    "state": "Zagreb County",
+    "country": "Croatia",
+    "countrySlug": "hr",
+    "waqiId": "zagreb",
+    "url": "/air-quality/hr/zagreb"
+  },
+  {
+    "name": "Skopje",
+    "slug": "skopje",
+    "state": "Skopje",
+    "country": "North Macedonia",
+    "countrySlug": "mk",
+    "waqiId": "skopje",
+    "url": "/air-quality/mk/skopje"
+  },
+  {
+    "name": "Sarajevo",
+    "slug": "sarajevo",
+    "state": "Sarajevo Canton",
+    "country": "Bosnia and Herzegovina",
+    "countrySlug": "ba",
+    "waqiId": "sarajevo",
+    "url": "/air-quality/ba/sarajevo"
+  },
+  {
+    "name": "Tirana",
+    "slug": "tirana",
+    "state": "Tirana County",
+    "country": "Albania",
+    "countrySlug": "al",
+    "waqiId": "tirana",
+    "url": "/air-quality/al/tirana"
+  },
+  {
+    "name": "Riga",
+    "slug": "riga",
+    "state": "Riga",
+    "country": "Latvia",
+    "countrySlug": "lv",
+    "waqiId": "riga",
+    "url": "/air-quality/lv/riga"
+  },
+  {
+    "name": "Tallinn",
+    "slug": "tallinn",
+    "state": "Harju County",
+    "country": "Estonia",
+    "countrySlug": "ee",
+    "waqiId": "tallinn",
+    "url": "/air-quality/ee/tallinn"
+  },
+  {
+    "name": "Vilnius",
+    "slug": "vilnius",
+    "state": "Vilnius County",
+    "country": "Lithuania",
+    "countrySlug": "lt",
+    "waqiId": "vilnius",
+    "url": "/air-quality/lt/vilnius"
+  },
+  {
+    "name": "Bratislava",
+    "slug": "bratislava",
+    "state": "Bratislava Region",
+    "country": "Slovakia",
+    "countrySlug": "sk",
+    "waqiId": "bratislava",
+    "url": "/air-quality/sk/bratislava"
+  },
+  {
+    "name": "Ljubljana",
+    "slug": "ljubljana",
+    "state": "Ljubljana Urban Municipality",
+    "country": "Slovenia",
+    "countrySlug": "si",
+    "waqiId": "ljubljana",
+    "url": "/air-quality/si/ljubljana"
+  },
+  {
+    "name": "Podgorica",
+    "slug": "podgorica",
+    "state": "Podgorica Municipality",
+    "country": "Montenegro",
+    "countrySlug": "me",
+    "waqiId": "podgorica",
+    "url": "/air-quality/me/podgorica"
+  },
+  {
+    "name": "Chisinau",
+    "slug": "chisinau",
+    "state": "Chisinau",
+    "country": "Moldova",
+    "countrySlug": "md",
+    "waqiId": "chisinau",
+    "url": "/air-quality/md/chisinau"
+  },
+  {
+    "name": "Yekaterinburg",
+    "slug": "yekaterinburg",
+    "state": "Sverdlovsk Oblast",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "yekaterinburg",
+    "url": "/air-quality/ru/yekaterinburg"
+  },
+  {
+    "name": "Novosibirsk",
+    "slug": "novosibirsk",
+    "state": "Novosibirsk Oblast",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "novosibirsk",
+    "url": "/air-quality/ru/novosibirsk"
+  },
+  {
+    "name": "Phnom Penh",
+    "slug": "phnom-penh",
+    "state": "Phnom Penh",
+    "country": "Cambodia",
+    "countrySlug": "kh",
+    "waqiId": "phnom penh",
+    "url": "/air-quality/kh/phnom-penh"
+  },
+  {
+    "name": "Yangon",
+    "slug": "yangon",
+    "state": "Yangon",
+    "country": "Myanmar",
+    "countrySlug": "mm",
+    "waqiId": "yangon",
+    "url": "/air-quality/mm/yangon"
+  },
+  {
+    "name": "Vientiane",
+    "slug": "vientiane",
+    "state": "Vientiane Prefecture",
+    "country": "Laos",
+    "countrySlug": "la",
+    "waqiId": "vientiane",
+    "url": "/air-quality/la/vientiane"
+  },
+  {
+    "name": "Udon Thani",
+    "slug": "udon-thani",
+    "state": "Udon Thani",
+    "country": "Thailand",
+    "countrySlug": "th",
+    "waqiId": "udon thani",
+    "url": "/air-quality/th/udon-thani"
+  },
+  {
+    "name": "Nanjing",
+    "slug": "nanjing",
+    "state": "Jiangsu",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "nanjing",
+    "url": "/air-quality/cn/nanjing"
+  },
+  {
+    "name": "Tianjin",
+    "slug": "tianjin",
+    "state": "Tianjin",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "tianjin",
+    "url": "/air-quality/cn/tianjin"
+  },
+  {
+    "name": "Harbin",
+    "slug": "harbin",
+    "state": "Heilongjiang",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "harbin",
+    "url": "/air-quality/cn/harbin"
+  },
+  {
+    "name": "Zhengzhou",
+    "slug": "zhengzhou",
+    "state": "Henan",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "zhengzhou",
+    "url": "/air-quality/cn/zhengzhou"
+  },
+  {
+    "name": "Shenyang",
+    "slug": "shenyang",
+    "state": "Liaoning",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "shenyang",
+    "url": "/air-quality/cn/shenyang"
+  },
+  {
+    "name": "Hangzhou",
+    "slug": "hangzhou",
+    "state": "Zhejiang",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "hangzhou",
+    "url": "/air-quality/cn/hangzhou"
+  },
+  {
+    "name": "Kunming",
+    "slug": "kunming",
+    "state": "Yunnan",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "kunming",
+    "url": "/air-quality/cn/kunming"
+  },
+  {
+    "name": "Dakar",
+    "slug": "dakar",
+    "state": "Dakar",
+    "country": "Senegal",
+    "countrySlug": "sn",
+    "waqiId": "dakar",
+    "url": "/air-quality/sn/dakar"
+  },
+  {
+    "name": "Kampala",
+    "slug": "kampala",
+    "state": "Central Region",
+    "country": "Uganda",
+    "countrySlug": "ug",
+    "waqiId": "kampala",
+    "url": "/air-quality/ug/kampala"
+  },
+  {
+    "name": "Dar es Salaam",
+    "slug": "dar-es-salaam",
+    "state": "Dar es Salaam",
+    "country": "Tanzania",
+    "countrySlug": "tz",
+    "waqiId": "dar es salaam",
+    "url": "/air-quality/tz/dar-es-salaam"
+  },
+  {
+    "name": "Khartoum",
+    "slug": "khartoum",
+    "state": "Khartoum",
+    "country": "Sudan",
+    "countrySlug": "sd",
+    "waqiId": "khartoum",
+    "url": "/air-quality/sd/khartoum"
+  },
+  {
+    "name": "Luanda",
+    "slug": "luanda",
+    "state": "Luanda",
+    "country": "Angola",
+    "countrySlug": "ao",
+    "waqiId": "luanda",
+    "url": "/air-quality/ao/luanda"
+  },
+  {
+    "name": "Kinshasa",
+    "slug": "kinshasa",
+    "state": "Kinshasa",
+    "country": "DR Congo",
+    "countrySlug": "cd",
+    "waqiId": "kinshasa",
+    "url": "/air-quality/cd/kinshasa"
+  },
+  {
+    "name": "Harare",
+    "slug": "harare",
+    "state": "Harare",
+    "country": "Zimbabwe",
+    "countrySlug": "zw",
+    "waqiId": "harare",
+    "url": "/air-quality/zw/harare"
+  },
+  {
+    "name": "Lusaka",
+    "slug": "lusaka",
+    "state": "Lusaka",
+    "country": "Zambia",
+    "countrySlug": "zm",
+    "waqiId": "lusaka",
+    "url": "/air-quality/zm/lusaka"
+  },
+  {
+    "name": "Maputo",
+    "slug": "maputo",
+    "state": "Maputo",
+    "country": "Mozambique",
+    "countrySlug": "mz",
+    "waqiId": "maputo",
+    "url": "/air-quality/mz/maputo"
+  },
+  {
+    "name": "Durban",
+    "slug": "durban",
+    "state": "KwaZulu-Natal",
+    "country": "South Africa",
+    "countrySlug": "za",
+    "waqiId": "durban",
+    "url": "/air-quality/za/durban"
+  },
+  {
+    "name": "Pretoria",
+    "slug": "pretoria",
+    "state": "Gauteng",
+    "country": "South Africa",
+    "countrySlug": "za",
+    "waqiId": "pretoria",
+    "url": "/air-quality/za/pretoria"
+  },
+  {
+    "name": "Port Elizabeth",
+    "slug": "port-elizabeth",
+    "state": "Eastern Cape",
+    "country": "South Africa",
+    "countrySlug": "za",
+    "waqiId": "port elizabeth",
+    "url": "/air-quality/za/port-elizabeth"
+  },
+  {
+    "name": "Suzhou",
+    "slug": "suzhou",
+    "state": "Jiangsu",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "suzhou",
+    "url": "/air-quality/cn/suzhou"
+  },
+  {
+    "name": "Qingdao",
+    "slug": "qingdao",
+    "state": "Shandong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "qingdao",
+    "url": "/air-quality/cn/qingdao"
+  },
+  {
+    "name": "Dalian",
+    "slug": "dalian",
+    "state": "Liaoning",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "dalian",
+    "url": "/air-quality/cn/dalian"
+  },
+  {
+    "name": "Changsha",
+    "slug": "changsha",
+    "state": "Hunan",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "changsha",
+    "url": "/air-quality/cn/changsha"
+  },
+  {
+    "name": "Xiamen",
+    "slug": "xiamen",
+    "state": "Fujian",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "xiamen",
+    "url": "/air-quality/cn/xiamen"
+  },
+  {
+    "name": "Fuzhou",
+    "slug": "fuzhou",
+    "state": "Fujian",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "fuzhou",
+    "url": "/air-quality/cn/fuzhou"
+  },
+  {
+    "name": "Sapporo",
+    "slug": "sapporo",
+    "state": "Hokkaido",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "sapporo",
+    "url": "/air-quality/jp/sapporo"
+  },
+  {
+    "name": "Hiroshima",
+    "slug": "hiroshima",
+    "state": "Hiroshima",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "hiroshima",
+    "url": "/air-quality/jp/hiroshima"
+  },
+  {
+    "name": "Kobe",
+    "slug": "kobe",
+    "state": "Hyogo",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "kobe",
+    "url": "/air-quality/jp/kobe"
+  },
+  {
+    "name": "Daegu",
+    "slug": "daegu",
+    "state": "Daegu",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "daegu",
+    "url": "/air-quality/kr/daegu"
+  },
+  {
+    "name": "Daejeon",
+    "slug": "daejeon",
+    "state": "Daejeon",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "daejeon",
+    "url": "/air-quality/kr/daejeon"
+  },
+  {
+    "name": "Gwangju",
+    "slug": "gwangju",
+    "state": "Gwangju",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "gwangju",
+    "url": "/air-quality/kr/gwangju"
+  },
+  {
+    "name": "Bandung",
+    "slug": "bandung",
+    "state": "West Java",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "bandung",
+    "url": "/air-quality/id/bandung"
+  },
+  {
+    "name": "Medan",
+    "slug": "medan",
+    "state": "North Sumatra",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "medan",
+    "url": "/air-quality/id/medan"
+  },
+  {
+    "name": "Makassar",
+    "slug": "makassar",
+    "state": "South Sulawesi",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "makassar",
+    "url": "/air-quality/id/makassar"
+  },
+  {
+    "name": "Cebu City",
+    "slug": "cebu-city",
+    "state": "Central Visayas",
+    "country": "Philippines",
+    "countrySlug": "ph",
+    "waqiId": "cebu",
+    "url": "/air-quality/ph/cebu-city"
+  },
+  {
+    "name": "Davao",
+    "slug": "davao",
+    "state": "Davao del Sur",
+    "country": "Philippines",
+    "countrySlug": "ph",
+    "waqiId": "davao",
+    "url": "/air-quality/ph/davao"
+  },
+  {
+    "name": "Da Nang",
+    "slug": "da-nang",
+    "state": "Da Nang",
+    "country": "Vietnam",
+    "countrySlug": "vn",
+    "waqiId": "da nang",
+    "url": "/air-quality/vn/da-nang"
+  },
+  {
+    "name": "Penang",
+    "slug": "penang",
+    "state": "Penang",
+    "country": "Malaysia",
+    "countrySlug": "my",
+    "waqiId": "penang",
+    "url": "/air-quality/my/penang"
+  },
+  {
+    "name": "Johor Bahru",
+    "slug": "johor-bahru",
+    "state": "Johor",
+    "country": "Malaysia",
+    "countrySlug": "my",
+    "waqiId": "johor bahru",
+    "url": "/air-quality/my/johor-bahru"
+  },
+  {
+    "name": "Colombo",
+    "slug": "colombo-lk",
+    "state": "Western",
+    "country": "Sri Lanka",
+    "countrySlug": "lk",
+    "waqiId": "colombo",
+    "url": "/air-quality/lk/colombo-lk"
+  },
+  {
+    "name": "Kabul",
+    "slug": "kabul",
+    "state": "Kabul",
+    "country": "Afghanistan",
+    "countrySlug": "af",
+    "waqiId": "kabul",
+    "url": "/air-quality/af/kabul"
+  },
+  {
+    "name": "Dhaka",
+    "slug": "dhaka-bd",
+    "state": "Dhaka",
+    "country": "Bangladesh",
+    "countrySlug": "bd",
+    "waqiId": "dhaka",
+    "url": "/air-quality/bd/dhaka-bd"
+  },
+  {
+    "name": "Chittagong",
+    "slug": "chittagong",
+    "state": "Chattogram",
+    "country": "Bangladesh",
+    "countrySlug": "bd",
+    "waqiId": "chittagong",
+    "url": "/air-quality/bd/chittagong"
+  },
+  {
+    "name": "Peshawar",
+    "slug": "peshawar",
+    "state": "Khyber Pakhtunkhwa",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "peshawar",
+    "url": "/air-quality/pk/peshawar"
+  },
+  {
+    "name": "Faisalabad",
+    "slug": "faisalabad",
+    "state": "Punjab",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "faisalabad",
+    "url": "/air-quality/pk/faisalabad"
+  },
+  {
+    "name": "Spokane",
+    "slug": "spokane-us",
+    "state": "Washington",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@149",
+    "url": "/air-quality/us/spokane-us"
+  },
+  {
+    "name": "Boise",
+    "slug": "boise-us",
+    "state": "Idaho",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5313",
+    "url": "/air-quality/us/boise-us"
+  },
+  {
+    "name": "Richmond",
+    "slug": "richmond-us",
+    "state": "Virginia",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5357",
+    "url": "/air-quality/us/richmond-us"
+  },
+  {
+    "name": "Birmingham",
+    "slug": "birmingham-us",
+    "state": "Alabama",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5723",
+    "url": "/air-quality/us/birmingham-us"
+  },
+  {
+    "name": "St. Louis",
+    "slug": "st-louis-us",
+    "state": "Missouri",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7350",
+    "url": "/air-quality/us/st-louis-us"
+  },
+  {
+    "name": "Cincinnati",
+    "slug": "cincinnati-us",
+    "state": "Ohio",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@9519",
+    "url": "/air-quality/us/cincinnati-us"
+  },
+  {
+    "name": "Hartford",
+    "slug": "hartford-us",
+    "state": "Connecticut",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7387",
+    "url": "/air-quality/us/hartford-us"
+  },
+  {
+    "name": "Providence",
+    "slug": "providence-us",
+    "state": "Rhode Island",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7593",
+    "url": "/air-quality/us/providence-us"
+  },
+  {
+    "name": "Baton Rouge",
+    "slug": "baton-rouge-us",
+    "state": "Louisiana",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6513",
+    "url": "/air-quality/us/baton-rouge-us"
+  },
+  {
+    "name": "Des Moines",
+    "slug": "des-moines-us",
+    "state": "Iowa",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6924",
+    "url": "/air-quality/us/des-moines-us"
+  },
+  {
+    "name": "Fargo",
+    "slug": "fargo-us",
+    "state": "North Dakota",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7446",
+    "url": "/air-quality/us/fargo-us"
+  },
+  {
+    "name": "Sioux Falls",
+    "slug": "sioux-falls-us",
+    "state": "South Dakota",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7490",
+    "url": "/air-quality/us/sioux-falls-us"
+  },
+  {
+    "name": "Anchorage",
+    "slug": "anchorage-us",
+    "state": "Alaska",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@3554",
+    "url": "/air-quality/us/anchorage-us"
+  },
+  {
+    "name": "Lubbock",
+    "slug": "lubbock-us",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@9152",
+    "url": "/air-quality/us/lubbock-us"
+  },
+  {
+    "name": "Knoxville",
+    "slug": "knoxville-us",
+    "state": "Tennessee",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7494",
+    "url": "/air-quality/us/knoxville-us"
+  },
+  {
+    "name": "Chattanooga",
+    "slug": "chattanooga-us",
+    "state": "Tennessee",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7372",
+    "url": "/air-quality/us/chattanooga-us"
+  },
+  {
+    "name": "Jackson",
+    "slug": "jackson-us",
+    "state": "Mississippi",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7928",
+    "url": "/air-quality/us/jackson-us"
+  },
+  {
+    "name": "Little Rock",
+    "slug": "little-rock-us",
+    "state": "Arkansas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7380",
+    "url": "/air-quality/us/little-rock-us"
+  },
+  {
+    "name": "Wichita",
+    "slug": "wichita-us",
+    "state": "Kansas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@9189",
+    "url": "/air-quality/us/wichita-us"
+  },
+  {
+    "name": "Madison",
+    "slug": "madison-us",
+    "state": "Wisconsin",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5933",
+    "url": "/air-quality/us/madison-us"
+  },
+  {
+    "name": "Grand Rapids",
+    "slug": "grand-rapids-us",
+    "state": "Michigan",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5327",
+    "url": "/air-quality/us/grand-rapids-us"
+  },
+  {
+    "name": "Akron",
+    "slug": "akron-us",
+    "state": "Ohio",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7465",
+    "url": "/air-quality/us/akron-us"
+  },
+  {
+    "name": "Lexington",
+    "slug": "lexington-us",
+    "state": "Kentucky",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7330",
+    "url": "/air-quality/us/lexington-us"
+  },
+  {
+    "name": "Greensboro",
+    "slug": "greensboro-us",
+    "state": "North Carolina",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@8883",
+    "url": "/air-quality/us/greensboro-us"
+  },
+  {
+    "name": "Durham",
+    "slug": "durham-us",
+    "state": "North Carolina",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7433",
+    "url": "/air-quality/us/durham-us"
+  },
+  {
+    "name": "Norfolk",
+    "slug": "norfolk-us",
+    "state": "Virginia",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@3298",
+    "url": "/air-quality/us/norfolk-us"
+  },
+  {
+    "name": "Stockton",
+    "slug": "stockton-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@285",
+    "url": "/air-quality/us/stockton-us"
+  },
+  {
+    "name": "Riverside",
+    "slug": "riverside-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@252",
+    "url": "/air-quality/us/riverside-us"
+  },
+  {
+    "name": "Santa Ana",
+    "slug": "santa-ana-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@317",
+    "url": "/air-quality/us/santa-ana-us"
+  },
+  {
+    "name": "Anaheim",
+    "slug": "anaheim-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@317",
+    "url": "/air-quality/us/anaheim-us"
+  },
+  {
+    "name": "Chula Vista",
+    "slug": "chula-vista-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@13063",
+    "url": "/air-quality/us/chula-vista-us"
+  },
+  {
+    "name": "Scottsdale",
+    "slug": "scottsdale-us",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@3292",
+    "url": "/air-quality/us/scottsdale-us"
+  },
+  {
+    "name": "Tempe",
+    "slug": "tempe-us",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5956",
+    "url": "/air-quality/us/tempe-us"
+  },
+  {
+    "name": "Gilbert",
+    "slug": "gilbert-us",
+    "state": "Arizona",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5956",
+    "url": "/air-quality/us/gilbert-us"
+  },
+  {
+    "name": "Henderson",
+    "slug": "henderson-us",
+    "state": "Nevada",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5274",
+    "url": "/air-quality/us/henderson-us"
+  },
+  {
+    "name": "Reno",
+    "slug": "reno-us",
+    "state": "Nevada",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@11992",
+    "url": "/air-quality/us/reno-us"
+  },
+  {
+    "name": "St. Paul",
+    "slug": "st-paul-us",
+    "state": "Minnesota",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7348",
+    "url": "/air-quality/us/st-paul-us"
+  },
+  {
+    "name": "Orlando",
+    "slug": "orlando-us",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6302",
+    "url": "/air-quality/us/orlando-us"
+  },
+  {
+    "name": "Fort Lauderdale",
+    "slug": "fort-lauderdale-us",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@184",
+    "url": "/air-quality/us/fort-lauderdale-us"
+  },
+  {
+    "name": "St. Petersburg",
+    "slug": "st-petersburg-us",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@7628",
+    "url": "/air-quality/us/st-petersburg-us"
+  },
+  {
+    "name": "Tallahassee",
+    "slug": "tallahassee-us",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6295",
+    "url": "/air-quality/us/tallahassee-us"
+  },
+  {
+    "name": "Cape Coral",
+    "slug": "cape-coral-us",
+    "state": "Florida",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6311",
+    "url": "/air-quality/us/cape-coral-us"
+  },
+  {
+    "name": "North Las Vegas",
+    "slug": "north-las-vegas-us",
+    "state": "Nevada",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@5277",
+    "url": "/air-quality/us/north-las-vegas-us"
+  },
+  {
+    "name": "Laredo",
+    "slug": "laredo-us",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@223",
+    "url": "/air-quality/us/laredo-us"
+  },
+  {
+    "name": "Corpus Christi",
+    "slug": "corpus-christi-us",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@211",
+    "url": "/air-quality/us/corpus-christi-us"
+  },
+  {
+    "name": "Garland",
+    "slug": "garland-us",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@276",
+    "url": "/air-quality/us/garland-us"
+  },
+  {
+    "name": "Plano",
+    "slug": "plano-us",
+    "state": "Texas",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@10898",
+    "url": "/air-quality/us/plano-us"
+  },
+  {
+    "name": "Irvine",
+    "slug": "irvine-us",
+    "state": "California",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@6012",
+    "url": "/air-quality/us/irvine-us"
+  },
+  {
+    "name": "Quebec City",
+    "slug": "quebec-city-ca",
+    "state": "Quebec",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@10135",
+    "url": "/air-quality/ca/quebec-city-ca"
+  },
+  {
+    "name": "Winnipeg",
+    "slug": "winnipeg-ca",
+    "state": "Manitoba",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@6908",
+    "url": "/air-quality/ca/winnipeg-ca"
+  },
+  {
+    "name": "Hamilton",
+    "slug": "hamilton-ca",
+    "state": "Ontario",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@5912",
+    "url": "/air-quality/ca/hamilton-ca"
+  },
+  {
+    "name": "Kitchener",
+    "slug": "kitchener-ca",
+    "state": "Ontario",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@14",
+    "url": "/air-quality/ca/kitchener-ca"
+  },
+  {
+    "name": "London Ontario",
+    "slug": "london-ontario-ca",
+    "state": "Ontario",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@15",
+    "url": "/air-quality/ca/london-ontario-ca"
+  },
+  {
+    "name": "Halifax",
+    "slug": "halifax-ca",
+    "state": "Nova Scotia",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@8856",
+    "url": "/air-quality/ca/halifax-ca"
+  },
+  {
+    "name": "Victoria",
+    "slug": "victoria-ca",
+    "state": "British Columbia",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@4242",
+    "url": "/air-quality/ca/victoria-ca"
+  },
+  {
+    "name": "Saskatoon",
+    "slug": "saskatoon-ca",
+    "state": "Saskatchewan",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@5470",
+    "url": "/air-quality/ca/saskatoon-ca"
+  },
+  {
+    "name": "Regina",
+    "slug": "regina-ca",
+    "state": "Saskatchewan",
+    "country": "Canada",
+    "countrySlug": "ca",
+    "waqiId": "@5472",
+    "url": "/air-quality/ca/regina-ca"
+  },
+  {
+    "name": "Leeds",
+    "slug": "leeds-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@3185",
+    "url": "/air-quality/uk/leeds-uk"
+  },
+  {
+    "name": "Sheffield",
+    "slug": "sheffield-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@3281",
+    "url": "/air-quality/uk/sheffield-uk"
+  },
+  {
+    "name": "Liverpool",
+    "slug": "liverpool-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@3221",
+    "url": "/air-quality/uk/liverpool-uk"
+  },
+  {
+    "name": "Bristol",
+    "slug": "bristol-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@8917",
+    "url": "/air-quality/uk/bristol-uk"
+  },
+  {
+    "name": "Cardiff",
+    "slug": "cardiff-uk",
+    "state": "Wales",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@10684",
+    "url": "/air-quality/uk/cardiff-uk"
+  },
+  {
+    "name": "Belfast",
+    "slug": "belfast-uk",
+    "state": "Northern Ireland",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@6030",
+    "url": "/air-quality/uk/belfast-uk"
+  },
+  {
+    "name": "Nottingham",
+    "slug": "nottingham-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@3200",
+    "url": "/air-quality/uk/nottingham-uk"
+  },
+  {
+    "name": "Leicester",
+    "slug": "leicester-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@4905",
+    "url": "/air-quality/uk/leicester-uk"
+  },
+  {
+    "name": "Newcastle",
+    "slug": "newcastle-uk",
+    "state": "England",
+    "country": "United Kingdom",
+    "countrySlug": "uk",
+    "waqiId": "@12485",
+    "url": "/air-quality/uk/newcastle-uk"
+  },
+  {
+    "name": "Cork",
+    "slug": "cork-ie",
+    "state": "Munster",
+    "country": "Ireland",
+    "countrySlug": "ie",
+    "waqiId": "@13375",
+    "url": "/air-quality/ie/cork-ie"
+  },
+  {
+    "name": "Toulouse",
+    "slug": "toulouse-fr",
+    "state": "Occitanie",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "@12683",
+    "url": "/air-quality/fr/toulouse-fr"
+  },
+  {
+    "name": "Bordeaux",
+    "slug": "bordeaux-fr",
+    "state": "Nouvelle-Aquitaine",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "@5054",
+    "url": "/air-quality/fr/bordeaux-fr"
+  },
+  {
+    "name": "Nice",
+    "slug": "nice-fr",
+    "state": "PACA",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "@6887",
+    "url": "/air-quality/fr/nice-fr"
+  },
+  {
+    "name": "Nantes",
+    "slug": "nantes-fr",
+    "state": "Pays de la Loire",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "@4995",
+    "url": "/air-quality/fr/nantes-fr"
+  },
+  {
+    "name": "Strasbourg",
+    "slug": "strasbourg-fr",
+    "state": "Grand Est",
+    "country": "France",
+    "countrySlug": "fr",
+    "waqiId": "@3818",
+    "url": "/air-quality/fr/strasbourg-fr"
+  },
+  {
+    "name": "Cologne",
+    "slug": "cologne-de",
+    "state": "North Rhine-Westphalia",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@6101",
+    "url": "/air-quality/de/cologne-de"
+  },
+  {
+    "name": "Stuttgart",
+    "slug": "stuttgart-de",
+    "state": "Baden-Württemberg",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@11226",
+    "url": "/air-quality/de/stuttgart-de"
+  },
+  {
+    "name": "Düsseldorf",
+    "slug": "dusseldorf-de",
+    "state": "North Rhine-Westphalia",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@6087",
+    "url": "/air-quality/de/dusseldorf-de"
+  },
+  {
+    "name": "Dortmund",
+    "slug": "dortmund-de",
+    "state": "North Rhine-Westphalia",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@6080",
+    "url": "/air-quality/de/dortmund-de"
+  },
+  {
+    "name": "Leipzig",
+    "slug": "leipzig-de",
+    "state": "Saxony",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@10896",
+    "url": "/air-quality/de/leipzig-de"
+  },
+  {
+    "name": "Dresden",
+    "slug": "dresden-de",
+    "state": "Saxony",
+    "country": "Germany",
+    "countrySlug": "de",
+    "waqiId": "@10891",
+    "url": "/air-quality/de/dresden-de"
+  },
+  {
+    "name": "Valencia",
+    "slug": "valencia-es",
+    "state": "Valencian Community",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "@6640",
+    "url": "/air-quality/es/valencia-es"
+  },
+  {
+    "name": "Bilbao",
+    "slug": "bilbao-es",
+    "state": "Basque Country",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "@6744",
+    "url": "/air-quality/es/bilbao-es"
+  },
+  {
+    "name": "Zaragoza",
+    "slug": "zaragoza-es",
+    "state": "Aragon",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "@11991",
+    "url": "/air-quality/es/zaragoza-es"
+  },
+  {
+    "name": "Malaga",
+    "slug": "malaga-es",
+    "state": "Andalusia",
+    "country": "Spain",
+    "countrySlug": "es",
+    "waqiId": "@8487",
+    "url": "/air-quality/es/malaga-es"
+  },
+  {
+    "name": "Turin",
+    "slug": "turin-it",
+    "state": "Piedmont",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "@9360",
+    "url": "/air-quality/it/turin-it"
+  },
+  {
+    "name": "Florence",
+    "slug": "florence-it",
+    "state": "Tuscany",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "@9433",
+    "url": "/air-quality/it/florence-it"
+  },
+  {
+    "name": "Venice",
+    "slug": "venice-it",
+    "state": "Veneto",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "@7463",
+    "url": "/air-quality/it/venice-it"
+  },
+  {
+    "name": "Bologna",
+    "slug": "bologna-it",
+    "state": "Emilia-Romagna",
+    "country": "Italy",
+    "countrySlug": "it",
+    "waqiId": "@9403",
+    "url": "/air-quality/it/bologna-it"
+  },
+  {
+    "name": "Gothenburg",
+    "slug": "gothenburg-se",
+    "state": "Västra Götaland",
+    "country": "Sweden",
+    "countrySlug": "se",
+    "waqiId": "@7863",
+    "url": "/air-quality/se/gothenburg-se"
+  },
+  {
+    "name": "Malmo",
+    "slug": "malmo-se",
+    "state": "Skåne",
+    "country": "Sweden",
+    "countrySlug": "se",
+    "waqiId": "@7870",
+    "url": "/air-quality/se/malmo-se"
+  },
+  {
+    "name": "Antwerp",
+    "slug": "antwerp-be",
+    "state": "Antwerp Province",
+    "country": "Belgium",
+    "countrySlug": "be",
+    "waqiId": "@12839",
+    "url": "/air-quality/be/antwerp-be"
+  },
+  {
+    "name": "The Hague",
+    "slug": "the-hague-nl",
+    "state": "South Holland",
+    "country": "Netherlands",
+    "countrySlug": "nl",
+    "waqiId": "@4571",
+    "url": "/air-quality/nl/the-hague-nl"
+  },
+  {
+    "name": "Utrecht",
+    "slug": "utrecht-nl",
+    "state": "Utrecht",
+    "country": "Netherlands",
+    "countrySlug": "nl",
+    "waqiId": "@6332",
+    "url": "/air-quality/nl/utrecht-nl"
+  },
+  {
+    "name": "Eindhoven",
+    "slug": "eindhoven-nl",
+    "state": "North Brabant",
+    "country": "Netherlands",
+    "countrySlug": "nl",
+    "waqiId": "@4576",
+    "url": "/air-quality/nl/eindhoven-nl"
+  },
+  {
+    "name": "Porto",
+    "slug": "porto-pt",
+    "state": "Norte",
+    "country": "Portugal",
+    "countrySlug": "pt",
+    "waqiId": "@8373",
+    "url": "/air-quality/pt/porto-pt"
+  },
+  {
+    "name": "Thessaloniki",
+    "slug": "thessaloniki-gr",
+    "state": "Central Macedonia",
+    "country": "Greece",
+    "countrySlug": "gr",
+    "waqiId": "@12413",
+    "url": "/air-quality/gr/thessaloniki-gr"
+  },
+  {
+    "name": "Krakow",
+    "slug": "krakow-pl",
+    "state": "Lesser Poland",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "@9039",
+    "url": "/air-quality/pl/krakow-pl"
+  },
+  {
+    "name": "Lodz",
+    "slug": "lodz-pl",
+    "state": "Łódź Voivodeship",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "@9038",
+    "url": "/air-quality/pl/lodz-pl"
+  },
+  {
+    "name": "Wroclaw",
+    "slug": "wroclaw-pl",
+    "state": "Lower Silesia",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "@8128",
+    "url": "/air-quality/pl/wroclaw-pl"
+  },
+  {
+    "name": "Poznan",
+    "slug": "poznan-pl",
+    "state": "Greater Poland",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "@6532",
+    "url": "/air-quality/pl/poznan-pl"
+  },
+  {
+    "name": "Gdansk",
+    "slug": "gdansk-pl",
+    "state": "Pomerania",
+    "country": "Poland",
+    "countrySlug": "pl",
+    "waqiId": "@2679",
+    "url": "/air-quality/pl/gdansk-pl"
+  },
+  {
+    "name": "Brno",
+    "slug": "brno-cz",
+    "state": "South Moravian",
+    "country": "Czech Republic",
+    "countrySlug": "cz",
+    "waqiId": "@2775",
+    "url": "/air-quality/cz/brno-cz"
+  },
+  {
+    "name": "Ostrava",
+    "slug": "ostrava-cz",
+    "state": "Moravian-Silesian",
+    "country": "Czech Republic",
+    "countrySlug": "cz",
+    "waqiId": "@2803",
+    "url": "/air-quality/cz/ostrava-cz"
+  },
+  {
+    "name": "Debrecen",
+    "slug": "debrecen-hu",
+    "state": "Hajdú-Bihar",
+    "country": "Hungary",
+    "countrySlug": "hu",
+    "waqiId": "@3378",
+    "url": "/air-quality/hu/debrecen-hu"
+  },
+  {
+    "name": "Cluj-Napoca",
+    "slug": "cluj-napoca-ro",
+    "state": "Cluj",
+    "country": "Romania",
+    "countrySlug": "ro",
+    "waqiId": "@7659",
+    "url": "/air-quality/ro/cluj-napoca-ro"
+  },
+  {
+    "name": "Timisoara",
+    "slug": "timisoara-ro",
+    "state": "Timiș",
+    "country": "Romania",
+    "countrySlug": "ro",
+    "waqiId": "@7661",
+    "url": "/air-quality/ro/timisoara-ro"
+  },
+  {
+    "name": "Iasi",
+    "slug": "iasi-ro",
+    "state": "Iași",
+    "country": "Romania",
+    "countrySlug": "ro",
+    "waqiId": "@6861",
+    "url": "/air-quality/ro/iasi-ro"
+  },
+  {
+    "name": "Zurich",
+    "slug": "zurich-ch",
+    "state": "Zurich",
+    "country": "Switzerland",
+    "countrySlug": "ch",
+    "waqiId": "@5769",
+    "url": "/air-quality/ch/zurich-ch"
+  },
+  {
+    "name": "Basel",
+    "slug": "basel-ch",
+    "state": "Basel-City",
+    "country": "Switzerland",
+    "countrySlug": "ch",
+    "waqiId": "@2690",
+    "url": "/air-quality/ch/basel-ch"
+  },
+  {
+    "name": "Bern",
+    "slug": "bern-ch",
+    "state": "Bern",
+    "country": "Switzerland",
+    "countrySlug": "ch",
+    "waqiId": "@2687",
+    "url": "/air-quality/ch/bern-ch"
+  },
+  {
+    "name": "Kazan",
+    "slug": "kazan-ru",
+    "state": "Tatarstan",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@11497",
+    "url": "/air-quality/ru/kazan-ru"
+  },
+  {
+    "name": "Nizhny Novgorod",
+    "slug": "nizhny-novgorod-ru",
+    "state": "Nizhny Novgorod Oblast",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@12784",
+    "url": "/air-quality/ru/nizhny-novgorod-ru"
+  },
+  {
+    "name": "Samara",
+    "slug": "samara-ru",
+    "state": "Samara Oblast",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@2613",
+    "url": "/air-quality/ru/samara-ru"
+  },
+  {
+    "name": "Omsk",
+    "slug": "omsk-ru",
+    "state": "Omsk Oblast",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@6488",
+    "url": "/air-quality/ru/omsk-ru"
+  },
+  {
+    "name": "Ufa",
+    "slug": "ufa-ru",
+    "state": "Bashkortostan",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@7229",
+    "url": "/air-quality/ru/ufa-ru"
+  },
+  {
+    "name": "Krasnoyarsk",
+    "slug": "krasnoyarsk-ru",
+    "state": "Krasnoyarsk Krai",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@12641",
+    "url": "/air-quality/ru/krasnoyarsk-ru"
+  },
+  {
+    "name": "Perm",
+    "slug": "perm-ru",
+    "state": "Perm Krai",
+    "country": "Russia",
+    "countrySlug": "ru",
+    "waqiId": "@5778",
+    "url": "/air-quality/ru/perm-ru"
+  },
+  {
+    "name": "Lviv",
+    "slug": "lviv-ua",
+    "state": "Lviv Oblast",
+    "country": "Ukraine",
+    "countrySlug": "ua",
+    "waqiId": "@11795",
+    "url": "/air-quality/ua/lviv-ua"
+  },
+  {
+    "name": "Odessa",
+    "slug": "odessa-ua",
+    "state": "Odessa Oblast",
+    "country": "Ukraine",
+    "countrySlug": "ua",
+    "waqiId": "@11691",
+    "url": "/air-quality/ua/odessa-ua"
+  },
+  {
+    "name": "Chongqing",
+    "slug": "chongqing-cn",
+    "state": "Chongqing",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1453",
+    "url": "/air-quality/cn/chongqing-cn"
+  },
+  {
+    "name": "Dongguan",
+    "slug": "dongguan-cn",
+    "state": "Guangdong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1547",
+    "url": "/air-quality/cn/dongguan-cn"
+  },
+  {
+    "name": "Foshan",
+    "slug": "foshan-cn",
+    "state": "Guangdong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1542",
+    "url": "/air-quality/cn/foshan-cn"
+  },
+  {
+    "name": "Wenzhou",
+    "slug": "wenzhou-cn",
+    "state": "Zhejiang",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1441",
+    "url": "/air-quality/cn/wenzhou-cn"
+  },
+  {
+    "name": "Jinan",
+    "slug": "jinan-cn",
+    "state": "Shandong",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1505",
+    "url": "/air-quality/cn/jinan-cn"
+  },
+  {
+    "name": "Urumqi",
+    "slug": "urumqi-cn",
+    "state": "Xinjiang",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1580",
+    "url": "/air-quality/cn/urumqi-cn"
+  },
+  {
+    "name": "Lanzhou",
+    "slug": "lanzhou-cn",
+    "state": "Gansu",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1575",
+    "url": "/air-quality/cn/lanzhou-cn"
+  },
+  {
+    "name": "Taiyuan",
+    "slug": "taiyuan-cn",
+    "state": "Shanxi",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1465",
+    "url": "/air-quality/cn/taiyuan-cn"
+  },
+  {
+    "name": "Shijiazhuang",
+    "slug": "shijiazhuang-cn",
+    "state": "Hebei",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1454",
+    "url": "/air-quality/cn/shijiazhuang-cn"
+  },
+  {
+    "name": "Hefei",
+    "slug": "hefei-cn",
+    "state": "Anhui",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1497",
+    "url": "/air-quality/cn/hefei-cn"
+  },
+  {
+    "name": "Nanchang",
+    "slug": "nanchang-cn",
+    "state": "Jiangxi",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1503",
+    "url": "/air-quality/cn/nanchang-cn"
+  },
+  {
+    "name": "Guiyang",
+    "slug": "guiyang-cn",
+    "state": "Guizhou",
+    "country": "China",
+    "countrySlug": "cn",
+    "waqiId": "@1563",
+    "url": "/air-quality/cn/guiyang-cn"
+  },
+  {
+    "name": "Sendai",
+    "slug": "sendai-jp",
+    "state": "Miyagi",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5537",
+    "url": "/air-quality/jp/sendai-jp"
+  },
+  {
+    "name": "Kitakyushu",
+    "slug": "kitakyushu-jp",
+    "state": "Fukuoka",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5584",
+    "url": "/air-quality/jp/kitakyushu-jp"
+  },
+  {
+    "name": "Kawasaki",
+    "slug": "kawasaki-jp",
+    "state": "Kanagawa",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5580",
+    "url": "/air-quality/jp/kawasaki-jp"
+  },
+  {
+    "name": "Yokohama",
+    "slug": "yokohama-jp",
+    "state": "Kanagawa",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5538",
+    "url": "/air-quality/jp/yokohama-jp"
+  },
+  {
+    "name": "Chiba",
+    "slug": "chiba-jp",
+    "state": "Chiba",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5559",
+    "url": "/air-quality/jp/chiba-jp"
+  },
+  {
+    "name": "Niigata",
+    "slug": "niigata-jp",
+    "state": "Niigata",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5587",
+    "url": "/air-quality/jp/niigata-jp"
+  },
+  {
+    "name": "Shizuoka",
+    "slug": "shizuoka-jp",
+    "state": "Shizuoka",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5581",
+    "url": "/air-quality/jp/shizuoka-jp"
+  },
+  {
+    "name": "Okayama",
+    "slug": "okayama-jp",
+    "state": "Okayama",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5567",
+    "url": "/air-quality/jp/okayama-jp"
+  },
+  {
+    "name": "Kumamoto",
+    "slug": "kumamoto-jp",
+    "state": "Kumamoto",
+    "country": "Japan",
+    "countrySlug": "jp",
+    "waqiId": "@5592",
+    "url": "/air-quality/jp/kumamoto-jp"
+  },
+  {
+    "name": "Ulsan",
+    "slug": "ulsan-kr",
+    "state": "Ulsan",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "@5522",
+    "url": "/air-quality/kr/ulsan-kr"
+  },
+  {
+    "name": "Suwon",
+    "slug": "suwon-kr",
+    "state": "Gyeonggi",
+    "country": "South Korea",
+    "countrySlug": "kr",
+    "waqiId": "@5513",
+    "url": "/air-quality/kr/suwon-kr"
+  },
+  {
+    "name": "Surat",
+    "slug": "surat-in",
+    "state": "Gujarat",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@1826",
+    "url": "/air-quality/in/surat-in"
+  },
+  {
+    "name": "Jaipur",
+    "slug": "jaipur-in",
+    "state": "Rajasthan",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@11304",
+    "url": "/air-quality/in/jaipur-in"
+  },
+  {
+    "name": "Lucknow",
+    "slug": "lucknow-in",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@8188",
+    "url": "/air-quality/in/lucknow-in"
+  },
+  {
+    "name": "Kanpur",
+    "slug": "kanpur-in",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@8187",
+    "url": "/air-quality/in/kanpur-in"
+  },
+  {
+    "name": "Nagpur",
+    "slug": "nagpur-in",
+    "state": "Maharashtra",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12444",
+    "url": "/air-quality/in/nagpur-in"
+  },
+  {
+    "name": "Visakhapatnam",
+    "slug": "visakhapatnam-in",
+    "state": "Andhra Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12443",
+    "url": "/air-quality/in/visakhapatnam-in"
+  },
+  {
+    "name": "Bhopal",
+    "slug": "bhopal-in",
+    "state": "Madhya Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12429",
+    "url": "/air-quality/in/bhopal-in"
+  },
+  {
+    "name": "Patna",
+    "slug": "patna-in",
+    "state": "Bihar",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12744",
+    "url": "/air-quality/in/patna-in"
+  },
+  {
+    "name": "Coimbatore",
+    "slug": "coimbatore-in",
+    "state": "Tamil Nadu",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@14124",
+    "url": "/air-quality/in/coimbatore-in"
+  },
+  {
+    "name": "Guwahati",
+    "slug": "guwahati-in",
+    "state": "Assam",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@11844",
+    "url": "/air-quality/in/guwahati-in"
+  },
+  {
+    "name": "Chandigarh",
+    "slug": "chandigarh-in",
+    "state": "Punjab",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12428",
+    "url": "/air-quality/in/chandigarh-in"
+  },
+  {
+    "name": "Varanasi",
+    "slug": "varanasi-in",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@13692",
+    "url": "/air-quality/in/varanasi-in"
+  },
+  {
+    "name": "Agra",
+    "slug": "agra-in",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@8186",
+    "url": "/air-quality/in/agra-in"
+  },
+  {
+    "name": "Amritsar",
+    "slug": "amritsar-in",
+    "state": "Punjab",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@11321",
+    "url": "/air-quality/in/amritsar-in"
+  },
+  {
+    "name": "Indore",
+    "slug": "indore-in",
+    "state": "Madhya Pradesh",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12437",
+    "url": "/air-quality/in/indore-in"
+  },
+  {
+    "name": "Thiruvananthapuram",
+    "slug": "thiruvananthapuram-in",
+    "state": "Kerala",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@12824",
+    "url": "/air-quality/in/thiruvananthapuram-in"
+  },
+  {
+    "name": "Kochi",
+    "slug": "kochi-in",
+    "state": "Kerala",
+    "country": "India",
+    "countrySlug": "in",
+    "waqiId": "@2084",
+    "url": "/air-quality/in/kochi-in"
+  },
+  {
+    "name": "Quezon City",
+    "slug": "quezon-city-ph",
+    "state": "Metro Manila",
+    "country": "Philippines",
+    "countrySlug": "ph",
+    "waqiId": "@14893",
+    "url": "/air-quality/ph/quezon-city-ph"
+  },
+  {
+    "name": "Phuket",
+    "slug": "phuket-th",
+    "state": "Phuket",
+    "country": "Thailand",
+    "countrySlug": "th",
+    "waqiId": "@1827",
+    "url": "/air-quality/th/phuket-th"
+  },
+  {
+    "name": "Nonthaburi",
+    "slug": "nonthaburi-th",
+    "state": "Nonthaburi",
+    "country": "Thailand",
+    "countrySlug": "th",
+    "waqiId": "@1816",
+    "url": "/air-quality/th/nonthaburi-th"
+  },
+  {
+    "name": "Hue",
+    "slug": "hue-vn",
+    "state": "Thua Thien Hue",
+    "country": "Vietnam",
+    "countrySlug": "vn",
+    "waqiId": "@12488",
+    "url": "/air-quality/vn/hue-vn"
+  },
+  {
+    "name": "Can Tho",
+    "slug": "can-tho-vn",
+    "state": "Can Tho",
+    "country": "Vietnam",
+    "countrySlug": "vn",
+    "waqiId": "@13687",
+    "url": "/air-quality/vn/can-tho-vn"
+  },
+  {
+    "name": "Semarang",
+    "slug": "semarang-id",
+    "state": "Central Java",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "@13651",
+    "url": "/air-quality/id/semarang-id"
+  },
+  {
+    "name": "Palembang",
+    "slug": "palembang-id",
+    "state": "South Sumatra",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "@14903",
+    "url": "/air-quality/id/palembang-id"
+  },
+  {
+    "name": "Yogyakarta",
+    "slug": "yogyakarta-id",
+    "state": "Special Region",
+    "country": "Indonesia",
+    "countrySlug": "id",
+    "waqiId": "@13653",
+    "url": "/air-quality/id/yogyakarta-id"
+  },
+  {
+    "name": "Ipoh",
+    "slug": "ipoh-my",
+    "state": "Perak",
+    "country": "Malaysia",
+    "countrySlug": "my",
+    "waqiId": "@5777",
+    "url": "/air-quality/my/ipoh-my"
+  },
+  {
+    "name": "Dammam",
+    "slug": "dammam-sa",
+    "state": "Eastern Province",
+    "country": "Saudi Arabia",
+    "countrySlug": "sa",
+    "waqiId": "@11763",
+    "url": "/air-quality/sa/dammam-sa"
+  },
+  {
+    "name": "Mecca",
+    "slug": "mecca-sa",
+    "state": "Mecca Region",
+    "country": "Saudi Arabia",
+    "countrySlug": "sa",
+    "waqiId": "@11614",
+    "url": "/air-quality/sa/mecca-sa"
+  },
+  {
+    "name": "Medina",
+    "slug": "medina-sa",
+    "state": "Al-Madinah",
+    "country": "Saudi Arabia",
+    "countrySlug": "sa",
+    "waqiId": "@12944",
+    "url": "/air-quality/sa/medina-sa"
+  },
+  {
+    "name": "Muscat",
+    "slug": "muscat-om",
+    "state": "Muscat",
+    "country": "Oman",
+    "countrySlug": "om",
+    "waqiId": "@6921",
+    "url": "/air-quality/om/muscat-om"
+  },
+  {
+    "name": "Sanaa",
+    "slug": "sanaa-ye",
+    "state": "Amanat Al Asimah",
+    "country": "Yemen",
+    "countrySlug": "ye",
+    "waqiId": "@317",
+    "url": "/air-quality/ye/sanaa-ye"
+  },
+  {
+    "name": "Fes",
+    "slug": "fes-ma",
+    "state": "Fès-Meknès",
+    "country": "Morocco",
+    "countrySlug": "ma",
+    "waqiId": "@410",
+    "url": "/air-quality/ma/fes-ma"
+  },
+  {
+    "name": "Rabat",
+    "slug": "rabat-ma",
+    "state": "Rabat-Salé-Kénitra",
+    "country": "Morocco",
+    "countrySlug": "ma",
+    "waqiId": "@6883",
+    "url": "/air-quality/ma/rabat-ma"
+  },
+  {
+    "name": "Port Harcourt",
+    "slug": "port-harcourt-ng",
+    "state": "Rivers",
+    "country": "Nigeria",
+    "countrySlug": "ng",
+    "waqiId": "@10728",
+    "url": "/air-quality/ng/port-harcourt-ng"
+  },
+  {
+    "name": "Kano",
+    "slug": "kano-ng",
+    "state": "Kano",
+    "country": "Nigeria",
+    "countrySlug": "ng",
+    "waqiId": "@1927",
+    "url": "/air-quality/ng/kano-ng"
+  },
+  {
+    "name": "Dar es Salaam",
+    "slug": "dar-es-salaam-tz",
+    "state": "Dar es Salaam",
+    "country": "Tanzania",
+    "countrySlug": "tz",
+    "waqiId": "@13292",
+    "url": "/air-quality/tz/dar-es-salaam-tz"
+  },
+  {
+    "name": "Kampala",
+    "slug": "kampala-ug",
+    "state": "Central Region",
+    "country": "Uganda",
+    "countrySlug": "ug",
+    "waqiId": "@9470",
+    "url": "/air-quality/ug/kampala-ug"
+  },
+  {
+    "name": "Kigali",
+    "slug": "kigali-rw",
+    "state": "Kigali",
+    "country": "Rwanda",
+    "countrySlug": "rw",
+    "waqiId": "@13853",
+    "url": "/air-quality/rw/kigali-rw"
+  },
+  {
+    "name": "Abidjan",
+    "slug": "abidjan-ci",
+    "state": "Abidjan District",
+    "country": "Côte d'Ivoire",
+    "countrySlug": "ci",
+    "waqiId": "@12793",
+    "url": "/air-quality/ci/abidjan-ci"
+  },
+  {
+    "name": "Conakry",
+    "slug": "conakry-gn",
+    "state": "Conakry",
+    "country": "Guinea",
+    "countrySlug": "gn",
+    "waqiId": "@12794",
+    "url": "/air-quality/gn/conakry-gn"
+  },
+  {
+    "name": "Bamako",
+    "slug": "bamako-ml",
+    "state": "Bamako",
+    "country": "Mali",
+    "countrySlug": "ml",
+    "waqiId": "@12640",
+    "url": "/air-quality/ml/bamako-ml"
+  },
+  {
+    "name": "Ouagadougou",
+    "slug": "ouagadougou-bf",
+    "state": "Centre",
+    "country": "Burkina Faso",
+    "countrySlug": "bf",
+    "waqiId": "@13844",
+    "url": "/air-quality/bf/ouagadougou-bf"
+  },
+  {
+    "name": "Antananarivo",
+    "slug": "antananarivo-mg",
+    "state": "Analamanga",
+    "country": "Madagascar",
+    "countrySlug": "mg",
+    "waqiId": "@13448",
+    "url": "/air-quality/mg/antananarivo-mg"
+  },
+  {
+    "name": "Recife",
+    "slug": "recife-br",
+    "state": "Pernambuco",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "@6792",
+    "url": "/air-quality/br/recife-br"
+  },
+  {
+    "name": "Porto Alegre",
+    "slug": "porto-alegre-br",
+    "state": "Rio Grande do Sul",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "@8373",
+    "url": "/air-quality/br/porto-alegre-br"
+  },
+  {
+    "name": "Belem",
+    "slug": "belem-br",
+    "state": "Pará",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "@5784",
+    "url": "/air-quality/br/belem-br"
+  },
+  {
+    "name": "Campinas",
+    "slug": "campinas-br",
+    "state": "São Paulo",
+    "country": "Brazil",
+    "countrySlug": "br",
+    "waqiId": "@8112",
+    "url": "/air-quality/br/campinas-br"
+  },
+  {
+    "name": "Cali",
+    "slug": "cali-co",
+    "state": "Valle del Cauca",
+    "country": "Colombia",
+    "countrySlug": "co",
+    "waqiId": "@13320",
+    "url": "/air-quality/co/cali-co"
+  },
+  {
+    "name": "Quito",
+    "slug": "quito-ec",
+    "state": "Pichincha",
+    "country": "Ecuador",
+    "countrySlug": "ec",
+    "waqiId": "@10687",
+    "url": "/air-quality/ec/quito-ec"
+  },
+  {
+    "name": "La Paz",
+    "slug": "la-paz-bo",
+    "state": "La Paz",
+    "country": "Bolivia",
+    "countrySlug": "bo",
+    "waqiId": "@10164",
+    "url": "/air-quality/bo/la-paz-bo"
+  },
+  {
+    "name": "Santa Cruz",
+    "slug": "santa-cruz-bo",
+    "state": "Santa Cruz",
+    "country": "Bolivia",
+    "countrySlug": "bo",
+    "waqiId": "@240",
+    "url": "/air-quality/bo/santa-cruz-bo"
+  },
+  {
+    "name": "Asuncion",
+    "slug": "asuncion-py",
+    "state": "Asunción",
+    "country": "Paraguay",
+    "countrySlug": "py",
+    "waqiId": "@12515",
+    "url": "/air-quality/py/asuncion-py"
+  },
+  {
+    "name": "San Jose",
+    "slug": "san-jose-cr",
+    "state": "San José",
+    "country": "Costa Rica",
+    "countrySlug": "cr",
+    "waqiId": "@3902",
+    "url": "/air-quality/cr/san-jose-cr"
+  },
+  {
+    "name": "Guatemala City",
+    "slug": "guatemala-city-gt",
+    "state": "Guatemala",
+    "country": "Guatemala",
+    "countrySlug": "gt",
+    "waqiId": "@12515",
+    "url": "/air-quality/gt/guatemala-city-gt"
+  },
+  {
+    "name": "San Salvador",
+    "slug": "san-salvador-sv",
+    "state": "San Salvador",
+    "country": "El Salvador",
+    "countrySlug": "sv",
+    "waqiId": "@6966",
+    "url": "/air-quality/sv/san-salvador-sv"
+  },
+  {
+    "name": "Panama City",
+    "slug": "panama-city-pa",
+    "state": "Panama Province",
+    "country": "Panama",
+    "countrySlug": "pa",
+    "waqiId": "@6282",
+    "url": "/air-quality/pa/panama-city-pa"
+  },
+  {
+    "name": "Havana",
+    "slug": "havana-cu",
+    "state": "La Habana",
+    "country": "Cuba",
+    "countrySlug": "cu",
+    "waqiId": "@9184",
+    "url": "/air-quality/cu/havana-cu"
+  },
+  {
+    "name": "Santo Domingo",
+    "slug": "santo-domingo-do",
+    "state": "Distrito Nacional",
+    "country": "Dominican Republic",
+    "countrySlug": "do",
+    "waqiId": "@12721",
+    "url": "/air-quality/do/santo-domingo-do"
+  },
+  {
+    "name": "San Juan",
+    "slug": "san-juan-us",
+    "state": "Puerto Rico",
+    "country": "United States",
+    "countrySlug": "us",
+    "waqiId": "@8139",
+    "url": "/air-quality/us/san-juan-us"
+  },
+  {
+    "name": "Kingston",
+    "slug": "kingston-jm",
+    "state": "Kingston",
+    "country": "Jamaica",
+    "countrySlug": "jm",
+    "waqiId": "@13",
+    "url": "/air-quality/jm/kingston-jm"
+  },
+  {
+    "name": "Rosario",
+    "slug": "rosario-ar",
+    "state": "Santa Fe",
+    "country": "Argentina",
+    "countrySlug": "ar",
+    "waqiId": "@6762",
+    "url": "/air-quality/ar/rosario-ar"
+  },
+  {
+    "name": "Gold Coast",
+    "slug": "gold-coast-au",
+    "state": "Queensland",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@10726",
+    "url": "/air-quality/au/gold-coast-au"
+  },
+  {
+    "name": "Canberra",
+    "slug": "canberra-au",
+    "state": "ACT",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@12492",
+    "url": "/air-quality/au/canberra-au"
+  },
+  {
+    "name": "Newcastle",
+    "slug": "newcastle-au",
+    "state": "New South Wales",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@12485",
+    "url": "/air-quality/au/newcastle-au"
+  },
+  {
+    "name": "Wollongong",
+    "slug": "wollongong-au",
+    "state": "New South Wales",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@3264",
+    "url": "/air-quality/au/wollongong-au"
+  },
+  {
+    "name": "Hobart",
+    "slug": "hobart-au",
+    "state": "Tasmania",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@3299",
+    "url": "/air-quality/au/hobart-au"
+  },
+  {
+    "name": "Darwin",
+    "slug": "darwin-au",
+    "state": "Northern Territory",
+    "country": "Australia",
+    "countrySlug": "au",
+    "waqiId": "@6442",
+    "url": "/air-quality/au/darwin-au"
+  },
+  {
+    "name": "Christchurch",
+    "slug": "christchurch-nz",
+    "state": "Canterbury",
+    "country": "New Zealand",
+    "countrySlug": "nz",
+    "waqiId": "@9096",
+    "url": "/air-quality/nz/christchurch-nz"
+  },
+  {
+    "name": "Bishkek",
+    "slug": "bishkek-kg",
+    "state": "Chuy",
+    "country": "Kyrgyzstan",
+    "countrySlug": "kg",
+    "waqiId": "@11403",
+    "url": "/air-quality/kg/bishkek-kg"
+  },
+  {
+    "name": "Ashgabat",
+    "slug": "ashgabat-tm",
+    "state": "Ashgabat",
+    "country": "Turkmenistan",
+    "countrySlug": "tm",
+    "waqiId": "@11909",
+    "url": "/air-quality/tm/ashgabat-tm"
+  },
+  {
+    "name": "Dushanbe",
+    "slug": "dushanbe-tj",
+    "state": "Dushanbe",
+    "country": "Tajikistan",
+    "countrySlug": "tj",
+    "waqiId": "@11895",
+    "url": "/air-quality/tj/dushanbe-tj"
+  },
+  {
+    "name": "Nur-Sultan",
+    "slug": "nur-sultan-kz",
+    "state": "Akmola",
+    "country": "Kazakhstan",
+    "countrySlug": "kz",
+    "waqiId": "@10497",
+    "url": "/air-quality/kz/nur-sultan-kz"
+  },
+  {
+    "name": "Yangon",
+    "slug": "yangon-mm",
+    "state": "Yangon Region",
+    "country": "Myanmar",
+    "countrySlug": "mm",
+    "waqiId": "@11784",
+    "url": "/air-quality/mm/yangon-mm"
+  },
+  {
+    "name": "Kabul",
+    "slug": "kabul-af",
+    "state": "Kabul",
+    "country": "Afghanistan",
+    "countrySlug": "af",
+    "waqiId": "@12384",
+    "url": "/air-quality/af/kabul-af"
+  },
+  {
+    "name": "Karachi",
+    "slug": "karachi-pk",
+    "state": "Sindh",
+    "country": "Pakistan",
+    "countrySlug": "pk",
+    "waqiId": "@11790",
+    "url": "/air-quality/pk/karachi-pk"
+  }
 ]
