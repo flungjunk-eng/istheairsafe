@@ -24,8 +24,13 @@ if (!city) {
   return Astro.redirect('/404');
 }
 
-const token = import.meta.env.WAQI_TOKEN || 'demo';
+const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
+console.log('[city page] token source:', Astro.locals?.runtime?.env?.WAQI_TOKEN ? 'runtime' : import.meta.env.WAQI_TOKEN ? 'import.meta' : 'demo');
 const { aqi: aqiData, weather } = await fetchCityData(city.waqiId, token);
+
+// Prevent Cloudflare edge caching so every request gets fresh data
+Astro.response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+Astro.response.headers.set('CDN-Cache-Control', 'no-store');
 
 const aqi = aqiData?.aqi ?? null;
 const level = getAqiLevel(aqi);
