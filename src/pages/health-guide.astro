@@ -100,7 +100,7 @@ const quickCities = [
     </div>
 
     <!-- AQI Quick reference bar -->
-    <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px 22px;margin-bottom:28px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;">
+    <div style="background:white;border:1px solid #eee;border-radius:14px;padding:18px 22px;margin-bottom:28px;" class="aqi-scale-grid">
       {LEVELS.map(l => (
         <div style={`background:${l.light};border:1px solid ${l.border};border-radius:10px;padding:10px 8px;text-align:center;`}>
           <div style={`font-family:var(--font-mono);font-weight:700;font-size:13px;color:${l.color};margin-bottom:2px;`}>{l.range}</div>
@@ -174,11 +174,13 @@ const quickCities = [
     @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
     .appear { animation: fadeUp 0.4s ease forwards; }
     @media (max-width: 700px) {
+      .aqi-scale-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
       .conditions-grid { grid-template-columns: 1fr !important; }
       .protect-grid { grid-template-columns: 1fr 1fr !important; }
     }
     @media (max-width: 480px) {
       .protect-grid { grid-template-columns: 1fr !important; }
+      .aqi-scale-grid { grid-template-columns: repeat(3,1fr) !important; }
     }
   </style>
 </Base>
