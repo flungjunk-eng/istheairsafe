@@ -1,32 +1,37 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import cities from '../../data/cities.json';
-
-export function getStaticPaths() {
-  // Get unique countries
-  const countryMap = new Map();
-  for (const city of cities) {
-    if (!countryMap.has(city.countrySlug)) {
-      countryMap.set(city.countrySlug, city.country);
-    }
-  }
-  return [...countryMap.entries()].map(([slug, name]) => ({
-    params: { country: slug },
-    props: { countryName: name, countrySlug: slug },
-  }));
-}
+import { fetchAqi, getAqiLevel } from '../../utils/waqi.js';
 
 const { country } = Astro.params;
-const { countryName, countrySlug } = Astro.props;
+
+// Find country name
+const countrySlug = country;
+const countryName = cities.find(c => c.countrySlug === countrySlug)?.country;
+
+if (!countryName) return Astro.redirect('/countries');
 
 // Get all cities for this country
 const countryCities = cities
   .filter(c => c.countrySlug === countrySlug)
   .sort((a, b) => a.name.localeCompare(b.name));
 
-// Group by state if country has states (US, Canada, Australia, India, etc.)
+// Fetch live AQI for all cities in parallel
+const token = (Astro.locals?.runtime?.env?.WAQI_TOKEN) || import.meta.env.WAQI_TOKEN || 'demo';
+
+const aqiResults = await Promise.all(
+  countryCities.map(city => fetchAqi(city.waqiId, token).catch(() => null))
+);
+
+// Map city slug -> AQI data
+const aqiMap = new Map();
+countryCities.forEach((city, i) => {
+  aqiMap.set(city.slug, aqiResults[i]);
+});
+
+// Group by state
 const hasStates = countryCities.some(c => c.state);
 const byState = new Map();
 if (hasStates) {
@@ -39,18 +44,20 @@ if (hasStates) {
 
 const isUS = countrySlug === 'us';
 
+// Sort cities by AQI within each group (worst first)
+function sortByAqi(cityList) {
+  return [...cityList].sort((a, b) => {
+    const aqiA = aqiMap.get(a.slug)?.aqi ?? -1;
+    const aqiB = aqiMap.get(b.slug)?.aqi ?? -1;
+    return aqiB - aqiA;
+  });
+}
+
 const pageTitle = `Air Quality in ${countryName} — Real-Time AQI by City`;
 const pageDesc = `Live air quality index for ${countryCities.length} cities in ${countryName}. Real-time AQI, PM2.5, health guidance and pollution data.`;
 
-// AQI level color helper (static — used for display hints only)
-const AQI_LEVELS = [
-  { max: 50,  label: 'Good',                          color: '#1a7a4a', light: '#e8f7ef', border: '#b6e8ce' },
-  { max: 100, label: 'Moderate',                      color: '#7a6000', light: '#fdf8e8', border: '#f0dc99' },
-  { max: 150, label: 'Unhealthy for Sensitive Groups', color: '#bf5000', light: '#fff2e8', border: '#f5c49a' },
-  { max: 200, label: 'Unhealthy',                     color: '#b91c1c', light: '#fef2f2', border: '#fca5a5' },
-  { max: 300, label: 'Very Unhealthy',                color: '#6b21a8', light: '#faf0ff', border: '#d8a8f0' },
-  { max: 999, label: 'Hazardous',                     color: '#7f1d1d', light: '#fff1f1', border: '#f87171' },
-];
+Astro.response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+Astro.response.headers.set('CDN-Cache-Control', 'no-store');
 ---
 
 <Base
@@ -75,7 +82,7 @@ const AQI_LEVELS = [
         Air Quality in {countryName}
       </h1>
       <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
-        Live AQI readings for {countryCities.length} {countryCities.length === 1 ? 'city' : 'cities'} across {countryName}. Updated hourly from government monitoring stations.
+        Live AQI readings for {countryCities.length} {countryCities.length === 1 ? 'city' : 'cities'} across {countryName}. Sorted worst to best. Updated hourly.
       </p>
     </div>
 
@@ -84,7 +91,7 @@ const AQI_LEVELS = [
       <div style="background:white;border:1px solid #eee;border-radius:14px;padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
         <div>
           <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;margin-bottom:2px;">Browse by State</div>
-          <div style="font-family:var(--font-sans);font-size:12px;color:#aaa;">View air quality rankings for individual US states</div>
+          <div style="font-family:var(--font-sans);font-size:12px;color:#aaa;">View air quality data for individual US states</div>
         </div>
         <a href="/states" style="background:#111;color:white;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;flex-shrink:0;">
           Browse US States →
@@ -92,7 +99,7 @@ const AQI_LEVELS = [
       </div>
     )}
 
-    <!-- Cities — grouped by state if applicable, flat list otherwise -->
+    <!-- Cities with live AQI -->
     {hasStates ? (
       [...byState.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([state, stateCities]) => (
         <div style="margin-bottom:32px;">
@@ -105,36 +112,64 @@ const AQI_LEVELS = [
               </a>
             )}
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;" class="city-grid">
-            {stateCities.map(city => (
-              <a href={city.url}
-                style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;"
-                class="city-card">
-                <div>
-                  <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
-                  {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
-                </div>
-                <span style="font-size:10px;color:#ccc;flex-shrink:0;">→</span>
-              </a>
-            ))}
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;" class="city-grid">
+            {sortByAqi(stateCities).map(city => {
+              const data = aqiMap.get(city.slug);
+              const aqi = data?.aqi ?? null;
+              const level = aqi !== null ? getAqiLevel(aqi) : null;
+              return (
+                <a href={city.url}
+                  style={`display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid ${level ? level.border : '#eee'};border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;`}
+                  class="city-card">
+                  <div>
+                    <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+                    {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
+                  </div>
+                  {aqi !== null && level ? (
+                    <div style={`display:flex;flex-direction:column;align-items:center;background:${level.light};border:1px solid ${level.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;`}>
+                      <span style={`font-family:var(--font-serif);font-size:20px;color:${level.color};line-height:1;`}>{aqi}</span>
+                      <span style={`font-family:var(--font-sans);font-size:9px;font-weight:700;color:${level.color};letter-spacing:0.03em;margin-top:2px;`}>{level.label.split(' ')[0].toUpperCase()}</span>
+                    </div>
+                  ) : (
+                    <div style="width:54px;height:44px;background:#f5f5f3;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                      <span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>
+                    </div>
+                  )}
+                </a>
+              );
+            })}
           </div>
         </div>
       ))
     ) : (
       <div>
         <h2 style="font-size:18px;color:#111;margin-bottom:16px;font-weight:400;">All Cities</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;" class="city-grid">
-          {countryCities.map(city => (
-            <a href={city.url}
-              style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;"
-              class="city-card">
-              <div>
-                <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
-                {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
-              </div>
-              <span style="font-size:10px;color:#ccc;flex-shrink:0;">→</span>
-            </a>
-          ))}
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;" class="city-grid">
+          {sortByAqi(countryCities).map(city => {
+            const data = aqiMap.get(city.slug);
+            const aqi = data?.aqi ?? null;
+            const level = aqi !== null ? getAqiLevel(aqi) : null;
+            return (
+              <a href={city.url}
+                style={`display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid ${level ? level.border : '#eee'};border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;`}
+                class="city-card">
+                <div>
+                  <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
+                  {city.state && <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:1px;">{city.state}</div>}
+                </div>
+                {aqi !== null && level ? (
+                  <div style={`display:flex;flex-direction:column;align-items:center;background:${level.light};border:1px solid ${level.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;`}>
+                    <span style={`font-family:var(--font-serif);font-size:20px;color:${level.color};line-height:1;`}>{aqi}</span>
+                    <span style={`font-family:var(--font-sans);font-size:9px;font-weight:700;color:${level.color};letter-spacing:0.03em;margin-top:2px;`}>{level.label.split(' ')[0].toUpperCase()}</span>
+                  </div>
+                ) : (
+                  <div style="width:54px;height:44px;background:#f5f5f3;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>
+                  </div>
+                )}
+              </a>
+            );
+          })}
         </div>
       </div>
     )}
@@ -143,7 +178,7 @@ const AQI_LEVELS = [
     <div style="background:#111;border-radius:16px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:48px;">
       <div>
         <div style="font-family:var(--font-serif);font-size:20px;color:white;margin-bottom:6px;">Is the air safe today?</div>
-        <div style="font-family:var(--font-sans);font-size:13px;color:#888;">Get a live AQI reading with health guidance for any city.</div>
+        <div style="font-family:var(--font-sans);font-size:13px;color:#888;">Get a full breakdown with health guidance for any city.</div>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a href="/" style="background:white;color:#111;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:700;">Search a city</a>
@@ -156,7 +191,7 @@ const AQI_LEVELS = [
   <style>
     @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
     .appear { animation: fadeUp 0.4s ease forwards; }
-    .city-card:hover { border-color: #111 !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .city-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     @media (max-width: 600px) {
       .city-grid { grid-template-columns: 1fr 1fr !important; }
     }
