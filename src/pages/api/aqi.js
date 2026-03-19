@@ -55,13 +55,15 @@ export async function GET({ request, locals }) {
     const cacheKey = `aqi:${hashHex}`;
 
     try {
-      const cached = await kv.get(cacheKey, { type: 'json' });
-      if (cached) {
+      const raw = await kv.get(cacheKey);
+      if (raw) {
+        const cached = JSON.parse(raw);
         return new Response(JSON.stringify(cached), {
           headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'public, max-age=60',
             'X-Cache': 'HIT',
+            'X-KV-Key': cacheKey,
           },
         });
       }
@@ -85,6 +87,7 @@ export async function GET({ request, locals }) {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=60',
         'X-Cache': 'MISS',
+        'X-KV-Key': cacheKey,
       },
     });
   }
