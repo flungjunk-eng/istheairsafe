@@ -32,7 +32,7 @@ async function fetchFromWaqi(cityDefs, token) {
   return results;
 }
 
-export async function GET({ request, locals }) {
+export async function GET({ request, locals, ctx }) {
   const url = new URL(request.url);
   const slugsParam = url.searchParams.get('slugs') || '';
   const slugs = slugsParam.split(',').map(s => s.trim()).filter(Boolean).slice(0, 60);
@@ -70,11 +70,11 @@ export async function GET({ request, locals }) {
     // Cache miss — fetch from WAQI
     const results = await fetchFromWaqi(cityDefs, token);
 
-    // Write to KV in the background (don't await — keeps response fast)
+    // Write to KV — use waitUntil so CF doesn't kill it before it completes
     const cacheKeyToWrite = `aqi:${[...slugs].sort().join(',')}`;
-    kv.put(cacheKeyToWrite, JSON.stringify(results), { expirationTtl: KV_TTL }).catch(e => {
-      console.error('[KV] Write error:', e.message);
-    });
+    const writePromise = kv.put(cacheKeyToWrite, JSON.stringify(results), { expirationTtl: KV_TTL })
+      .catch(e => console.error('[KV] Write error:', e.message));
+    if (ctx?.waitUntil) ctx.waitUntil(writePromise);
 
     return new Response(JSON.stringify(results), {
       headers: {
