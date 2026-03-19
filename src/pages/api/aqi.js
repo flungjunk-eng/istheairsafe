@@ -32,7 +32,7 @@ async function fetchFromWaqi(cityDefs, token) {
   return results;
 }
 
-export async function GET({ request, locals, ctx }) {
+export async function GET({ request, locals }) {
   const url = new URL(request.url);
   const slugsParam = url.searchParams.get('slugs') || '';
   const slugs = slugsParam.split(',').map(s => s.trim()).filter(Boolean).slice(0, 60);
@@ -48,8 +48,11 @@ export async function GET({ request, locals, ctx }) {
 
   // --- Try KV cache first ---
   if (kv) {
-    // Each unique sorted slug set gets its own cache key
-    const cacheKey = `aqi:${[...slugs].sort().join(',')}`;
+    // Hash the slug list to keep keys under CF's 512-byte limit
+    const slugKey = [...slugs].sort().join(',');
+    const hashBuf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(slugKey));
+    const hashHex = [...new Uint8Array(hashBuf)].map(b => b.toString(16).padStart(2,'0')).join('').slice(0,16);
+    const cacheKey = `aqi:${hashHex}`;
 
     try {
       const cached = await kv.get(cacheKey, { type: 'json' });
@@ -70,11 +73,12 @@ export async function GET({ request, locals, ctx }) {
     // Cache miss — fetch from WAQI
     const results = await fetchFromWaqi(cityDefs, token);
 
-    // Write to KV — use waitUntil so CF doesn't kill it before it completes
-    const cacheKeyToWrite = `aqi:${[...slugs].sort().join(',')}`;
-    const writePromise = kv.put(cacheKeyToWrite, JSON.stringify(results), { expirationTtl: KV_TTL })
-      .catch(e => console.error('[KV] Write error:', e.message));
-    if (ctx?.waitUntil) ctx.waitUntil(writePromise);
+    // Write to KV — await directly (reliable across all CF environments)
+    try {
+      await kv.put(cacheKey, JSON.stringify(results), { expirationTtl: KV_TTL });
+    } catch(e) {
+      console.error('[KV] Write error:', e.message);
+    }
 
     return new Response(JSON.stringify(results), {
       headers: {
