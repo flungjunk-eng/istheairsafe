@@ -2,7 +2,7 @@ export const prerender = false;
 
 import cities from '../../data/cities.json';
 
-const CACHE_TTL = 300; // 5 minutes
+const KV_TTL = 15 * 60; // 15 minutes
 
 async function fetchFromWaqi(cityDefs, token) {
   const BATCH = 10;
@@ -42,45 +42,57 @@ export async function GET({ request, locals }) {
   }
 
   const token = locals?.runtime?.env?.WAQI_TOKEN || import.meta.env.WAQI_TOKEN || 'demo';
+  const kv = locals?.runtime?.env?.AQI_CACHE;
   const cityDefs = slugs.map(slug => cities.find(c => c.slug === slug)).filter(Boolean);
 
-  // Build a stable cache URL from sorted slugs
-  const cacheUrl = `https://istheairsafe.com/api/aqi?slugs=${[...slugs].sort().join(',')}`;
-  const cacheRequest = new Request(cacheUrl);
-  const cache = caches.default;
+  // Build a short stable cache key
+  const slugKey = [...slugs].sort().join(',');
+  const hashBuf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(slugKey));
+  const cacheKey = `aqi:${[...new Uint8Array(hashBuf)].map(b => b.toString(16).padStart(2,'0')).join('').slice(0,16)}`;
 
-  // --- Try Cache API first ---
-  const cached = await cache.match(cacheRequest);
-  if (cached) {
-    // Clone and add HIT header
-    const body = await cached.text();
+  // --- Try KV cache ---
+  if (kv) {
+    try {
+      const raw = await kv.get(cacheKey);
+      if (raw) {
+        return new Response(raw, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=300',
+            'X-Cache': 'HIT',
+          },
+        });
+      }
+    } catch(e) {
+      console.error('[KV] Read error:', e.message);
+    }
+
+    // Miss — fetch from WAQI then write to KV
+    const results = await fetchFromWaqi(cityDefs, token);
+    const body = JSON.stringify(results);
+
+    try {
+      await kv.put(cacheKey, body, { expirationTtl: KV_TTL });
+    } catch(e) {
+      console.error('[KV] Write error:', e.message);
+    }
+
     return new Response(body, {
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': `public, max-age=${CACHE_TTL}`,
-        'X-Cache': 'HIT',
+        'Cache-Control': 'public, max-age=300',
+        'X-Cache': 'MISS',
       },
     });
   }
 
-  // --- Cache miss: fetch from WAQI ---
+  // --- No KV — fetch directly ---
   const results = await fetchFromWaqi(cityDefs, token);
-  const body = JSON.stringify(results);
-
-  // Store in Cache API
-  const responseToCache = new Response(body, {
+  return new Response(JSON.stringify(results), {
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': `public, max-age=${CACHE_TTL}`,
-    },
-  });
-  await cache.put(cacheRequest, responseToCache);
-
-  return new Response(body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': `public, max-age=${CACHE_TTL}`,
-      'X-Cache': 'MISS',
+      'Cache-Control': 'public, max-age=300',
+      'X-Cache': 'BYPASS',
     },
   });
 }
