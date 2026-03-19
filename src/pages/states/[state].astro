@@ -5,14 +5,11 @@ import Base from '../../layouts/Base.astro';
 import cities from '../../data/cities.json';
 
 export function getStaticPaths() {
-  // Get unique US states
   const stateMap = new Map();
   for (const city of cities) {
     if (city.countrySlug !== 'us' || !city.state) continue;
     const slug = city.state.toLowerCase().replace(/\s+/g, '-');
-    if (!stateMap.has(slug)) {
-      stateMap.set(slug, city.state);
-    }
+    if (!stateMap.has(slug)) stateMap.set(slug, city.state);
   }
   return [...stateMap.entries()].map(([slug, name]) => ({
     params: { state: slug },
@@ -20,10 +17,8 @@ export function getStaticPaths() {
   }));
 }
 
-const { state } = Astro.params;
 const { stateName, stateSlug } = Astro.props;
 
-// Get all cities for this state
 const stateCities = cities
   .filter(c => c.countrySlug === 'us' && c.state?.toLowerCase().replace(/\s+/g, '-') === stateSlug)
   .sort((a, b) => a.name.localeCompare(b.name));
@@ -32,14 +27,9 @@ const pageTitle = `Air Quality in ${stateName} — Cities & AQI | IsTheAirSafe.c
 const pageDesc = `Live air quality index for ${stateCities.length} ${stateCities.length === 1 ? 'city' : 'cities'} in ${stateName}. Real-time AQI, PM2.5 levels and health guidance from EPA monitoring stations.`;
 ---
 
-<Base
-  title={pageTitle}
-  description={pageDesc}
-  canonical={`/states/${stateSlug}`}
->
+<Base title={pageTitle} description={pageDesc} canonical={`/states/${stateSlug}`}>
   <div style="max-width:960px;margin:0 auto;padding:40px 24px 80px;" class="appear">
 
-    <!-- Breadcrumb -->
     <nav style="display:flex;align-items:center;gap:5px;margin-bottom:28px;flex-wrap:wrap;">
       <a href="/" style="font-size:12px;font-family:var(--font-sans);color:var(--text-muted);text-decoration:underline;text-decoration-color:#ddd;">istheairsafe.com</a>
       <span style="color:#ddd;font-size:10px;">›</span>
@@ -50,49 +40,50 @@ const pageDesc = `Live air quality index for ${stateCities.length} ${stateCities
       <span style="font-size:12px;font-family:var(--font-sans);font-weight:600;color:var(--text);">{stateName}</span>
     </nav>
 
-    <!-- Hero -->
-    <div style="margin-bottom:36px;">
-      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;">
+    <div style="margin-bottom:28px;">
+      <h1 style="font-size:clamp(28px,4vw,46px);color:#111;letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px;">
         Air Quality in {stateName}
       </h1>
       <p style="font-family:var(--font-sans);font-size:15px;color:#777;line-height:1.75;max-width:580px;">
-        Live AQI readings for {stateCities.length} {stateCities.length === 1 ? 'city' : 'cities'} in {stateName}. Click any city for real-time pollution data, PM2.5 levels and personalised health guidance.
+        Live AQI for {stateCities.length} {stateCities.length === 1 ? 'city' : 'cities'} in {stateName}. Sorted worst to best once data loads.
       </p>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading-msg" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem;margin-bottom:20px;">
+      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);border-top-color:transparent;animation:spin 0.8s linear infinite;"></span>
+      Fetching live AQI data…
     </div>
 
     <!-- Cities grid -->
     <div style="margin-bottom:40px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-        <h2 style="font-size:20px;color:#111;font-weight:400;">{stateCities.length} {stateCities.length === 1 ? 'City' : 'Cities'} in {stateName}</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;" class="city-grid">
+      <h2 style="font-size:20px;color:#111;font-weight:400;margin-bottom:16px;">{stateCities.length} {stateCities.length === 1 ? 'City' : 'Cities'} in {stateName}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;" class="city-grid" id="city-grid">
         {stateCities.map(city => (
-          <a href={city.url}
-            style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:16px 18px;text-decoration:none;gap:10px;transition:all 0.15s;"
-            class="city-card">
-            <div>
+          <a href={city.url} class="city-card" data-slug={city.slug}
+            style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #eee;border-radius:12px;padding:14px 16px;text-decoration:none;gap:10px;transition:all 0.15s;">
+            <div style="min-width:0;">
               <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;color:#111;">{city.name}</div>
-              <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:2px;">View live AQI →</div>
+              <div style="font-family:var(--font-sans);font-size:11px;color:#bbb;margin-top:2px;">{city.state}</div>
             </div>
-            <div style="width:8px;height:8px;border-radius:50%;background:#e0e0de;flex-shrink:0;"></div>
+            <div class="aqi-chip shimmer" style="width:54px;height:44px;border-radius:8px;flex-shrink:0;"></div>
           </a>
         ))}
       </div>
     </div>
 
-    <!-- About section for SEO -->
+    <!-- About -->
     <div style="background:white;border:1px solid #eee;border-radius:16px;padding:28px 32px;margin-bottom:28px;">
       <h2 style="font-size:20px;color:#111;margin-bottom:14px;font-weight:400;">About Air Quality in {stateName}</h2>
       <p style="font-family:var(--font-sans);font-size:14px;color:#666;line-height:1.8;margin-bottom:12px;">
         Air quality in {stateName} is monitored by the US EPA AirNow network using certified government sensors. Data is updated hourly and reported using the US Air Quality Index (AQI) — a 0–500 scale where lower is better.
       </p>
       <p style="font-family:var(--font-sans);font-size:14px;color:#666;line-height:1.8;">
-        The AQI is calculated from six key pollutants: PM2.5, PM10, ground-level ozone, nitrogen dioxide, sulfur dioxide, and carbon monoxide. The dominant pollutant — whichever reads highest — sets the overall AQI for that city.
+        The AQI is calculated from six key pollutants: PM2.5, PM10, ground-level ozone, nitrogen dioxide, sulfur dioxide, and carbon monoxide.
         <a href="/aqi-explained" style="color:var(--accent);text-decoration:underline;">Learn how AQI is calculated →</a>
       </p>
     </div>
 
-    <!-- Bottom nav -->
     <div style="display:flex;gap:12px;flex-wrap:wrap;">
       <a href="/states" style="background:white;border:1px solid #eee;color:#111;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;">← All US States</a>
       <a href="/countries/us" style="background:white;border:1px solid #eee;color:#111;text-decoration:none;border-radius:8px;padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:600;">All US Cities</a>
@@ -102,11 +93,65 @@ const pageDesc = `Live air quality index for ${stateCities.length} ${stateCities
   </div>
 
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin   { to{transform:rotate(360deg)} }
+    @keyframes shimmer{ 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     .appear { animation: fadeUp 0.4s ease forwards; }
-    .city-card:hover { border-color: #111 !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    @media (max-width: 600px) {
-      .city-grid { grid-template-columns: 1fr 1fr !important; }
-    }
+    .shimmer { background:linear-gradient(90deg,#f0f0ee 25%,#e8e8e5 50%,#f0f0ee 75%);background-size:400px 100%;animation:shimmer 1.4s infinite; }
+    .city-card:hover { transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+    @media (max-width:600px) { .city-grid { grid-template-columns:1fr 1fr !important; } }
   </style>
+
+  <script>
+    const AQI_LEVELS = [
+      { max:50,  label:'Good',          color:'#1a7a4a', light:'#e8f7ef', border:'#b6e8ce' },
+      { max:100, label:'Moderate',      color:'#7a6000', light:'#fdf8e8', border:'#f0dc99' },
+      { max:150, label:'Sensitive',     color:'#bf5000', light:'#fff2e8', border:'#f5c49a' },
+      { max:200, label:'Unhealthy',     color:'#b91c1c', light:'#fef2f2', border:'#fca5a5' },
+      { max:300, label:'Very Unhealthy',color:'#6b21a8', light:'#faf0ff', border:'#d8a8f0' },
+      { max:999, label:'Hazardous',     color:'#7f1d1d', light:'#fff1f1', border:'#f87171' },
+    ];
+    function getLevel(aqi) { return AQI_LEVELS.find(l => aqi <= l.max) || AQI_LEVELS.at(-1); }
+
+    async function loadAqi() {
+      const cards = document.querySelectorAll('.city-card[data-slug]');
+      if (!cards.length) return;
+      const slugs = [...cards].map(c => c.dataset.slug).join(',');
+      let data = {};
+      try {
+        const res = await fetch(`/api/aqi?slugs=${slugs}`);
+        data = await res.json();
+      } catch(e) { console.error('AQI load failed', e); }
+
+      document.getElementById('loading-msg').style.display = 'none';
+
+      cards.forEach(card => {
+        const aqi = data[card.dataset.slug];
+        const chip = card.querySelector('.aqi-chip');
+        chip.classList.remove('shimmer');
+        if (aqi == null || isNaN(aqi)) {
+          chip.style.cssText = 'width:54px;height:44px;background:#f5f5f3;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;';
+          chip.innerHTML = '<span style="font-size:9px;color:#ccc;font-family:var(--font-sans);">N/A</span>';
+          return;
+        }
+        const l = getLevel(aqi);
+        card.style.borderColor = l.border;
+        chip.style.cssText = `display:flex;flex-direction:column;align-items:center;background:${l.light};border:1px solid ${l.border};border-radius:8px;padding:5px 10px;flex-shrink:0;min-width:54px;animation:fadeIn 0.3s ease;`;
+        chip.innerHTML = `<span style="font-family:var(--font-serif);font-size:20px;color:${l.color};line-height:1;">${aqi}</span><span style="font-family:var(--font-sans);font-size:9px;font-weight:700;color:${l.color};letter-spacing:0.03em;margin-top:2px;">${l.label.split(' ')[0].toUpperCase()}</span>`;
+      });
+
+      // Sort worst → best
+      const grid = document.getElementById('city-grid');
+      const items = [...grid.querySelectorAll('.city-card')];
+      items.sort((a, b) => {
+        const aqiA = data[a.dataset.slug] ?? -1;
+        const aqiB = data[b.dataset.slug] ?? -1;
+        return aqiB - aqiA;
+      });
+      items.forEach(el => grid.appendChild(el));
+    }
+
+    loadAqi();
+  </script>
 </Base>
