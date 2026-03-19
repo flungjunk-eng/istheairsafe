@@ -2,7 +2,7 @@ export const prerender = false;
 
 import cities from '../../data/cities.json';
 
-const KV_TTL = 5 * 60; // 5 minutes in seconds
+const CACHE_TTL = 300; // 5 minutes
 
 async function fetchFromWaqi(cityDefs, token) {
   const BATCH = 10;
@@ -42,64 +42,45 @@ export async function GET({ request, locals }) {
   }
 
   const token = locals?.runtime?.env?.WAQI_TOKEN || import.meta.env.WAQI_TOKEN || 'demo';
-  const kv = locals?.runtime?.env?.AQI_CACHE; // KV namespace binding
-
   const cityDefs = slugs.map(slug => cities.find(c => c.slug === slug)).filter(Boolean);
 
-  // --- Try KV cache first ---
-  if (kv) {
-    // Hash the slug list to keep keys under CF's 512-byte limit
-    const slugKey = [...slugs].sort().join(',');
-    const hashBuf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(slugKey));
-    const hashHex = [...new Uint8Array(hashBuf)].map(b => b.toString(16).padStart(2,'0')).join('').slice(0,16);
-    const cacheKey = `aqi:${hashHex}`;
+  // Build a stable cache URL from sorted slugs
+  const cacheUrl = `https://istheairsafe.com/api/aqi?slugs=${[...slugs].sort().join(',')}`;
+  const cacheRequest = new Request(cacheUrl);
+  const cache = caches.default;
 
-    try {
-      const raw = await kv.get(cacheKey);
-      if (raw) {
-        const cached = JSON.parse(raw);
-        return new Response(JSON.stringify(cached), {
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=60',
-            'X-Cache': 'HIT',
-            'X-KV-Key': cacheKey,
-          },
-        });
-      }
-    } catch (e) {
-      // KV read failed — fall through to live fetch
-      console.error('[KV] Read error:', e.message);
-    }
-
-    // Cache miss — fetch from WAQI
-    const results = await fetchFromWaqi(cityDefs, token);
-
-    // Write to KV — await directly (reliable across all CF environments)
-    try {
-      await kv.put(cacheKey, JSON.stringify(results), { expirationTtl: KV_TTL });
-    } catch(e) {
-      console.error('[KV] Write error:', e.message);
-    }
-
-    return new Response(JSON.stringify(results), {
+  // --- Try Cache API first ---
+  const cached = await cache.match(cacheRequest);
+  if (cached) {
+    // Clone and add HIT header
+    const body = await cached.text();
+    return new Response(body, {
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=60',
-        'X-Cache': 'MISS',
-        'X-KV-Key': cacheKey,
+        'Cache-Control': `public, max-age=${CACHE_TTL}`,
+        'X-Cache': 'HIT',
       },
     });
   }
 
-  // --- No KV available — fetch directly (fallback) ---
+  // --- Cache miss: fetch from WAQI ---
   const results = await fetchFromWaqi(cityDefs, token);
+  const body = JSON.stringify(results);
 
-  return new Response(JSON.stringify(results), {
+  // Store in Cache API
+  const responseToCache = new Response(body, {
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=300',
-      'X-Cache': 'BYPASS',
+      'Cache-Control': `public, max-age=${CACHE_TTL}`,
+    },
+  });
+  await cache.put(cacheRequest, responseToCache);
+
+  return new Response(body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': `public, max-age=${CACHE_TTL}`,
+      'X-Cache': 'MISS',
     },
   });
 }
